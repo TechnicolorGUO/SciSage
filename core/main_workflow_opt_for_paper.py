@@ -591,7 +591,6 @@ class PaperGenerationPipeline:
             self.state.error_message = f"Failed to generate paper outline: {str(e)}"
             self.state.process_state = ProcessState.ERROR
             return False
-        
 
     async def process_sections(self, max_concurrency: int = 1) -> bool:
         """Process all sections with limited concurrency"""
@@ -1143,6 +1142,8 @@ Introduce the content and implementation method of multimodal RAG""".split(
         start_time = time.time()
         # Create and run the pipeline
         output_dir = "eval/surveyscope_high_parameter"
+        os.makedirs(output_dir, exist_ok=True)
+
         kwargs = {
             "outline_max_reflections": 2,
             "outline_max_sections": 6,

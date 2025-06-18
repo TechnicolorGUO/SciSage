@@ -22,13 +22,10 @@ ALL_VALID_MODELS: List[str] = [
     "gpt-4",  # OpenAI GPT-4 base model
     "gpt-4-32k",  # OpenAI GPT-4 with 32k context
     "gpt-4o-mini",  # OpenAI GPT-4o mini model
-    "gpt-35",  # OpenAI GPT-3.5 Turbo
-    "r1-llama70b",  # Anthropic Claude
     "Qwen25-72B",  # Alibaba Qwen 72B parameter model
     "Qwen25-7B",  # Alibaba Qwen 7B parameter model
     "qwq-32b",  # QWQ 32B model
     "llama3-70b",  # Meta LLaMA3 70B model
-    "opensholar",  # OpenScholar specialized academic model
     "Qwen3-32B",
 ]
 
@@ -46,18 +43,18 @@ DEFAULT_MODEL_FOR_QUERY_INTENT = (
 
 # -- OUTLINE --
 DEFAULT_MODEL_FOR_OUTLINE: str = "Qwen3-32B"  # Changed from gpt-4-32k to Qwen25-72B
+# Currently using only Qwen model for outline generation
 OUTLINE_GENERAOR_MODELS: List[str] = [
-    "Qwen3-32B",  # Currently using only Qwen model for outline generation
+    "Qwen3-32B",
     "Qwen3-14B",
-    "Qwen25-72B",  # Another Qwen model for generating outlines
+    "Qwen25-72B",
     "llama3-70b",
     # "gpt-4o-mini",
 ]
 MODEL_GEN_QUERY: str = "Qwen3-32B"
 
-OUTLINE_REFLECTION_MAX_TURNS: int = (
-    2  # Maximum number of outline reflections to perform
-)
+# Maximum number of outline reflections to perform
+OUTLINE_REFLECTION_MAX_TURNS: int = 2
 OUTLINE_MAX_SECTIONS: int = 4  # Maximum number of sections to generate in the outline
 OUTLINE_MIN_DEPTH: int = 1  # Minimum depth of the outline tree structure
 

@@ -1,10 +1,8 @@
 import os
 import csv
-
 """
 Traverse a folder containing the results from MapReduce evaluation and compute the average values from all result.csv files.
 """
-
 
 def find_result_csv_files(root_dir):
     result_files = []
@@ -17,12 +15,11 @@ def find_result_csv_files(root_dir):
 def parse_and_accumulate(csv_file, sums, counts):
     with open(csv_file, 'r', encoding='utf-8') as f:
         reader = csv.reader(f)
-        header = next(reader)
-        for row in reader:
-            if len(row) < 2:
+
+        for id,row in enumerate(reader):
+            if id < 1:
                 continue
-            import ast
-            # lst = ast.literal_eval(row[1:-2])
+
             numeric_values = [float(x) for x in row[1:-2]]
             print(numeric_values)
             for i, value in enumerate(numeric_values):
@@ -40,7 +37,7 @@ def main(root_dir):
         print("No result.csv files found.")
         return
 
-    column_count = 13
+    column_count = 7
     sums = [0.0] * column_count
     counts = [0] * column_count
 
@@ -55,17 +52,10 @@ def main(root_dir):
         'critical_score (non-zero only)',
         'structure',
         'relevance',
-        'claim_precision',
-        'citation_precision',
-        'reference_precision',
-        'reference_coverage',
-        'claims_before_dedup',
-        'claims_after_dedup',
         "outlinse_score",
-        "filtered_scores_lang",
-        "filtered_scores_crit",
+
     ])
-    print("Average:", [round(x, 4) for x in averages])
+    print("Average:", [round(x, 4) for x in averages[:-2]])
 
 if __name__ == "__main__":
     import sys

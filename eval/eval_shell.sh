@@ -15,7 +15,7 @@ if [ -z "$json_folder" ]; then
 fi
 
 # Create a log directory
-mkdir -p ./output_mydata/our_new_title_result/log
+mkdir -p ./output_mydata/eval/log
 
 # Iterate through all .json and .jsonl files
 for json_file in "$json_folder"/*.json "$json_folder"/*.jsonl; do
@@ -23,8 +23,8 @@ for json_file in "$json_folder"/*.json "$json_folder"/*.jsonl; do
         current_datetime=$(date +%Y%m%d_%H%M%S)
         base_name=$(basename "$json_file")
         name_no_ext="${base_name%.*}"
-        saving_path="./output_mydata/our_new_title_result/${name_no_ext}_eval"
-        log_file="./output_mydata/our_new_title_result/log/${current_datetime}_${name_no_ext}_eval_survey.log"
+        saving_path="./output_mydata/eval/${name_no_ext}_eval"
+        log_file="./output_mydata/eval/log/${current_datetime}_${name_no_ext}_eval_survey.log"
 
         echo "Starting evaluation: $json_file"
         echo "Log file: $log_file"
