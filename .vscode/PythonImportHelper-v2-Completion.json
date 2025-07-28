@@ -7897,15 +7897,6 @@
         "documentation": {}
     },
     {
-        "label": "get_outline_generation_prompt_v2",
-        "kind": 2,
-        "importPath": "core.prompt_manager",
-        "description": "core.prompt_manager",
-        "peekOfCode": "def get_outline_generation_prompt_v2(\n    field: str,\n    paper_type: str,\n    topic: str,\n    user_query: str,\n    format_instructions: str,\n    max_sections: int = 4,\n    min_depth: int = 2,\n    seed_outline: Optional[List[Dict]] = None,  # 新添加的参数\n) -> ChatPromptTemplate:",
-        "detail": "core.prompt_manager",
-        "documentation": {}
-    },
-    {
         "label": "get_outline_generation_strick_prompt",
         "kind": 2,
         "importPath": "core.prompt_manager",
@@ -7933,11 +7924,29 @@
         "documentation": {}
     },
     {
+        "label": "get_outline_generation_prompt_v2",
+        "kind": 2,
+        "importPath": "core.prompt_manager",
+        "description": "core.prompt_manager",
+        "peekOfCode": "def get_outline_generation_prompt_v2(\n    field: str,\n    paper_type: str,\n    topic: str,\n    user_query: str,\n    format_instructions: str,\n    max_sections: int = 4,\n    min_depth: int = 2,\n    seed_outline: Optional[List[Dict]] = None,\n) -> ChatPromptTemplate:",
+        "detail": "core.prompt_manager",
+        "documentation": {}
+    },
+    {
         "label": "get_outline_reflection_prompt_v2",
         "kind": 2,
         "importPath": "core.prompt_manager",
         "description": "core.prompt_manager",
-        "peekOfCode": "def get_outline_reflection_prompt_v2(\n    user_query: str,\n    field: str,\n    paper_type: str,\n    topic: str,\n    outline_json: str,\n    format_instructions: str,\n) -> ChatPromptTemplate:\n    return ChatPromptTemplate.from_messages(\n        [",
+        "peekOfCode": "def get_outline_reflection_prompt_v2(\n    user_query: str,\n    field: str,\n    paper_type: str,\n    topic: str,\n    outline_json: str,\n    format_instructions: str,\n    max_sections: int = 4,  # 新增参数\n    min_depth: int = 2,     # 新增参数\n) -> ChatPromptTemplate:",
+        "detail": "core.prompt_manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_outline_improve_prompt_v2",
+        "kind": 2,
+        "importPath": "core.prompt_manager",
+        "description": "core.prompt_manager",
+        "peekOfCode": "def get_outline_improve_prompt_v2(\n    user_query: str,\n    field: str,\n    paper_type: str,\n    topic: str,\n    outline: str,  # JSON string\n    improvement_feedback: str,\n    schema: str,\n    max_sections: int = 4,  # 新增参数\n    min_depth: int = 2,     # 新增参数",
         "detail": "core.prompt_manager",
         "documentation": {}
     },
@@ -7974,15 +7983,6 @@
         "importPath": "core.prompt_manager",
         "description": "core.prompt_manager",
         "peekOfCode": "def get_outline_improve_prompt(\n    user_query: str,\n    field: str,\n    paper_type: str,\n    topic: str,\n    outline: str,  # Assuming outline is passed as a JSON string\n    improvement_feedback: str,  # Feedback on what needs improvement\n    schema: str,  # Schema instructions for the improved outline\n) -> ChatPromptTemplate:\n    \"\"\"",
-        "detail": "core.prompt_manager",
-        "documentation": {}
-    },
-    {
-        "label": "get_outline_improve_prompt_v2",
-        "kind": 2,
-        "importPath": "core.prompt_manager",
-        "description": "core.prompt_manager",
-        "peekOfCode": "def get_outline_improve_prompt_v2(\n    user_query: str,\n    field: str,\n    paper_type: str,\n    topic: str,\n    outline: str,  # JSON string\n    improvement_feedback: str,\n    schema: str,\n) -> ChatPromptTemplate:\n    return ChatPromptTemplate.from_messages(",
         "detail": "core.prompt_manager",
         "documentation": {}
     },

@@ -1045,101 +1045,8 @@ DO NOT include an abstract in the outline - only generate the title and section 
         ]
     )
 
-def get_outline_generation_prompt_v2(
-    field: str,
-    paper_type: str,
-    topic: str,
-    user_query: str,
-    format_instructions: str,
-    max_sections: int = 4,
-    min_depth: int = 2,
-    seed_outline: Optional[List[Dict]] = None,  # 新添加的参数
-) -> ChatPromptTemplate:
-    """
-    Generates a prompt template for creating a detailed paper outline with structural constraints.
 
-    Args:
-        field: The determined research field.
-        paper_type: The determined paper type.
-        topic: The specific research topic.
-        user_query: The original user query.
-        format_instructions: Instructions for the expected output format (e.g., Pydantic schema).
-        max_sections: The maximum number of top-level sections allowed.
-        min_depth: The minimum required depth of the outline hierarchy (e.g., 2 means sections must have subsections).
-        seed_outline: Optional reference outline template to guide the generation.
 
-    Returns:
-        A ChatPromptTemplate object configured for outline generation.
-    """
-    # 处理种子大纲
-    seed_outline_text = ""
-    if seed_outline:
-        seed_outline_text = f"""
-
-REFERENCE OUTLINE TEMPLATE:
-The following is a reference outline template that you should use as guidance for structure and organization:
-{json.dumps(seed_outline, indent=2, ensure_ascii=False)}
-
-Please use this template as inspiration for:
-- Section organization and logical flow
-- Types of key points to include
-- Appropriate depth and structure for this paper type
-- Standard conventions for {paper_type} papers in {field}
-
-Adapt the template to specifically address the topic "{topic}" and user query, ensuring all content is relevant and specific to the research focus."""
-
-    return ChatPromptTemplate.from_messages(
-        [
-            SystemMessage(content=f"""You are an expert in academic research paper structuring. Your task is to generate a high-quality, logically structured, and critically informed **survey outline** for the research topic below.
-
-Your output will be rigorously evaluated based on:
-- Structural Coherence & Narrative Logic
-- Conceptual Depth & Thematic Coverage
-- Critical Thinking & Scholarly Synthesis
-
-Please adhere to the following principles when constructing the outline:
-
-[STRUCTURE & FLOW]
-- Begin with **background and motivation**, and progress through **key themes**, **methodological discussions**, **challenges or debates**, and finally **future directions or open questions**.
-- Ensure smooth and logical transitions between sections: each section must clearly build upon the previous one.
-- Avoid redundancy. Each section and subsection must serve a unique role in the overall narrative arc of the paper.
-- Explicitly define the conceptual function of each section (e.g., literature synthesis, methods comparison, emerging trends).
-
-[THEMATIC & CONCEPTUAL COVERAGE]
-- The outline must **comprehensively address all major concepts, techniques, or debates** relevant to the topic.
-- Avoid overly generic titles or key points. Focus on **domain-specific**, technically precise formulations.
-- Ensure inclusion of both **foundational theories** and **recent advancements**, where appropriate.
-
-[CRITICAL DEPTH & SYNTHESIS]
-- At least one subsection per section should:
-  - Identify **research gaps**, **methodological limitations**, or **contradictions** in existing work.
-  - Propose **unifying perspectives**, **emerging frameworks**, or **open research questions**.
-
-[STRUCTURE CONSTRAINTS]
-- At most {max_sections} top-level sections.
-- At least {min_depth} levels of hierarchy.
-- Each section must contain 3–5 key points, each representing a concise yet substantial contribution to the section's purpose.
-
-{seed_outline_text}
-"""),
-            HumanMessage(
-                content=f"""
-Please generate a paper outline for the following research topic:
-- Research field: {field}
-- Paper type: {paper_type}
-- Specific topic: {topic}
-- User query: {user_query}
-
-Output Schema Instructions:
-{format_instructions}
-
-Important: Return *only* a valid JSON object that strictly matches the schema. Do not include any text before or after the JSON.
-Remember to arrange sections and subsections in a logical order that follows academic writing conventions for {field}.
-DO NOT include an abstract in the outline - only generate the title and section structure.
-"""
-            ),
-        ]
-    )
 
 
 def get_outline_generation_strick_prompt(
@@ -1313,6 +1220,374 @@ IMPORTANT: Respond with only a valid JSON object that strictly follows the schem
         ]
     )
 
+
+# def get_outline_generation_prompt_v2(
+#     field: str,
+#     paper_type: str,
+#     topic: str,
+#     user_query: str,
+#     format_instructions: str,
+#     max_sections: int = 4,
+#     min_depth: int = 2,
+#     seed_outline: Optional[List[Dict]] = None,  # 新添加的参数
+# ) -> ChatPromptTemplate:
+#     """
+#     Generates a prompt template for creating a detailed paper outline with structural constraints.
+
+#     Args:
+#         field: The determined research field.
+#         paper_type: The determined paper type.
+#         topic: The specific research topic.
+#         user_query: The original user query.
+#         format_instructions: Instructions for the expected output format (e.g., Pydantic schema).
+#         max_sections: The maximum number of top-level sections allowed.
+#         min_depth: The minimum required depth of the outline hierarchy (e.g., 2 means sections must have subsections).
+#         seed_outline: Optional reference outline template to guide the generation.
+
+#     Returns:
+#         A ChatPromptTemplate object configured for outline generation.
+#     """
+#     # 处理种子大纲
+#     seed_outline_text = ""
+#     if seed_outline:
+#         seed_outline_text = f"""
+
+# REFERENCE OUTLINE TEMPLATE:
+# The following is a reference outline template that you should use as guidance for structure and organization:
+# {json.dumps(seed_outline, indent=2, ensure_ascii=False)}
+
+# Please use this template as inspiration for:
+# - Section organization and logical flow
+# - Types of key points to include
+# - Appropriate depth and structure for this paper type
+# - Standard conventions for {paper_type} papers in {field}
+
+# Adapt the template to specifically address the topic "{topic}" and user query, ensuring all content is relevant and specific to the research focus."""
+
+#     return ChatPromptTemplate.from_messages(
+#         [
+#             SystemMessage(content=f"""You are an expert in academic research paper structuring. Your task is to generate a high-quality, logically structured, and critically informed **survey outline** for the research topic below.
+
+# Your output will be rigorously evaluated based on:
+# - Structural Coherence & Narrative Logic
+# - Conceptual Depth & Thematic Coverage
+# - Critical Thinking & Scholarly Synthesis
+
+# Please adhere to the following principles when constructing the outline:
+
+# [STRUCTURE & FLOW]
+# - Begin with **background and motivation**, and progress through **key themes**, **methodological discussions**, **challenges or debates**, and finally **future directions or open questions**.
+# - Ensure smooth and logical transitions between sections: each section must clearly build upon the previous one.
+# - Avoid redundancy. Each section and subsection must serve a unique role in the overall narrative arc of the paper.
+# - Explicitly define the conceptual function of each section (e.g., literature synthesis, methods comparison, emerging trends).
+
+# [THEMATIC & CONCEPTUAL COVERAGE]
+# - The outline must **comprehensively address all major concepts, techniques, or debates** relevant to the topic.
+# - Avoid overly generic titles or key points. Focus on **domain-specific**, technically precise formulations.
+# - Ensure inclusion of both **foundational theories** and **recent advancements**, where appropriate.
+
+# [CRITICAL DEPTH & SYNTHESIS]
+# - At least one subsection per section should:
+#   - Identify **research gaps**, **methodological limitations**, or **contradictions** in existing work.
+#   - Propose **unifying perspectives**, **emerging frameworks**, or **open research questions**.
+
+# [STRUCTURE CONSTRAINTS]
+# - At most {max_sections} top-level sections.
+# - At least {min_depth} levels of hierarchy.
+# - Each section must contain 2–4 key points, each representing a concise yet substantial contribution to the section's purpose.
+
+# {seed_outline_text}
+# """),
+#             HumanMessage(
+#                 content=f"""
+# Please generate a paper outline for the following research topic:
+# - Research field: {field}
+# - Paper type: {paper_type}
+# - Specific topic: {topic}
+# - User query: {user_query}
+
+# Output Schema Instructions:
+# {format_instructions}
+
+# Important: Return *only* a valid JSON object that strictly matches the schema. Do not include any text before or after the JSON.
+# Remember to arrange sections and subsections in a logical order that follows academic writing conventions for {field}.
+# DO NOT include an abstract in the outline - only generate the title and section structure.
+# """
+#             ),
+#         ]
+#     )
+
+# def get_outline_reflection_prompt_v2(
+#     user_query: str,
+#     field: str,
+#     paper_type: str,
+#     topic: str,
+#     outline_json: str,
+#     format_instructions: str,
+# ) -> ChatPromptTemplate:
+#     return ChatPromptTemplate.from_messages(
+#         [
+#             SystemMessage(
+#     content="""You are a critical academic reviewer specializing in scholarly paper structure and quality. Your task is to evaluate a generated paper outline for its academic rigor, conceptual completeness, and logical coherence.
+
+# Please assess the outline according to the following key criteria:
+
+# ---
+
+# [STRUCTURAL COHERENCE & NARRATIVE LOGIC]
+# - Does the outline follow a logical academic structure from introduction to conclusion?
+# - Is there a clear progression between sections (e.g., motivation → problem → methodology → evaluation → discussion)?
+# - Do transitions between adjacent sections show narrative continuity, or do they appear abrupt or disconnected?
+# - Are there any redundant, overlapping, or overly similar sections or subsections?
+# - Does each section serve a **distinct logical purpose** within the overall flow of the paper?
+
+# ---
+
+# [CONCEPTUAL DEPTH & THEMATIC COVERAGE]
+# - Does the outline comprehensively address all **major themes, methods, or perspectives** relevant to the topic?
+# - Are any key subtopics or canonical approaches **missing or underdeveloped**?
+# - Do the key points demonstrate **field-specific knowledge**, or are they overly vague and general?
+# - Does the outline reflect **awareness of current developments, debates, or challenges** in the research area?
+
+# ---
+
+# [CRITICAL THINKING & SCHOLARLY SYNTHESIS]
+# - Does the outline incorporate **critical reflection**, such as highlighting research gaps, tensions, or unresolved questions?
+# - Does it attempt to synthesize or contrast competing approaches or perspectives?
+# - Are at least some sections structured to facilitate **argumentation**, **evaluation**, or **integration of evidence** rather than pure description?
+
+# ---
+
+# Return your judgment as a JSON object that clearly states:
+# - Whether the outline meets academic expectations ("meets_requirements": true/false)
+# - If not, a list of clear, **actionable**, and **constructive** reasons explaining the deficiencies
+
+# Output must strictly follow the provided JSON schema:
+# """
+# ),
+#             HumanMessage(
+#                 content=f"""Please evaluate whether the following paper outline meets the requirements for academic paper writing:
+# Context:
+
+# - User query: {user_query}
+# - Research field: {field}
+# - Paper type: {paper_type}
+# - Specific topic: {topic}
+
+# Paper Outline (JSON):
+# {outline_json}
+
+# Output Schema Instructions:
+# {format_instructions}
+
+# IMPORTANT: Respond with only a valid JSON object that strictly follows the schema. Do NOT include any explanatory text before or after the JSON. The JSON should contain "meets_requirements" (boolean) and "reasons" (list of strings detailing issues if requirements are not met, otherwise null or empty list).
+# """
+#             ),
+#         ]
+#     )
+
+
+# def get_outline_improve_prompt_v2(
+#     user_query: str,
+#     field: str,
+#     paper_type: str,
+#     topic: str,
+#     outline: str,  # JSON string
+#     improvement_feedback: str,
+#     schema: str,
+# ) -> ChatPromptTemplate:
+#     return ChatPromptTemplate.from_messages(
+#         [
+#             SystemMessage(
+#                 content=f"""You are an expert academic editor. Your task is to revise a survey paper outline based on detailed evaluation feedback.
+
+# Your revision **must address weaknesses** identified across the following core dimensions:
+
+# 1. **Structural Coherence & Narrative Logic**
+#    - Ensure clear logical progression across sections and subsections.
+#    - Fix any imbalances in depth or breadth between parts.
+#    - Add smooth and purposeful transitions (e.g., from background → challenges → approaches → synthesis → future work).
+#    - Remove structural redundancy or disconnected parts.
+
+# 2. **Conceptual Depth & Thematic Coverage**
+#    - Expand or adjust the outline to ensure comprehensive and balanced coverage of key concepts, theories, and subfields relevant to the topic.
+#    - Avoid overfitting to niche topics at the expense of foundational ideas.
+#    - Integrate historical evolution and current state-of-the-art where appropriate.
+
+# 3. **Critical Thinking & Scholarly Synthesis**
+#    - Make space for analysis of methodological debates, knowledge gaps, and unresolved questions.
+#    - Ensure synthesis of perspectives across schools of thought.
+#    - Highlight how sections interact to form a coherent scholarly argument, not a list of items.
+
+# Additional Requirements:
+# - Follow academic norms for a {paper_type} in the field of {field}.
+# - Ensure consistency in terminology and depth across sections.
+# - Clarify any vague section titles or poorly scoped parts.
+# - All content must stay tightly aligned with the topic: "{topic}" and the original user query.
+
+# Your final output must strictly follow the provided JSON schema and **must not include any explanations or extra text**."""
+#             ),
+#             HumanMessage(
+#                 content=f"""
+# Please revise and improve the following paper outline based on critical feedback:
+
+# Context:
+# - User query: {user_query}
+# - Research field: {field}
+# - Paper type: {paper_type}
+# - Specific topic: {topic}
+
+# Current Outline (JSON):
+# {outline}
+
+# Feedback / Areas for Improvement:
+# {improvement_feedback}
+
+# Output Schema Instructions:
+# {schema}
+
+# IMPORTANT:
+# - Fully implement all improvement points from the feedback.
+# - Do not remove essential ideas unless redundancy or irrelevance is clearly indicated.
+# - Return a valid JSON object only, strictly matching the schema.
+# """
+#             ),
+#         ]
+#     )
+
+
+
+
+
+def get_outline_generation_prompt_v2(
+    field: str,
+    paper_type: str,
+    topic: str,
+    user_query: str,
+    format_instructions: str,
+    max_sections: int = 4,
+    min_depth: int = 2,
+    seed_outline: Optional[List[Dict]] = None,
+) -> ChatPromptTemplate:
+    """
+    Generates a prompt template for creating a detailed paper outline with structural constraints.
+
+    Args:
+        field: The determined research field.
+        paper_type: The determined paper type.
+        topic: The specific research topic.
+        user_query: The original user query.
+        format_instructions: Instructions for the expected output format (e.g., Pydantic schema).
+        max_sections: The maximum number of top-level sections allowed.
+        min_depth: The minimum required depth of the outline hierarchy (e.g., 2 means sections must have subsections).
+        seed_outline: Optional reference outline template to guide the generation.
+
+    Returns:
+        A ChatPromptTemplate object configured for outline generation.
+    """
+    # 处理种子大纲
+    seed_outline_text = ""
+    if seed_outline:
+        seed_outline_text = f"""
+
+REFERENCE OUTLINE TEMPLATE:
+The following is a reference outline template that you should use as guidance for structure and organization:
+{json.dumps(seed_outline, indent=2, ensure_ascii=False)}
+
+Please use this template as inspiration for:
+- Section organization and logical flow
+- Types of key points to include
+- Appropriate depth and structure for this paper type
+- Standard conventions for {paper_type} papers in {field}
+
+Adapt the template to specifically address the topic "{topic}" and user query, ensuring all content is relevant and specific to the research focus."""
+
+    return ChatPromptTemplate.from_messages(
+        [
+            SystemMessage(content=f"""You are an expert in academic research paper structuring. Your task is to generate a high-quality, logically structured, and critically informed **survey outline** for the research topic below.
+
+Your output will be rigorously evaluated based on:
+- Structural Coherence & Narrative Logic
+- Conceptual Depth & Thematic Coverage
+- Critical Thinking & Scholarly Synthesis
+
+Please adhere to the following principles when constructing the outline:
+
+[STRUCTURE & FLOW]
+- Begin with **background and motivation**, and progress through **key themes**, **methodological discussions**, **challenges or debates**, and finally **future directions or open questions**.
+- Ensure smooth and logical transitions between sections: each section must clearly build upon the previous one.
+- Avoid redundancy. Each section and subsection must serve a unique role in the overall narrative arc of the paper.
+- Explicitly define the conceptual function of each section (e.g., literature synthesis, methods comparison, emerging trends).
+
+[THEMATIC & CONCEPTUAL COVERAGE]
+- The outline must **comprehensively address all major concepts, techniques, or debates** relevant to the topic.
+- Avoid overly generic titles or key points. Focus on **domain-specific**, technically precise formulations.
+- Ensure inclusion of both **foundational theories** and **recent advancements**, where appropriate.
+
+[CRITICAL DEPTH & SYNTHESIS]
+- At least one subsection per section should:
+  - Identify **research gaps**, **methodological limitations**, or **contradictions** in existing work.
+  - Propose **unifying perspectives**, **emerging frameworks**, or **open research questions**.
+
+[STRUCTURE CONSTRAINTS - STRICTLY ENFORCED]
+**CRITICAL: These constraints are MANDATORY and CANNOT be violated:**
+
+1. **Maximum Sections Constraint**:
+   - You MUST generate EXACTLY {max_sections} top-level sections or fewer
+   - Count carefully: Introduction, Method, Results, Discussion, etc. each count as ONE section
+   - If you exceed {max_sections} sections, the outline will be REJECTED
+
+2. **Minimum Depth Constraint**:
+   - You MUST ensure the outline has AT LEAST {min_depth} levels of hierarchy
+   - Level 1 = Sections (e.g., "Introduction")
+   - Level 2 = Subsections (e.g., "Background and Motivation")
+   - Level 3 = Sub-subsections (if min_depth >= 3)
+   - If min_depth = 2: ALL sections must have subsections
+   - If min_depth = 3: At least some subsections must have sub-subsections
+
+3. **Key Points Constraint**:
+   - Each section/subsection must contain EXACTLY 2-4 key points
+   - Each key point should represent a concise yet substantial contribution
+   - Key points must be specific and actionable, not generic placeholders
+
+**VALIDATION CHECKLIST BEFORE SUBMISSION:**
+□ Total top-level sections ≤ {max_sections}
+□ Hierarchy depth ≥ {min_depth} levels
+□ Each section has 2-4 meaningful key points
+□ No section lacks the required subsection structure (if min_depth ≥ 2)
+
+{seed_outline_text}
+"""),
+            HumanMessage(
+                content=f"""
+Please generate a paper outline for the following research topic:
+- Research field: {field}
+- Paper type: {paper_type}
+- Specific topic: {topic}
+- User query: {user_query}
+
+**CRITICAL CONSTRAINTS (MUST BE FOLLOWED):**
+- Maximum {max_sections} top-level sections (count them!)
+- Minimum {min_depth} levels of hierarchy (verify depth!)
+- Each section/subsection must have 2-4 key points
+
+Output Schema Instructions:
+{format_instructions}
+
+**IMPORTANT:**
+1. Before generating, plan your section count to ensure ≤ {max_sections}
+2. Verify hierarchy depth meets ≥ {min_depth} requirement
+3. Return ONLY a valid JSON object that strictly matches the schema
+4. DO NOT include an abstract in the outline - only generate the title and section structure
+5. Each key point must be substantial and specific to the topic
+
+**Final Check:** Count your sections and verify hierarchy depth before submitting!
+"""
+            ),
+        ]
+    )
+
+
 def get_outline_reflection_prompt_v2(
     user_query: str,
     field: str,
@@ -1320,13 +1595,36 @@ def get_outline_reflection_prompt_v2(
     topic: str,
     outline_json: str,
     format_instructions: str,
+    max_sections: int = 4,  # 新增参数
+    min_depth: int = 2,     # 新增参数
 ) -> ChatPromptTemplate:
     return ChatPromptTemplate.from_messages(
         [
             SystemMessage(
-    content="""You are a critical academic reviewer specializing in scholarly paper structure and quality. Your task is to evaluate a generated paper outline for its academic rigor, conceptual completeness, and logical coherence.
+                content=f"""You are a critical academic reviewer specializing in scholarly paper structure and quality. Your task is to evaluate a generated paper outline for its academic rigor, conceptual completeness, and logical coherence.
 
 Please assess the outline according to the following key criteria:
+
+---
+
+[STRUCTURAL CONSTRAINTS VALIDATION - CRITICAL]
+**These constraints are MANDATORY and must be strictly enforced:**
+
+1. **Section Count Validation**:
+   - The outline MUST have no more than {max_sections} top-level sections
+   - Count each main section (e.g., Introduction, Methods, Results, etc.)
+   - If > {max_sections} sections detected → AUTOMATIC FAILURE
+
+2. **Hierarchy Depth Validation**:
+   - The outline MUST have at least {min_depth} levels of hierarchy
+   - Level 1 = Main sections, Level 2 = Subsections, Level 3+ = Sub-subsections
+   - If depth < {min_depth} → AUTOMATIC FAILURE
+   - Verify that required subsection structure exists
+
+3. **Key Points Validation**:
+   - Each section/subsection must contain 2-4 key points
+   - Key points must be specific and substantial, not generic
+   - Empty or poorly defined key points → FAILURE
 
 ---
 
@@ -1354,17 +1652,28 @@ Please assess the outline according to the following key criteria:
 
 ---
 
+**EVALUATION PRIORITY ORDER:**
+1. FIRST: Check structural constraints ({max_sections} sections max, {min_depth} depth min)
+2. SECOND: Assess academic quality and coherence
+3. THIRD: Evaluate conceptual depth and synthesis
+
 Return your judgment as a JSON object that clearly states:
 - Whether the outline meets academic expectations ("meets_requirements": true/false)
 - If not, a list of clear, **actionable**, and **constructive** reasons explaining the deficiencies
+- **Structural constraint violations must be listed first and marked as critical**
 
 Output must strictly follow the provided JSON schema:
 """
-),
+            ),
             HumanMessage(
                 content=f"""Please evaluate whether the following paper outline meets the requirements for academic paper writing:
-Context:
 
+**STRUCTURAL CONSTRAINTS TO VALIDATE:**
+- Maximum {max_sections} top-level sections allowed
+- Minimum {min_depth} levels of hierarchy required
+- Each section must have 2-4 key points
+
+Context:
 - User query: {user_query}
 - Research field: {field}
 - Paper type: {paper_type}
@@ -1373,15 +1682,119 @@ Context:
 Paper Outline (JSON):
 {outline_json}
 
+**CRITICAL:** First verify structural constraints, then assess academic quality.
+
 Output Schema Instructions:
 {format_instructions}
 
-IMPORTANT: Respond with only a valid JSON object that strictly follows the schema. Do NOT include any explanatory text before or after the JSON. The JSON should contain "meets_requirements" (boolean) and "reasons" (list of strings detailing issues if requirements are not met, otherwise null or empty list).
+IMPORTANT: Respond with only a valid JSON object that strictly follows the schema. Do NOT include any explanatory text before or after the JSON. The JSON should contain "meets_requirements" (boolean) and "reasons" (list of strings detailing issues if requirements are not met, with structural violations listed first).
 """
             ),
         ]
     )
 
+
+def get_outline_improve_prompt_v2(
+    user_query: str,
+    field: str,
+    paper_type: str,
+    topic: str,
+    outline: str,  # JSON string
+    improvement_feedback: str,
+    schema: str,
+    max_sections: int = 4,  # 新增参数
+    min_depth: int = 2,     # 新增参数
+) -> ChatPromptTemplate:
+    return ChatPromptTemplate.from_messages(
+        [
+            SystemMessage(
+                content=f"""You are an expert academic editor. Your task is to revise a survey paper outline based on detailed evaluation feedback.
+
+**CRITICAL STRUCTURAL CONSTRAINTS - MUST BE RESPECTED:**
+
+1. **Maximum Sections**: You MUST NOT exceed {max_sections} top-level sections
+2. **Minimum Depth**: You MUST ensure at least {min_depth} levels of hierarchy
+3. **Key Points**: Each section/subsection must have exactly 2-4 substantial key points
+
+**These constraints are NON-NEGOTIABLE and violations will result in rejection.**
+
+Your revision **must address weaknesses** identified across the following core dimensions:
+
+1. **Structural Coherence & Narrative Logic**
+   - Ensure clear logical progression across sections and subsections.
+   - Fix any imbalances in depth or breadth between parts.
+   - Add smooth and purposeful transitions (e.g., from background → challenges → approaches → synthesis → future work).
+   - Remove structural redundancy or disconnected parts.
+   - **MAINTAIN section count ≤ {max_sections}**
+
+2. **Conceptual Depth & Thematic Coverage**
+   - Expand or adjust the outline to ensure comprehensive and balanced coverage of key concepts, theories, and subfields relevant to the topic.
+   - Avoid overfitting to niche topics at the expense of foundational ideas.
+   - Integrate historical evolution and current state-of-the-art where appropriate.
+
+3. **Critical Thinking & Scholarly Synthesis**
+   - Make space for analysis of methodological debates, knowledge gaps, and unresolved questions.
+   - Ensure synthesis of perspectives across schools of thought.
+   - Highlight how sections interact to form a coherent scholarly argument, not a list of items.
+
+**REVISION STRATEGY:**
+- If feedback indicates too many sections: **MERGE** related sections rather than just removing content
+- If feedback indicates insufficient depth: **ADD** subsections within existing sections, not new top-level sections
+- If hierarchy is too shallow: **RESTRUCTURE** existing content into deeper hierarchies
+
+Additional Requirements:
+- Follow academic norms for a {paper_type} in the field of {field}.
+- Ensure consistency in terminology and depth across sections.
+- Clarify any vague section titles or poorly scoped parts.
+- All content must stay tightly aligned with the topic: "{topic}" and the original user query.
+
+**VALIDATION BEFORE SUBMISSION:**
+□ Section count ≤ {max_sections}
+□ Hierarchy depth ≥ {min_depth}
+□ All sections have 2-4 key points
+□ Addresses all feedback points
+
+Your final output must strictly follow the provided JSON schema and **must not include any explanations or extra text**."""
+            ),
+            HumanMessage(
+                content=f"""
+Please revise and improve the following paper outline based on critical feedback:
+
+**MANDATORY CONSTRAINTS:**
+- Maximum {max_sections} top-level sections (currently enforced)
+- Minimum {min_depth} levels of hierarchy (currently enforced)
+- Each section must have 2-4 key points
+
+Context:
+- User query: {user_query}
+- Research field: {field}
+- Paper type: {paper_type}
+- Specific topic: {topic}
+
+Current Outline (JSON):
+{outline}
+
+Feedback / Areas for Improvement:
+{improvement_feedback}
+
+**REVISION INSTRUCTIONS:**
+1. Address ALL feedback points while respecting structural constraints
+2. If reducing sections: merge content intelligently, don't just delete
+3. If increasing depth: restructure within existing sections
+4. Maintain academic quality and logical flow
+
+Output Schema Instructions:
+{schema}
+
+IMPORTANT:
+- Fully implement all improvement points from the feedback.
+- Respect the {max_sections} section limit and {min_depth} depth requirement.
+- Return a valid JSON object only, strictly matching the schema.
+- Count your sections before submitting!
+"""
+            ),
+        ]
+    )
 
 
 def get_query_generation_prompt(
@@ -1552,74 +1965,6 @@ IMPORTANT:
 - Implement all suggested changes from the feedback.
 - Return only a revised JSON object conforming to the schema.
 - Do NOT include explanations, justifications, or any additional text outside the JSON.
-"""
-            ),
-        ]
-    )
-
-def get_outline_improve_prompt_v2(
-    user_query: str,
-    field: str,
-    paper_type: str,
-    topic: str,
-    outline: str,  # JSON string
-    improvement_feedback: str,
-    schema: str,
-) -> ChatPromptTemplate:
-    return ChatPromptTemplate.from_messages(
-        [
-            SystemMessage(
-                content=f"""You are an expert academic editor. Your task is to revise a survey paper outline based on detailed evaluation feedback.
-
-Your revision **must address weaknesses** identified across the following core dimensions:
-
-1. **Structural Coherence & Narrative Logic**
-   - Ensure clear logical progression across sections and subsections.
-   - Fix any imbalances in depth or breadth between parts.
-   - Add smooth and purposeful transitions (e.g., from background → challenges → approaches → synthesis → future work).
-   - Remove structural redundancy or disconnected parts.
-
-2. **Conceptual Depth & Thematic Coverage**
-   - Expand or adjust the outline to ensure comprehensive and balanced coverage of key concepts, theories, and subfields relevant to the topic.
-   - Avoid overfitting to niche topics at the expense of foundational ideas.
-   - Integrate historical evolution and current state-of-the-art where appropriate.
-
-3. **Critical Thinking & Scholarly Synthesis**
-   - Make space for analysis of methodological debates, knowledge gaps, and unresolved questions.
-   - Ensure synthesis of perspectives across schools of thought.
-   - Highlight how sections interact to form a coherent scholarly argument, not a list of items.
-
-Additional Requirements:
-- Follow academic norms for a {paper_type} in the field of {field}.
-- Ensure consistency in terminology and depth across sections.
-- Clarify any vague section titles or poorly scoped parts.
-- All content must stay tightly aligned with the topic: "{topic}" and the original user query.
-
-Your final output must strictly follow the provided JSON schema and **must not include any explanations or extra text**."""
-            ),
-            HumanMessage(
-                content=f"""
-Please revise and improve the following paper outline based on critical feedback:
-
-Context:
-- User query: {user_query}
-- Research field: {field}
-- Paper type: {paper_type}
-- Specific topic: {topic}
-
-Current Outline (JSON):
-{outline}
-
-Feedback / Areas for Improvement:
-{improvement_feedback}
-
-Output Schema Instructions:
-{schema}
-
-IMPORTANT:
-- Fully implement all improvement points from the feedback.
-- Do not remove essential ideas unless redundancy or irrelevance is clearly indicated.
-- Return a valid JSON object only, strictly matching the schema.
 """
             ),
         ]
