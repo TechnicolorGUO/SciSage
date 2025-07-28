@@ -9,7 +9,6 @@
 from Bio import Entrez
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
-from generation.global_config import GOOGLE_KEY, proxies, arxiv_client
 from generation.local_db_v2 import db_path, ArxivDatabase
 from log import logger
 from typing import Optional, Dict, List, Any
@@ -21,8 +20,17 @@ import re
 import requests
 import time
 import traceback
+import os
 
 Entrez.email = "xxx@163.com"
+
+
+proxies = {"http": "http://localhost:1080", "https": "http://localhost:1080"}
+arxiv_client = arxiv.Client(delay_seconds=0.05)
+
+# Register at: https://serper.dev/
+GOOGLE_SERPER_KEY = os.getenv("GOOGLE_SERPER_KEY", "xxx")
+
 
 def fetch_pubmed_json(pmid_list):
     """
@@ -555,6 +563,7 @@ def search_doc_via_url_from_openalex(data):
             pass
     return references
 
+
 def search_paper_via_query_from_openalex(
     keyword, page=1, per_page=10, search_reference=False
 ):
@@ -673,9 +682,13 @@ def search_paper_via_query_from_openalex(
                             if source:
                                 venue_info = source.get("display_name", "")
                                 journal_info["name"] = venue_info
-                                journal_info["issn"] = ";".join(source.get("issn_l", []) or [])
+                                journal_info["issn"] = ";".join(
+                                    source.get("issn_l", []) or []
+                                )
                                 journal_info["type"] = source.get("type", "")
-                                journal_info["host_organization"] = source.get("host_organization", "")
+                                journal_info["host_organization"] = source.get(
+                                    "host_organization", ""
+                                )
 
                         # 从 best_oa_location 获取额外信息
                         best_oa_location = work.get("best_oa_location", {})
@@ -689,7 +702,9 @@ def search_paper_via_query_from_openalex(
                         locations = work.get("locations", [])
                         all_venues = []
                         for location in locations:
-                            if location.get("source") and location["source"].get("display_name"):
+                            if location.get("source") and location["source"].get(
+                                "display_name"
+                            ):
                                 all_venues.append(location["source"]["display_name"])
 
                         # 构建 journal_ref 字符串
@@ -739,7 +754,6 @@ def search_paper_via_query_from_openalex(
                             "publicationYear": publication_year,
                             "isOpen": is_open,
                             "source": "Search From OpenAlex",
-
                             # 新增的期刊和会议信息
                             "venue": venue_info,
                             "journal": journal_info,
@@ -892,8 +906,9 @@ def google_search_arxiv_id(query, try_num=4, num=10, end_date=""):
             # "type":"search"
         }
     )
-
-    headers = {"X-API-KEY": GOOGLE_KEY, "Content-Type": "application/json"}
+    GOOGLE_SERPER_KEY = os.getenv("GOOGLE_SERPER_KEY", "set your own GOOGLE_SERPER_KEY")
+    logger.info(f"use GOOGLE_SERPER_KEY: {GOOGLE_SERPER_KEY}")
+    headers = {"X-API-KEY": GOOGLE_SERPER_KEY, "Content-Type": "application/json"}
     assert headers["X-API-KEY"] != "your google keys", "add your google search key!!!"
 
     for _ in range(try_num):
@@ -1150,7 +1165,7 @@ def search_paper_from_arxiv_by_arxiv_id_bsz(arxiv_ids, max_retries=3):
                     "abstract": paper.summary.replace("\n", " "),
                     "authors": [{"name": author.name} for author in paper.authors],
                     "publicationYear": paper.published.strftime("%Y%m%d"),
-                    "journal_ref": getattr(paper, 'journal_ref', ""),  # 期刊引用信息
+                    "journal_ref": getattr(paper, "journal_ref", ""),  # 期刊引用信息
                     "fieldsOfStudy": ";".join(one for one in paper.categories),
                     "source": "Search From Arxiv",
                 }
@@ -1168,30 +1183,23 @@ def search_paper_from_arxiv_by_arxiv_id_bsz(arxiv_ids, max_retries=3):
     return {}
 
 
+
 def parallel_search_search_paper_from_arxiv(
-    arxiv_id_list, batch_size=10, max_workers=5
-):
+    arxiv_id_list: List[str],
+    batch_size: int = 5,
+    max_workers: int = 2
+) -> Dict[str, Dict]:
     """
-    使用线程池并行查询 Arxiv 论文
-    :param arxiv_id_list: 论文 ID 列表
-    :param batch_size: 每个批次查询多少个 ID
-    :param max_workers: 并行线程数
-    :return: 查询结果
+    使用线程池并行查询 Arxiv 论文（优化版本）
     """
+    if not arxiv_id_list:
+        return {}
 
     results = {}
-    failed_ids = []  # 记录失败的 ID
+    failed_ids = []
 
+    # 从本地数据库获取已有数据
     arxiv_id_list_to_process = []
-
-    # from local_db import LOCAL_DB, local_db_file
-    # for _id in arxiv_id_list:
-    #     if _id in LOCAL_DB:
-    #         results[_id] = LOCAL_DB[_id]
-    #         results[_id]["source"] = "Search From Local"
-    #     else:
-    #         arxiv_id_list_to_process.append(_id)
-
     with ArxivDatabase(db_path) as db:
         for _id in arxiv_id_list:
             try:
@@ -1201,54 +1209,78 @@ def parallel_search_search_paper_from_arxiv(
                 else:
                     results[_id] = db_info
                     results[_id]["source"] = "Search From Local"
-            except:
+            except Exception as e:
+                logger.error(f"Database error for {_id}: {e}")
                 arxiv_id_list_to_process.append(_id)
-                pass
 
-    logger.info(f"Local db exist doc num: {len(results)}")
-    logger.info(
-        f"Now Request arxiv for {len(arxiv_id_list_to_process)} docs, batch_size is:{batch_size}, max_workers is: {max_workers}"
-    )
+    logger.info(f"Local db exist: {len(results)}, Need to fetch: {len(arxiv_id_list_to_process)}")
+
     if not arxiv_id_list_to_process:
         return results
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        future_to_batch = {
-            executor.submit(
-                search_paper_from_arxiv_by_arxiv_id_bsz,
-                arxiv_id_list_to_process[i : i + batch_size],
-            ): arxiv_id_list_to_process[i : i + batch_size]
-            for i in range(0, len(arxiv_id_list_to_process), batch_size)
-        }
+    # 串行处理，避免并发问题
+    if len(arxiv_id_list_to_process) <= 20:
+        logger.info("Using serial processing for small batch")
 
-        for future in as_completed(future_to_batch):
-            batch_ids = future_to_batch[future]
+        for i in range(0, len(arxiv_id_list_to_process), batch_size):
+            batch_ids = arxiv_id_list_to_process[i:i + batch_size]
+            logger.info(f"Processing batch {i//batch_size + 1}: {batch_ids}")
+
             try:
-                batch_results = future.result()
+                batch_results = search_paper_from_arxiv_by_arxiv_id_bsz(batch_ids)
                 if batch_results:
                     results.update(batch_results)
+                    # 立即保存到数据库
+                    with ArxivDatabase(db_path) as db:
+                        for _id, info in batch_results.items():
+                            db.update_or_insert(_id, info)
                 else:
-                    failed_ids.extend(batch_ids)  # 记录失败的 ID
+                    failed_ids.extend(batch_ids)
+
+                # 批次间延迟，避免限流
+                if i + batch_size < len(arxiv_id_list_to_process):
+                    time.sleep(1)
+
             except Exception as e:
-                logger.error(traceback.format_exc())
-                logger.error(f"Unexpected error for batch {batch_ids}: {e}")
+                logger.error(f"Batch processing error: {e}")
                 failed_ids.extend(batch_ids)
 
-    # if results:
-    #     logger.info("save to local db")
-    #     with ArxivDatabase(db_path) as db:
-    #         for _id, info in results.items():
-    #             db.update_or_insert(_id,info)
+    else:
+        # 大批量时使用并发
+        logger.info(f"Using parallel processing with {max_workers} workers")
 
-    save = False
-    if save:
-        with open(local_db_file, "a") as fw:
-            for _id, info in results.items():
-                fw.write(json.dumps(info) + "\n")
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_batch = {}
+
+            for i in range(0, len(arxiv_id_list_to_process), batch_size):
+                batch_ids = arxiv_id_list_to_process[i:i + batch_size]
+                future = executor.submit(search_paper_from_arxiv_by_arxiv_id_bsz, batch_ids)
+                future_to_batch[future] = batch_ids
+
+                # 控制提交速度
+                time.sleep(0.5)
+
+            for future in as_completed(future_to_batch, timeout=120):  # 设置总超时
+                batch_ids = future_to_batch[future]
+                try:
+                    batch_results = future.result(timeout=60)  # 单个任务超时
+                    if batch_results:
+                        results.update(batch_results)
+                        # 保存到数据库
+                        with ArxivDatabase(db_path) as db:
+                            for _id, info in batch_results.items():
+                                db.update_or_insert(_id, info)
+                    else:
+                        failed_ids.extend(batch_ids)
+
+                except Exception as e:
+                    logger.error(f"Future error for batch {batch_ids}: {e}")
+                    failed_ids.extend(batch_ids)
 
     if failed_ids:
-        logger.error(f"Failed to retrieve data for IDs: {failed_ids}")
+        logger.warning(f"Failed to retrieve data for {len(failed_ids)} IDs: {failed_ids}")
 
+    logger.info(f"Total retrieved: {len(results)} papers")
     return results
 
 

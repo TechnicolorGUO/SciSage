@@ -1846,7 +1846,7 @@ def get_section_name_refinement_prompt(
     return ChatPromptTemplate.from_messages(
         [
             SystemMessage(
-                content="""You are an expert academic editor. Your task is to evaluate a section title for a research paper based on its content preview and the paper's overall title. The section title should be concise, clear, and accurately reflect the content. If the current title is good, return it exactly as is. If it can be significantly improved (e.g., too vague, too long, inaccurate), generate a better title. Output *only* the final chosen or generated title, with no explanations or quotation marks."""
+                content="""You are an expert academic editor. Your task is to evaluate a section title for a research paper based on its content preview and the paper's overall title. The section title should be concise, clear, and accurately reflect the content. If the current title is good, return it exactly as is. If it can be improved (e.g., too vague, too long, inaccurate), generate a better title. Output *only* the final chosen or generated title, with no explanations or quotation marks."""
             ),
             HumanMessage(
                 content=f"""Paper Title: {paper_title}

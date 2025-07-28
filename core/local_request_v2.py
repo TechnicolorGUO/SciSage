@@ -4,6 +4,7 @@
 # [Author]       : shixiaofeng
 # [Descriptions] :
 # ==================================================================
+import configuration
 import requests
 import json
 import time
@@ -12,12 +13,12 @@ from typing import List, Dict, Any, Optional, Union
 from func_timeout import func_set_timeout
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 from cachetools import TTLCache, cachedmethod
 import operator
 from cachetools.keys import hashkey
 from openai import OpenAI
-
+from configuration import MODEL_CONFIGS
 try:
     from log import logger
 except:
@@ -25,107 +26,6 @@ except:
 
     logger = logging.getLogger(__name__)
 
-
-@dataclass
-class ModelConfig:
-    """Configuration for LLM models"""
-
-    url: str
-    max_len: int
-    temperature: float = 0.8
-    model_name: str = ""
-    top_p: float = 0.9
-    top_k: int = 20
-    min_p: int = 0
-    retry_attempts: int = 20
-    timeout: int = 200
-    think_bool: bool = False
-    openai_client: Optional[Any] = None
-
-
-# Model configurations
-MODEL_CONFIGS = {
-    "Qwen3-8B": ModelConfig(
-        url="http://0.0.0.0:9096/v1",
-        max_len=131072,
-        model_name="Qwen/Qwen3-8B",
-        think_bool=False,
-        temperature=0.7,
-        top_p=0.8,
-        top_k=20,
-        min_p=0,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9096/v1",
-        ),
-    ),
-    "Qwen3-14B": ModelConfig(
-        url="http://0.0.0.0:9095/v1",
-        max_len=131072,
-        model_name="Qwen/Qwen3-14B",
-        think_bool=False,
-        temperature=0.7,
-        top_p=0.8,
-        top_k=20,
-        min_p=0,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9095/v1",
-        ),
-    ),
-    "Qwen3-32B": ModelConfig(
-        url="http://0.0.0.0:9093/v1",
-        max_len=32768,
-        model_name="Qwen/Qwen3-32B",
-        think_bool=False,
-        temperature=0.7,
-        top_p=0.8,
-        top_k=20,
-        min_p=0,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9093/v1",
-        ),
-    ),
-    "Qwen3-32B-long-ctx": ModelConfig(
-        url="http://0.0.0.0:9094/v1",
-        max_len=131072,
-        model_name="Qwen/Qwen3-32B",
-        think_bool=False,
-        temperature=0.7,
-        top_p=0.8,
-        top_k=20,
-        min_p=0,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9094/v1",
-        ),
-    ),
-    "Qwen3-32B_think": ModelConfig(
-        url="http://0.0.0.0:9093/v1",
-        max_len=32768,
-        model_name="Qwen/Qwen3-32B",
-        think_bool=True,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9093/v1",
-        ),
-    ),
-    "Qwen3-32B-long-ctx-think": ModelConfig(
-        url="http://0.0.0.0:9094/v1",
-        max_len=131072,
-        model_name="Qwen/Qwen3-32B",
-        think_bool=True,
-        temperature=0.6,
-        top_p=0.95,
-        top_k=20,
-        min_p=0,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9094/v1",
-        ),
-    ),
-}
 
 
 class LLMClient:
@@ -290,5 +190,5 @@ def get_from_llm(
 
 # print("openscholar",get_from_llm("介绍下你自己", model_name="openscholar"))
 # print(get_from_llm("介绍下你自己", model_name="Qwen3-14B"))
-# print(get_from_llm("介绍下你自己", model_name="Qwen3-8B"))
+print(get_from_llm("介绍下你自己", model_name="Qwen3-8B"))
 # print("Qwen3-32B-long-ctx",get_from_llm("介绍下你自己", model_name="Qwen3-32B-long-ctx"))

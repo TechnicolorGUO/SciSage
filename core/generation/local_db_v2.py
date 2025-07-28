@@ -222,7 +222,8 @@ class ArxivDatabase:
         self.close()
 
 
-db_path = "/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db"
+# db_path = "/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db "
+db_path = "./database/new.db"
 
 # with ArxivDatabase(db_path) as db:
 #     all_records = db.get_all()

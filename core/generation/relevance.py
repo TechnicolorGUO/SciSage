@@ -12,8 +12,9 @@ from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import traceback
+from local_request_v2 import get_from_llm
+
 try:
-    from generation.local_request_v2 import get_from_llm
     from log import logger
 except:
     import logging
@@ -127,7 +128,7 @@ Be precise and objective in your evaluation."""
             document["relevance_score_reasoning"] = reasoning
             return document
         except Exception as e:
-            logger.error(f"Error evaluating document {document.doc_id}: {str(e)}")
+            logger.error(f"Error evaluating document {document}: {str(e)},{traceback.format_exc()}")
             document["relevance_score_rude"] = 0
             document["relevance_score_reasoning"] = f"Error: {str(e)}"
             return document
@@ -153,7 +154,7 @@ Be precise and objective in your evaluation."""
                     results.append(result)
                     logger.debug(f"Evaluated document {result['title']}: score={result['relevance_score_rude']:.3f}")
                 except Exception as e:
-                    logger.error(f"Failed to evaluate document {traceback.forma_exc()}")
+                    logger.error(f"Failed to evaluate document {traceback.format_exc()}")
 
         return results
 

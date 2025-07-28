@@ -21,9 +21,7 @@ import time
 import json
 from collections import Counter
 
-
 from generation.instruction_pro import *
-
 
 from generation.retrival import run_requests_parallel
 from generation.reranker import rerank_papers_hybrid
@@ -34,13 +32,10 @@ from log import logger
 
 
 from generation.generation_config import (
-    chat_url,
-    recall_server_url,
-    rerank_model_url,
     CHAT_MODEL_NAME,
 )
 
-from generation.api_web import get_doc_info_from_api
+from generation.websearch_scholar import get_doc_info_from_api
 from generation.engine import process_ctx, process_paragraph
 from generation.utils import keep_letters, flow_information_sync
 from generation.extract_main_figure import get_arxiv_main_figure
@@ -94,7 +89,7 @@ class OpenScholarAPI:
     def __init__(
         self,
         client=None,  # Consider type hinting if possible
-        api_model_name: Optional[str] = CHAT_MODEL_NAME,  # Use constant default
+        api_model_name: Optional[str] = "Qwen3-8B",  # Use constant default
         use_contexts: bool = True,
         top_n: int = 20,
         reranker=None,  # Consider type hinting
@@ -1173,247 +1168,6 @@ class OpenScholarAPI:
             model_name=model_name,
         )
 
-    async def _retrieve_papers_offline(
-        self, query: str, n_docs: int
-    ) -> Dict[str, Dict]:
-        """Retrieve papers offline using the recall server.
-
-        Args:
-            query: Search query.
-            n_docs: Number of documents to retrieve.
-
-        Returns:
-            Dictionary of retrieved papers keyed by a normalized ID (e.g., title).
-            Returns empty dict on failure.
-        """
-        logger.info(f"Retrieving {n_docs} papers offline for query: '{query[:50]}...'")
-        retrieval_input = {
-            "query": query,
-            "domains": "openscholar_emb",  # Consider making domain configurable
-            "n_docs": n_docs,
-        }
-
-        output_papers = {}
-        try:
-            # Add timeout to requests call
-            response = requests.post(
-                recall_server_url, json=retrieval_input, timeout=30
-            )  # 30 second timeout
-            response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
-            response_data = response.json()
-
-            if "ctxs" not in response_data or not isinstance(
-                response_data["ctxs"], list
-            ):
-                logger.error(
-                    f"Invalid response format from offline recall server: 'ctxs' key missing or not a list. Response: {response_data}"
-                )
-                return {}
-
-            retrieved_count = 0
-            for one in response_data["ctxs"]:
-                # Robust key extraction
-                title = one.get("title") or one.get("meta", {}).get("title")
-                if not title:
-                    logger.warning(
-                        f"Skipping offline paper due to missing title: {one}"
-                    )
-                    continue
-
-                # Use a more robust ID generation, keep_letters might cause collisions
-                # Consider using DOI, arXiv ID, or a hash if available. Using title for now.
-                paper_id = keep_letters(title)  # Be aware of potential collisions
-                if paper_id in output_papers:
-                    logger.warning(
-                        f"Duplicate paper ID (title based) found: {paper_id}. Overwriting."
-                    )
-                output_papers[paper_id] = one
-                retrieved_count += 1
-
-            logger.info(
-                f"Successfully retrieved {retrieved_count} papers from offline source."
-            )
-            return output_papers
-
-        except requests.exceptions.RequestException as e:
-            logger.error(
-                f"Offline retrieval failed: Request error: {e}\n{traceback.format_exc()}"
-            )
-            return {}  # Fallback: empty dict
-        except json.JSONDecodeError as e:
-            logger.error(
-                f"Offline retrieval failed: Could not decode JSON response: {e}. Response text: {response.text[:200]}..."
-            )
-            return {}  # Fallback: empty dict
-        except Exception as e:
-            logger.error(
-                f"Unexpected error during offline retrieval: {e}\n{traceback.format_exc()}"
-            )
-            return {}  # Fallback: empty dict
-
-    async def _retrieve_papers_online(self, query: str) -> Dict[str, Dict]:
-        """Retrieve papers online using the semantic scholar API wrapper.
-
-        Args:
-            query: Search query.
-
-        Returns:
-            Dictionary of retrieved papers keyed by a normalized ID (e.g., title).
-            Returns empty dict on failure.
-        """
-        logger.info(f"Retrieving papers online for query: '{query[:50]}...'")
-        paper_list = {}
-        try:
-            # Assuming get_doc_info_from_api handles its internal errors/retries
-            # and returns a dictionary {id: paper_dict}
-            new_retrieval_papers = get_doc_info_from_api(
-                query
-            )  # This might need to be async if it's I/O bound
-
-            if not isinstance(new_retrieval_papers, dict):
-                logger.error(
-                    f"Online retrieval function get_doc_info_from_api did not return a dictionary. Returned: {type(new_retrieval_papers)}"
-                )
-                return {}
-
-            retrieved_count = 0
-            for paper_id_api, paper in new_retrieval_papers.items():
-                # Validate essential fields
-                title = paper.get("title")
-                abstract = paper.get(
-                    "abstract"
-                )  # Changed from 'text' based on original code's assignment below
-
-                if not title or not abstract:
-                    logger.warning(
-                        f"Skipping online paper {paper_id_api} due to missing title or abstract."
-                    )
-                    continue
-
-                # Normalize author format (ensure 'authors' is a list of dicts with 'name')
-                authors_list = paper.get("authors", [])
-                if isinstance(authors_list, list):
-                    authors_str = "; ".join(
-                        author.get("name", "Unknown Author")
-                        for author in authors_list
-                        if isinstance(author, dict)
-                    )
-                else:
-                    logger.warning(
-                        f"Unexpected author format for paper {paper_id_api}: {authors_list}. Setting authors to empty."
-                    )
-                    authors_str = ""
-
-                # Standardize paper dictionary structure to match offline if possible
-                normalized_paper = {
-                    "id": paper.get(
-                        "paperId", paper_id_api
-                    ),  # Use API's paperId if available
-                    "title": title,
-                    "text": abstract,  # Use 'text' key for consistency with other parts of the code?
-                    "abstract": abstract,  # Keep original abstract field too
-                    "authors": authors_str,
-                    "url": paper.get("arxivUrl")
-                    or paper.get("url"),  # Prefer arxivUrl, fallback to url
-                    "year": paper.get("year"),
-                    "citation_counts": paper.get("citationCount"),
-                    "venue": paper.get("venue"),
-                    # Add other relevant fields: doi, publicationDate etc.
-                    "meta": paper,  # Store original paper dict in meta for reference
-                }
-
-                # Use a consistent ID key (e.g., normalized title)
-                paper_key = keep_letters(title)  # Still prone to collision
-                if paper_key in paper_list:
-                    logger.warning(
-                        f"Duplicate paper key (title based) found during online retrieval: {paper_key}. Overwriting."
-                    )
-                paper_list[paper_key] = normalized_paper
-                retrieved_count += 1
-
-            logger.info(
-                f"Successfully retrieved and processed {retrieved_count} papers from online source."
-            )
-            return paper_list
-
-        except Exception as e:
-            # Catch potential errors from get_doc_info_from_api or processing
-            logger.error(f"Online retrieval failed: {e}\n{traceback.format_exc()}")
-            return {}  # Fallback: empty dict
-
-    async def retrieve_papers_parallel(self, query: str, n_docs: int) -> List[Dict]:
-        """Retrieve papers in parallel from offline and online sources, then deduplicate.
-
-        Args:
-            query: Search query.
-            n_docs: Number of documents to retrieve from offline source.
-
-        Returns:
-            List of unique retrieved papers (dictionaries).
-        """
-        logger.info(
-            f"Starting parallel retrieval for query: '{query[:50]}...' (Offline: {n_docs}, Online: {self.online_retriever})"
-        )
-        loop = asyncio.get_running_loop()  # Use get_running_loop in async context
-        # Use a single executor instance if possible, manage its lifecycle appropriately
-        # For simplicity here, creating one per call.
-        # Consider managing executor lifecycle outside if called frequently.
-        with ThreadPoolExecutor() as executor:
-            # Schedule tasks
-            offline_future = loop.run_in_executor(
-                executor,
-                self._run_async_in_sync_context,
-                self._retrieve_papers_offline(query, n_docs),
-            )
-
-            online_future = loop.run_in_executor(
-                executor,
-                self._run_async_in_sync_context,
-                (
-                    self._retrieve_papers_online(query)
-                    if self.online_retriever
-                    else asyncio.sleep(0, result={})
-                ),  # Return empty dict if disabled
-            )
-
-            # Await results
-            try:
-                offline_papers_dict = await offline_future
-                online_papers_dict = await online_future
-            except Exception as e:
-                logger.error(
-                    f"Error during parallel retrieval execution: {e}\n{traceback.format_exc()}"
-                )
-                # Decide fallback: return empty list or partial results?
-                offline_papers_dict = (
-                    offline_papers_dict or {}
-                )  # Use results if one succeeded
-                online_papers_dict = online_papers_dict or {}
-                if not offline_papers_dict and not online_papers_dict:
-                    return []  # Return empty if both failed catastrophically
-
-        logger.info(
-            f"Parallel retrieval finished. Offline count: {len(offline_papers_dict)}, Online count: {len(online_papers_dict)}"
-        )
-
-        # Deduplication Strategy: Prioritize online? Offline? Merge info?
-        # Current logic: Online papers overwrite offline papers if keys (normalized titles) match.
-        # Consider a more sophisticated merge (e.g., keep offline if it has more info, or merge fields).
-        deduplicated_papers = {
-            **offline_papers_dict,
-            **online_papers_dict,
-        }  # Online overwrites offline on key collision
-
-        final_papers_list = list(deduplicated_papers.values())
-        logger.info(
-            f"Total unique papers after deduplication: {len(final_papers_list)}"
-        )
-
-        return final_papers_list
-
-    def _run_async_in_sync_context(self, coro):
-        """Helper to run an async function within run_in_executor."""
-        return asyncio.run(coro)
 
     def _run_ctx_rerank(self, query, ctxs, reranker_model_name):
         """Run context reranking using the hybrid approach."""
@@ -2340,10 +2094,7 @@ class ResponseRagChat(BaseModel):
     main_figure_caption: str = None
 
 
-relevance_evaluator = DocumentRelevanceEvaluator(model_name="Qwen3-8B", max_workers=4)
-
-
-async def run_section_writer_actor(query, task_id):
+async def run_section_writer_actor(query, task_id, model_info):
     try:
         request_id = f"SectionWriterActor-{uuid.uuid4().hex}"
         time_cost = {}
@@ -2356,6 +2107,13 @@ async def run_section_writer_actor(query, task_id):
             retrival_result = await run_requests_parallel(data)
             if "ctxs" in retrival_result:
                 break
+
+        model_name = model_info.get("rag_model","Qwen3-32B")
+        image_extraction_model = model_info.get("image_extraction_model", "Qwen3-14B")
+        reranker_model_name = model_info.get("reranker_model_name", "Qwen3-14B")
+        keyword_extraiction_model = image_extraction_model
+
+        relevance_evaluator = DocumentRelevanceEvaluator(model_name=keyword_extraiction_model, max_workers=4)
 
         top_n = 20
         ctx_relevance_filtered = relevance_evaluator.evaluate_and_rank(
@@ -2370,17 +2128,16 @@ async def run_section_writer_actor(query, task_id):
             use_contexts = False
         else:
             use_contexts = True
+
+
         # Initialize API (consider adding reranker model path if needed)
         api = OpenScholarAPI(
-            # reranker="path/to/reranker/model", # Example
-            online_retriver=True,  # Corrected spelling
+            online_retriver=True,
             use_contexts=use_contexts,
-            top_n=top_n,  # Example: use top 5 passages
+            top_n=top_n,
+            api_model_name=model_name
         )
-        model_name = "Qwen3-32B"
-        model_name = "Qwen3-32B-long-ctx"
-        image_extraction_model = "Qwen3-8B"
-        reranker_model_name = "Qwen3-14B"
+
         for _ in range(4):
             try:
                 # Run the pipeline
@@ -2465,15 +2222,16 @@ async def main_example():
     retrival_result["answer"] = ""
     try:
         # Initialize API (consider adding reranker model path if needed)
-        api = OpenScholarAPI(
-            # reranker="path/to/reranker/model", # Example
-            online_retriver=True,  # Corrected spelling
-            use_contexts=True,
-            top_n=top_n,  # Example: use top 5 passages
-        )
-        model_name = "Qwen3-32B-long-ctx"
-        image_extraction_model = "Qwen3-8B"
+
+        model_name = "Qwen3-32B"
+        image_extraction_model = "Qwen3-14B"
         reranker_model_name = "Qwen3-14B"
+        api = OpenScholarAPI(
+            online_retriver=True,
+            use_contexts=use_contexts,
+            top_n=top_n,
+            api_model_name=model_name
+        )
         # Run the pipeline
         result_item = await api.run(
             user_query=retrival_result["query"],  # Pass the original query

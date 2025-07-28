@@ -12,7 +12,7 @@ import fitz  # PyMuPDF
 from PIL import Image
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
-from generation.local_request_v2 import get_from_llm
+from local_request_v2 import get_from_llm
 from log import logger
 import base64
 from io import BytesIO

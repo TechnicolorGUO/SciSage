@@ -9,9 +9,11 @@
 import os
 import asyncio
 from dataclasses import dataclass, field, fields
-from typing import Any, Optional, List
+from typing import List, Dict, Any, Optional, Union
+
 import asyncio
 from contextlib import asynccontextmanager
+from openai import OpenAI  # 引入 OpenAI 客户端
 
 # ==========================================================================
 # MODEL CONFIGURATION
@@ -28,6 +30,90 @@ ALL_VALID_MODELS: List[str] = [
     "llama3-70b",  # Meta LLaMA3 70B model
     "Qwen3-32B",
 ]
+
+
+
+@dataclass
+class ModelConfig:
+    """Configuration for LLM models"""
+
+    url: str
+    max_len: int
+    temperature: float = 0.8
+    model_name: str = ""
+    top_p: float = 0.9
+    top_k: int = 20
+    min_p: int = 0
+    retry_attempts: int = 20
+    timeout: int = 200
+    think_bool: bool = False
+    openai_client: Optional[Any] = None
+    additional_kwargs: Dict[str, Any] = field(default_factory=dict)
+
+# Model configurations
+MODEL_CONFIGS = {
+    "llama3-70b": ModelConfig(
+        url="http://0.0.0.0:9087/v1/chat/completions",
+        max_len=131072,
+    ),
+    "Qwen3-8B": ModelConfig(
+        url="http://0.0.0.0:9096/v1",
+        max_len=131072,
+        model_name="Qwen/Qwen3-8B",
+        think_bool=False,
+        temperature=0.7,
+        top_p=0.8,
+        top_k=20,
+        min_p=0,
+        openai_client=OpenAI(
+            api_key="EMPTY",
+            base_url="http://0.0.0.0:9096/v1",
+        ),
+    ),
+    "Qwen3-14B": ModelConfig(
+        url="http://0.0.0.0:9095/v1",
+        max_len=131072,
+        model_name="Qwen/Qwen3-14B",
+        think_bool=False,
+        temperature=0.7,
+        top_p=0.8,
+        top_k=20,
+        min_p=0,
+        openai_client=OpenAI(
+            api_key="EMPTY",
+            base_url="http://0.0.0.0:9095/v1",
+        ),
+    ),
+    "Qwen3-32B": ModelConfig(
+        url="http://0.0.0.0:9094/v1",
+        max_len=131072,
+        model_name="Qwen/Qwen3-32B",
+        think_bool=False,
+        temperature=0.7,
+        top_p=0.8,
+        top_k=20,
+        min_p=0,
+        openai_client=OpenAI(
+            api_key="EMPTY",
+            base_url="http://0.0.0.0:9094/v1",
+        ),
+    ),
+    "Qwen3-32B-think": ModelConfig(
+        url="http://0.0.0.0:9094/v1",
+        max_len=131072,
+        model_name="Qwen/Qwen3-32B",
+        think_bool=True,
+        temperature=0.6,
+        top_p=0.95,
+        top_k=20,
+        min_p=0,
+        openai_client=OpenAI(
+            api_key="EMPTY",
+            base_url="http://0.0.0.0:9094/v1",
+        ),
+    ),
+}
+
 
 # Models used for generating multiple outlines
 # This list contains models that will be used in parallel to generate diverse outlines
@@ -47,9 +133,6 @@ DEFAULT_MODEL_FOR_OUTLINE: str = "Qwen3-32B"  # Changed from gpt-4-32k to Qwen25
 OUTLINE_GENERAOR_MODELS: List[str] = [
     "Qwen3-32B",
     "Qwen3-14B",
-    "Qwen25-72B",
-    "llama3-70b",
-    # "gpt-4o-mini",
 ]
 MODEL_GEN_QUERY: str = "Qwen3-32B"
 
@@ -71,6 +154,9 @@ SECTION_REFLECTION_MAX_TURNS: int = 0
 MAX_SECTION_RETRY_NUM: int = 3  # Maximum number of retries for section generation
 
 DEFAULT_MODEL_FOR_SECTION_WRITER: str = "Qwen3-32B"
+DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = "Qwen3-14B"
+DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = "Qwen3-14B"
+
 SECTION_SUMMARY_MODEL: str = "Qwen3-32B"  # gpt-4-32k
 SECTION_REFLECTION_MODEL_LST = ["Qwen3-32B", "llama3-70b"]
 

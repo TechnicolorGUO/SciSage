@@ -2,3 +2,5 @@ log/
 temp/
 arxiv_cache/
 eval/
+output/
+ai_results.jsonl

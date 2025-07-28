@@ -1123,8 +1123,7 @@ async def main():
     user_query = "Give an overview of capabilities and use case these AI agent Frameworks: LangGraph"
     user_query = "Detailed introduction to the content and implementation methods of multimodal RAG"
 
-    query_lst = """
-我想了解人工智能在医疗领域的应用
+    query_lst = """我想了解人工智能在医疗领域的应用
 The relationship between staying up late and cancer
 The impact of family on children's growth
 Is long-term coffee drinking good for the body
@@ -1134,9 +1133,14 @@ Introduce the content and implementation method of multimodal RAG""".split(
         "\n"
     )
 
+    query_lst = query_lst[:1]
+    query_lst = ["The relationship between staying up late and cancer"]
     already_query_lst = []
     for user_query in query_lst:
         if user_query in already_query_lst:
+            continue
+        if len(user_query)<=4:
+            print(f"empty query: '{user_query}'")
             continue
         print(f"Starting paper generation for query: '{user_query}'")
         start_time = time.time()
@@ -1145,13 +1149,13 @@ Introduce the content and implementation method of multimodal RAG""".split(
         os.makedirs(output_dir, exist_ok=True)
 
         kwargs = {
-            "outline_max_reflections": 2,
-            "outline_max_sections": 6,
-            "outline_min_depth": 2,
+            "outline_max_reflections": 1,
+            "outline_max_sections": 3,
+            "outline_min_depth": 1,
             "section_writer_model": "Qwen3-32B",
-            "do_section_reflection": True,
+            "do_section_reflection": False,
             "section_reflection_max_turns": 1,
-            "do_global_reflection": True,
+            "do_global_reflection": False,
             "global_reflection_max_turns": 1,
             "global_abstract_conclusion_max_turns": 1,
         }

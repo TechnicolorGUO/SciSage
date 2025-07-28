@@ -17,6 +17,30 @@
         "documentation": {}
     },
     {
+        "label": "AsyncWebCrawler",
+        "importPath": "crawl4ai",
+        "description": "crawl4ai",
+        "isExtraImport": true,
+        "detail": "crawl4ai",
+        "documentation": {}
+    },
+    {
+        "label": "CacheMode",
+        "importPath": "crawl4ai",
+        "description": "crawl4ai",
+        "isExtraImport": true,
+        "detail": "crawl4ai",
+        "documentation": {}
+    },
+    {
+        "label": "CrawlerRunConfig",
+        "importPath": "crawl4ai",
+        "description": "crawl4ai",
+        "isExtraImport": true,
+        "detail": "crawl4ai",
+        "documentation": {}
+    },
+    {
         "label": "arxiv",
         "kind": 6,
         "isExtraImport": true,
@@ -121,203 +145,248 @@
         "documentation": {}
     },
     {
-        "label": "Entrez",
-        "importPath": "Bio",
-        "description": "Bio",
+        "label": "re",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "Bio",
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "spacy",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "importPath": "spacy",
+        "description": "spacy",
+        "detail": "spacy",
         "documentation": {}
     },
     {
-        "label": "as_completed",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "numpy",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "as_completed",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "as_completed",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "as_completed",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "as_completed",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "ThreadPoolExecutor",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "as_completed",
-        "importPath": "concurrent.futures",
-        "description": "concurrent.futures",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "concurrent.futures",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "log",
         "documentation": {}
     },
     {
-        "label": "GOOGLE_KEY",
-        "importPath": "generation.global_config",
-        "description": "generation.global_config",
+        "label": "traceback",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "generation.global_config",
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
         "documentation": {}
     },
     {
-        "label": "proxies",
-        "importPath": "generation.global_config",
-        "description": "generation.global_config",
+        "label": "tqdm",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "generation.global_config",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "detail": "tqdm",
         "documentation": {}
     },
     {
-        "label": "arxiv_client",
-        "importPath": "generation.global_config",
-        "description": "generation.global_config",
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
         "isExtraImport": true,
-        "detail": "generation.global_config",
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
         "documentation": {}
     },
     {
@@ -337,203 +406,45 @@
         "documentation": {}
     },
     {
-        "label": "db_path",
-        "importPath": "generation.local_db_v2",
-        "description": "generation.local_db_v2",
+        "label": "tarfile",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "generation.local_db_v2",
+        "importPath": "tarfile",
+        "description": "tarfile",
+        "detail": "tarfile",
         "documentation": {}
     },
     {
-        "label": "ArxivDatabase",
-        "importPath": "generation.local_db_v2",
-        "description": "generation.local_db_v2",
+        "label": "fitz",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "generation.local_db_v2",
+        "importPath": "fitz",
+        "description": "fitz",
+        "detail": "fitz",
         "documentation": {}
     },
     {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
         "isExtraImport": true,
-        "detail": "log",
+        "detail": "PIL",
         "documentation": {}
     },
     {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
         "isExtraImport": true,
-        "detail": "log",
+        "detail": "pathlib",
         "documentation": {}
     },
     {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
         "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "logger",
-        "importPath": "log",
-        "description": "log",
-        "isExtraImport": true,
-        "detail": "log",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
+        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -769,6 +680,78 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -785,7 +768,7 @@
         "documentation": {}
     },
     {
-        "label": "List",
+        "label": "Union",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -1697,202 +1680,43 @@
         "documentation": {}
     },
     {
-        "label": "get_md5",
-        "importPath": "generation.utils",
-        "description": "generation.utils",
+        "label": "get_from_llm",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
         "isExtraImport": true,
-        "detail": "generation.utils",
-        "documentation": {}
-    },
-    {
-        "label": "keep_letters",
-        "importPath": "generation.utils",
-        "description": "generation.utils",
-        "isExtraImport": true,
-        "detail": "generation.utils",
-        "documentation": {}
-    },
-    {
-        "label": "flow_information_sync",
-        "importPath": "generation.utils",
-        "description": "generation.utils",
-        "isExtraImport": true,
-        "detail": "generation.utils",
-        "documentation": {}
-    },
-    {
-        "label": "keep_letters",
-        "importPath": "generation.utils",
-        "description": "generation.utils",
-        "isExtraImport": true,
-        "detail": "generation.utils",
-        "documentation": {}
-    },
-    {
-        "label": "keep_letters",
-        "importPath": "generation.utils",
-        "description": "generation.utils",
-        "isExtraImport": true,
-        "detail": "generation.utils",
-        "documentation": {}
-    },
-    {
-        "label": "flow_information_sync",
-        "importPath": "generation.utils",
-        "description": "generation.utils",
-        "isExtraImport": true,
-        "detail": "generation.utils",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
-        "label": "traceback",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "traceback",
-        "description": "traceback",
-        "detail": "traceback",
-        "documentation": {}
-    },
-    {
-        "label": "spacy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "spacy",
-        "description": "spacy",
-        "detail": "spacy",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
-        "isExtraImport": true,
-        "detail": "tqdm",
-        "documentation": {}
-    },
-    {
-        "label": "tarfile",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tarfile",
-        "description": "tarfile",
-        "detail": "tarfile",
-        "documentation": {}
-    },
-    {
-        "label": "fitz",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "fitz",
-        "description": "fitz",
-        "detail": "fitz",
-        "documentation": {}
-    },
-    {
-        "label": "Image",
-        "importPath": "PIL",
-        "description": "PIL",
-        "isExtraImport": true,
-        "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
+        "detail": "local_request_v2",
         "documentation": {}
     },
     {
         "label": "get_from_llm",
-        "importPath": "generation.local_request_v2",
-        "description": "generation.local_request_v2",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
         "isExtraImport": true,
-        "detail": "generation.local_request_v2",
+        "detail": "local_request_v2",
         "documentation": {}
     },
     {
         "label": "get_from_llm",
-        "importPath": "generation.local_request_v2",
-        "description": "generation.local_request_v2",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
         "isExtraImport": true,
-        "detail": "generation.local_request_v2",
+        "detail": "local_request_v2",
         "documentation": {}
     },
     {
         "label": "get_from_llm",
-        "importPath": "generation.local_request_v2",
-        "description": "generation.local_request_v2",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
         "isExtraImport": true,
-        "detail": "generation.local_request_v2",
+        "detail": "local_request_v2",
+        "documentation": {}
+    },
+    {
+        "label": "get_from_llm",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
+        "isExtraImport": true,
+        "detail": "local_request_v2",
         "documentation": {}
     },
     {
@@ -2002,6 +1826,14 @@
         "documentation": {}
     },
     {
+        "label": "field",
+        "importPath": "dataclasses",
+        "description": "dataclasses",
+        "isExtraImport": true,
+        "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
         "label": "dataclass",
         "importPath": "dataclasses",
         "description": "dataclasses",
@@ -2079,6 +1911,174 @@
         "description": "dataclasses",
         "isExtraImport": true,
         "detail": "dataclasses",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "ThreadPoolExecutor",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "as_completed",
+        "importPath": "concurrent.futures",
+        "description": "concurrent.futures",
+        "isExtraImport": true,
+        "detail": "concurrent.futures",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -2143,30 +2143,78 @@
         "description": "fastapi.responses",
         "isExtraImport": true,
         "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "flow_information_sync",
+        "importPath": "generation.utils",
+        "description": "generation.utils",
+        "isExtraImport": true,
+        "detail": "generation.utils",
+        "documentation": {}
+    },
+    {
+        "label": "keep_letters",
+        "importPath": "generation.utils",
+        "description": "generation.utils",
+        "isExtraImport": true,
+        "detail": "generation.utils",
+        "documentation": {}
+    },
+    {
+        "label": "keep_letters",
+        "importPath": "generation.utils",
+        "description": "generation.utils",
+        "isExtraImport": true,
+        "detail": "generation.utils",
+        "documentation": {}
+    },
+    {
+        "label": "flow_information_sync",
+        "importPath": "generation.utils",
+        "description": "generation.utils",
+        "isExtraImport": true,
+        "detail": "generation.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_md5",
+        "importPath": "generation.utils",
+        "description": "generation.utils",
+        "isExtraImport": true,
+        "detail": "generation.utils",
+        "documentation": {}
+    },
+    {
+        "label": "keep_letters",
+        "importPath": "generation.utils",
+        "description": "generation.utils",
+        "isExtraImport": true,
+        "detail": "generation.utils",
         "documentation": {}
     },
     {
         "label": "get_doc_info_from_api",
-        "importPath": "generation.api_web",
-        "description": "generation.api_web",
+        "importPath": "generation.websearch_scholar",
+        "description": "generation.websearch_scholar",
         "isExtraImport": true,
-        "detail": "generation.api_web",
+        "detail": "generation.websearch_scholar",
         "documentation": {}
     },
     {
         "label": "search_paper_via_query_from_openalex",
-        "importPath": "generation.api_web",
-        "description": "generation.api_web",
+        "importPath": "generation.websearch_scholar",
+        "description": "generation.websearch_scholar",
         "isExtraImport": true,
-        "detail": "generation.api_web",
+        "detail": "generation.websearch_scholar",
         "documentation": {}
     },
     {
         "label": "get_doc_info_from_api",
-        "importPath": "generation.api_web",
-        "description": "generation.api_web",
+        "importPath": "generation.websearch_scholar",
+        "description": "generation.websearch_scholar",
         "isExtraImport": true,
-        "detail": "generation.api_web",
+        "detail": "generation.websearch_scholar",
         "documentation": {}
     },
     {
@@ -2203,7 +2251,31 @@
         "documentation": {}
     },
     {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
         "label": "*",
+        "importPath": "generation.instruction_pro",
+        "description": "generation.instruction_pro",
+        "isExtraImport": true,
+        "detail": "generation.instruction_pro",
+        "documentation": {}
+    },
+    {
+        "label": "PAGE_REFINE_PROMPT",
+        "importPath": "generation.instruction_pro",
+        "description": "generation.instruction_pro",
+        "isExtraImport": true,
+        "detail": "generation.instruction_pro",
+        "documentation": {}
+    },
+    {
+        "label": "SIMILARITY_PROMPT",
         "importPath": "generation.instruction_pro",
         "description": "generation.instruction_pro",
         "isExtraImport": true,
@@ -2428,30 +2500,6 @@
         "documentation": {}
     },
     {
-        "label": "chat_url",
-        "importPath": "generation.generation_config",
-        "description": "generation.generation_config",
-        "isExtraImport": true,
-        "detail": "generation.generation_config",
-        "documentation": {}
-    },
-    {
-        "label": "recall_server_url",
-        "importPath": "generation.generation_config",
-        "description": "generation.generation_config",
-        "isExtraImport": true,
-        "detail": "generation.generation_config",
-        "documentation": {}
-    },
-    {
-        "label": "rerank_model_url",
-        "importPath": "generation.generation_config",
-        "description": "generation.generation_config",
-        "isExtraImport": true,
-        "detail": "generation.generation_config",
-        "documentation": {}
-    },
-    {
         "label": "CHAT_MODEL_NAME",
         "importPath": "generation.generation_config",
         "description": "generation.generation_config",
@@ -2492,14 +2540,6 @@
         "documentation": {}
     },
     {
-        "label": "get_from_llm",
-        "importPath": "local_request_v2",
-        "description": "local_request_v2",
-        "isExtraImport": true,
-        "detail": "local_request_v2",
-        "documentation": {}
-    },
-    {
         "label": "jsonlines",
         "kind": 6,
         "isExtraImport": true,
@@ -2527,12 +2567,238 @@
         "documentation": {}
     },
     {
-        "label": "uvicorn",
+        "label": "nest_asyncio",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "uvicorn",
-        "description": "uvicorn",
-        "detail": "uvicorn",
+        "importPath": "nest_asyncio",
+        "description": "nest_asyncio",
+        "detail": "nest_asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "RequestWrapper",
+        "importPath": "request_warp",
+        "description": "request_warp",
+        "isExtraImport": true,
+        "detail": "request_warp",
+        "documentation": {}
+    },
+    {
+        "label": "Entrez",
+        "importPath": "Bio",
+        "description": "Bio",
+        "isExtraImport": true,
+        "detail": "Bio",
+        "documentation": {}
+    },
+    {
+        "label": "db_path",
+        "importPath": "generation.local_db_v2",
+        "description": "generation.local_db_v2",
+        "isExtraImport": true,
+        "detail": "generation.local_db_v2",
+        "documentation": {}
+    },
+    {
+        "label": "ArxivDatabase",
+        "importPath": "generation.local_db_v2",
+        "description": "generation.local_db_v2",
+        "isExtraImport": true,
+        "detail": "generation.local_db_v2",
+        "documentation": {}
+    },
+    {
+        "label": "openai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "openai",
+        "description": "openai",
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "InternalServerError",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "RateLimitError",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "APIError",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "retry",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "stop_after_attempt",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "wait_random_exponential",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "before_sleep_log",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "retry_if_exception_type",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "retry",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "stop_after_attempt",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "wait_random_exponential",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "retry_if_exception_type",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "retry",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "stop_after_attempt",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "wait_random_exponential",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "before_sleep_log",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
+        "documentation": {}
+    },
+    {
+        "label": "retry_if_exception_type",
+        "importPath": "tenacity",
+        "description": "tenacity",
+        "isExtraImport": true,
+        "detail": "tenacity",
         "documentation": {}
     },
     {
@@ -2542,6 +2808,80 @@
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "genai",
+        "importPath": "google",
+        "description": "google",
+        "isExtraImport": true,
+        "detail": "google",
+        "documentation": {}
+    },
+    {
+        "label": "genai",
+        "importPath": "google",
+        "description": "google",
+        "isExtraImport": true,
+        "detail": "google",
+        "documentation": {}
+    },
+    {
+        "label": "types",
+        "importPath": "google.genai",
+        "description": "google.genai",
+        "isExtraImport": true,
+        "detail": "google.genai",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPError",
+        "importPath": "requests.exceptions",
+        "description": "requests.exceptions",
+        "isExtraImport": true,
+        "detail": "requests.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "importlib.util",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib.util",
+        "description": "importlib.util",
+        "detail": "importlib.util",
+        "documentation": {}
+    },
+    {
+        "label": "JSONDecodeError",
+        "importPath": "json.decoder",
+        "description": "json.decoder",
+        "isExtraImport": true,
+        "detail": "json.decoder",
+        "documentation": {}
+    },
+    {
+        "label": "tabulate",
+        "importPath": "tabulate",
+        "description": "tabulate",
+        "isExtraImport": true,
+        "detail": "tabulate",
+        "documentation": {}
+    },
+    {
+        "label": "Semaphore",
+        "importPath": "gevent.lock",
+        "description": "gevent.lock",
+        "isExtraImport": true,
+        "detail": "gevent.lock",
+        "documentation": {}
+    },
+    {
+        "label": "uvicorn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvicorn",
+        "description": "uvicorn",
+        "detail": "uvicorn",
         "documentation": {}
     },
     {
@@ -2914,229 +3254,27 @@
         "documentation": {}
     },
     {
-        "label": "openai",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "openai",
-        "description": "openai",
-        "detail": "openai",
-        "documentation": {}
-    },
-    {
-        "label": "OpenAI",
-        "importPath": "openai",
-        "description": "openai",
-        "isExtraImport": true,
-        "detail": "openai",
-        "documentation": {}
-    },
-    {
-        "label": "OpenAI",
-        "importPath": "openai",
-        "description": "openai",
-        "isExtraImport": true,
-        "detail": "openai",
-        "documentation": {}
-    },
-    {
-        "label": "OpenAI",
-        "importPath": "openai",
-        "description": "openai",
-        "isExtraImport": true,
-        "detail": "openai",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "auto",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "wraps",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "lru_cache",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "lru_cache",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "partial",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "lru_cache",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "lru_cache",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "lru_cache",
-        "importPath": "functools",
-        "description": "functools",
-        "isExtraImport": true,
-        "detail": "functools",
-        "documentation": {}
-    },
-    {
-        "label": "create_reflection_fallback",
-        "importPath": "fallback",
-        "description": "fallback",
-        "isExtraImport": true,
-        "detail": "fallback",
-        "documentation": {}
-    },
-    {
-        "label": "process_query_async",
-        "importPath": "paper_understant_query",
-        "description": "paper_understant_query",
-        "isExtraImport": true,
-        "detail": "paper_understant_query",
-        "documentation": {}
-    },
-    {
-        "label": "generate_paper_outline_async",
-        "importPath": "paper_outline_opt",
-        "description": "paper_outline_opt",
-        "isExtraImport": true,
-        "detail": "paper_outline_opt",
-        "documentation": {}
-    },
-    {
-        "label": "section_writer_async",
-        "importPath": "section_writer_opt_local",
-        "description": "section_writer_opt_local",
-        "isExtraImport": true,
-        "detail": "section_writer_opt_local",
-        "documentation": {}
-    },
-    {
-        "label": "section_writer_async",
-        "importPath": "section_writer_opt_local",
-        "description": "section_writer_opt_local",
-        "isExtraImport": true,
-        "detail": "section_writer_opt_local",
-        "documentation": {}
-    },
-    {
-        "label": "section_writer_async",
-        "importPath": "section_writer_opt_local",
-        "description": "section_writer_opt_local",
-        "isExtraImport": true,
-        "detail": "section_writer_opt_local",
-        "documentation": {}
-    },
-    {
-        "label": "section_reflection",
-        "importPath": "section_reflection_opt",
-        "description": "section_reflection_opt",
-        "isExtraImport": true,
-        "detail": "section_reflection_opt",
-        "documentation": {}
-    },
-    {
-        "label": "generate_section_summary",
-        "importPath": "section_reflection_opt",
-        "description": "section_reflection_opt",
-        "isExtraImport": true,
-        "detail": "section_reflection_opt",
-        "documentation": {}
-    },
-    {
-        "label": "global_reflection",
-        "importPath": "paper_global_reflection_opt",
-        "description": "paper_global_reflection_opt",
-        "isExtraImport": true,
-        "detail": "paper_global_reflection_opt",
-        "documentation": {}
-    },
-    {
-        "label": "generate_abstract_conclusion",
-        "importPath": "paper_abstract_conclusion_opt",
-        "description": "paper_abstract_conclusion_opt",
-        "isExtraImport": true,
-        "detail": "paper_abstract_conclusion_opt",
-        "documentation": {}
-    },
-    {
-        "label": "process_poolish_data",
-        "importPath": "paper_poolish_opt",
-        "description": "paper_poolish_opt",
-        "isExtraImport": true,
-        "detail": "paper_poolish_opt",
-        "documentation": {}
-    },
-    {
         "label": "configuration",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "configuration",
         "description": "configuration",
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_CONFIGS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_CONFIGS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
         "detail": "configuration",
         "documentation": {}
     },
@@ -3394,6 +3532,198 @@
         "description": "configuration",
         "isExtraImport": true,
         "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "auto",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "lru_cache",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "lru_cache",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "partial",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "lru_cache",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "lru_cache",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "lru_cache",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "create_reflection_fallback",
+        "importPath": "fallback",
+        "description": "fallback",
+        "isExtraImport": true,
+        "detail": "fallback",
+        "documentation": {}
+    },
+    {
+        "label": "process_query_async",
+        "importPath": "paper_understant_query",
+        "description": "paper_understant_query",
+        "isExtraImport": true,
+        "detail": "paper_understant_query",
+        "documentation": {}
+    },
+    {
+        "label": "generate_paper_outline_async",
+        "importPath": "paper_outline_opt",
+        "description": "paper_outline_opt",
+        "isExtraImport": true,
+        "detail": "paper_outline_opt",
+        "documentation": {}
+    },
+    {
+        "label": "section_writer_async",
+        "importPath": "section_writer_opt_local",
+        "description": "section_writer_opt_local",
+        "isExtraImport": true,
+        "detail": "section_writer_opt_local",
+        "documentation": {}
+    },
+    {
+        "label": "section_writer_async",
+        "importPath": "section_writer_opt_local",
+        "description": "section_writer_opt_local",
+        "isExtraImport": true,
+        "detail": "section_writer_opt_local",
+        "documentation": {}
+    },
+    {
+        "label": "section_writer_async",
+        "importPath": "section_writer_opt_local",
+        "description": "section_writer_opt_local",
+        "isExtraImport": true,
+        "detail": "section_writer_opt_local",
+        "documentation": {}
+    },
+    {
+        "label": "section_reflection",
+        "importPath": "section_reflection_opt",
+        "description": "section_reflection_opt",
+        "isExtraImport": true,
+        "detail": "section_reflection_opt",
+        "documentation": {}
+    },
+    {
+        "label": "generate_section_summary",
+        "importPath": "section_reflection_opt",
+        "description": "section_reflection_opt",
+        "isExtraImport": true,
+        "detail": "section_reflection_opt",
+        "documentation": {}
+    },
+    {
+        "label": "global_reflection",
+        "importPath": "paper_global_reflection_opt",
+        "description": "paper_global_reflection_opt",
+        "isExtraImport": true,
+        "detail": "paper_global_reflection_opt",
+        "documentation": {}
+    },
+    {
+        "label": "generate_abstract_conclusion",
+        "importPath": "paper_abstract_conclusion_opt",
+        "description": "paper_abstract_conclusion_opt",
+        "isExtraImport": true,
+        "detail": "paper_abstract_conclusion_opt",
+        "documentation": {}
+    },
+    {
+        "label": "process_poolish_data",
+        "importPath": "paper_poolish_opt",
+        "description": "paper_poolish_opt",
+        "isExtraImport": true,
+        "detail": "paper_poolish_opt",
         "documentation": {}
     },
     {
@@ -4292,6 +4622,14 @@
         "documentation": {}
     },
     {
+        "label": "SequenceMatcher",
+        "importPath": "difflib",
+        "description": "difflib",
+        "isExtraImport": true,
+        "detail": "difflib",
+        "documentation": {}
+    },
+    {
         "label": "extract_pdf_text_from_url",
         "kind": 2,
         "importPath": "benchmark.get_paper_info",
@@ -4343,150 +4681,6 @@
         "description": "benchmark.get_paper_info",
         "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\nasync def get_md_info_with_fallback(arxiv_id, max_retries=2):\n    \"\"\"\n    多种方式获取论文全文，按优先级尝试不同的方法\n    \"\"\"\n    methods = [\n        (\"ar5iv\", f\"https://ar5iv.labs.arxiv.org/html/{arxiv_id}\"),\n        (\"arxiv_vanity\", f\"https://www.arxiv-vanity.com/papers/{arxiv_id}/\"),\n        (\"arxiv_html\", f\"https://browse.arxiv.org/html/{arxiv_id}\"),\n    ]",
         "detail": "benchmark.get_paper_info",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_pubmed_json",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)\n    - Publication dates (year, month, day)\n    - Research fields/MeSH terms\n    - DOI identifiers\n    - Journal information\n    - Citation counts (when available)",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_from_pubmed",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_from_pubmed(query, max_results=10):\n    \"\"\"在 PubMed 上搜索论文\"\"\"\n    # 1. 在 PubMed 上执行搜索\n    handle = Entrez.esearch(\n        db=\"pubmed\",\n        term=query,\n        retmax=max_results,\n        sort=\"relevance\",\n        httppost={\"proxies\": proxies},  # 添加代理信息\n    )",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "fetch_reference_openalex",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def fetch_reference_openalex(ref_id):\n    \"\"\"获取单个文献的详细信息\"\"\"\n    try:\n        ref_url = f\"https://api.openalex.org/works/{ref_id}\"\n        ref_response = requests.get(ref_url)\n        if ref_response.status_code != 200:\n            logger.error(\n                f\"Reference Failed to retrieve reference data: {ref_response.status_code}\"\n            )\n            return None",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_doc_via_url_parallel_openalex",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_doc_via_url_parallel_openalex(referenced_works, max_workers=4, timeout=10):\n    \"\"\"并行获取多个文献信息\"\"\"\n    references = []\n    if len(referenced_works) > 100:\n        referenced_works = random.sample(referenced_works, 20)\n    with ThreadPoolExecutor(max_workers=max_workers) as executor:\n        future_to_ref = {\n            executor.submit(fetch_reference_openalex, ref_id): ref_id\n            for ref_id in referenced_works\n        }",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_doc_via_url_from_openalex",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_doc_via_url_from_openalex(data):\n    referenced_works = data\n    references = []\n    for ref_id in referenced_works:\n        try:\n            ref_url = f\"https://api.openalex.org/works/{ref_id}\"\n            ref_response = requests.get(ref_url, timeout=10)\n            if ref_response.status_code == 200:\n                ref_data = ref_response.json()\n                is_open = ref_data.get(\"open_access\", {}).get(\"is_oa\", False)",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_paper_via_query_from_openalex",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_paper_via_query_from_openalex(\n    keyword, page=1, per_page=10, search_reference=False\n):\n    \"\"\"从openalex获取相关论文，要输入关键词，不支持自然语言的输入，效果不好\"\"\"\n    try:\n        logger.info(\"search_paper_via_query_from_openalex\")\n        base_url = \"https://api.openalex.org/works\"\n        current_year = datetime.now().year\n        start_year = current_year - 20\n        # print(f\"start_year: {start_year}\")",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_paper_via_query_from_semantic",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_paper_via_query_from_semantic(query, max_paper_num=15, end_date=None):\n    \"\"\"\n    从semantic sholar获取相关关query，失败率较高，query是对应的关键词，自然语言查询表现不好\n    find schema info here:\n    https://api.semanticscholar.org/api-docs/#tag/Paper-Data/operation/get_graph_paper_relevance_search\n    citationCount: 引用本文的论文数量\n    referenceCount: 本文引用的论文的数量\n    \"\"\"\n    logger.info(\"run search_paper_via_query_from_semantic...\")\n    if \"Search queries: \" in query:",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "google_search_arxiv_id",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def google_search_arxiv_id(query, try_num=4, num=10, end_date=\"\"):\n    \"\"\"从google搜索arxiv id, 要是用api，免费额度2500\"\"\"\n    # refer from: https://serper.dev/playground\n    url = \"https://google.serper.dev/search\"\n    search_query = f\"{query} site:arxiv.org\"\n    # logger.info(f\"end_date: {end_date}\")\n    if end_date != \"\":\n        try:\n            end_date = datetime.strptime(end_date, \"%Y%m%d\").strftime(\"%Y-%m-%d\")\n            search_query = f\"{query} before:{end_date} site:arxiv.org\"",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "get_doc_info_from_semantic_scholar_by_arxivid",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def get_doc_info_from_semantic_scholar_by_arxivid(\n    arxiv_id: str, try_num: int = 5, timeout: float = 10.0, raise_on_error: bool = False\n) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    根据 arXiv ID 从 Semantic Scholar 获取论文信息，信息非常丰富\n    Args:\n        arxiv_id (str): arXiv 论文 ID，例如 \"1706.03762\"。\n        try_num (int): 最大重试次数，默认 5。\n        timeout (float): 单次请求超时时间（秒），默认 20.0。\n        raise_on_error (bool): 是否在失败时抛出异常而非警告，默认 False。",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "get_openalex_info",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def get_openalex_info(arxiv_id):\n    # 没跑通\n    url = f\"https://api.openalex.org/works/https://arxiv.org/abs/{arxiv_id}\"\n    response = requests.get(url, proxies=proxies)\n    if response.status_code == 200:\n        data = response.json()\n        return {\n            \"title\": data.get(\"title\"),\n            \"cited_by_count\": data.get(\"cited_by_count\"),\n            \"referenced_works\": data.get(\"referenced_works\"),",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_paper_from_arxiv_by_arxiv_id",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_paper_from_arxiv_by_arxiv_id(arxiv_id, try_num=5):\n    \"\"\"\n    Search paper by arxiv id from Arxiv.\n    :param arxiv_id: arxiv id of the paper\n    :return: paper list\n    \"\"\"\n    logger.info(\"search_paper_from_arxiv_by_arxiv_id ... \")\n    search = arxiv.Search(\n        query=\"\",\n        id_list=[arxiv_id],",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "search_paper_from_arxiv_by_arxiv_id_bsz",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def search_paper_from_arxiv_by_arxiv_id_bsz(arxiv_ids, max_retries=3):\n    \"\"\"\n    批量查询多个 Arxiv ID，加入重试机制\n    :param arxiv_ids: 论文 ID 列表\n    :param max_retries: 最大重试次数\n    :return: Dict[str, Dict] -> {arxivId: paper_info}\n    \"\"\"\n    for attempt in range(max_retries):\n        try:\n            search = arxiv.Search(",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "parallel_search_search_paper_from_arxiv",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def parallel_search_search_paper_from_arxiv(\n    arxiv_id_list, batch_size=10, max_workers=5\n):\n    \"\"\"\n    使用线程池并行查询 Arxiv 论文\n    :param arxiv_id_list: 论文 ID 列表\n    :param batch_size: 每个批次查询多少个 ID\n    :param max_workers: 并行线程数\n    :return: 查询结果\n    \"\"\"",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "get_doc_info_from_api",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def get_doc_info_from_api(query, try_num=5, end_date=\"\"):\n    \"\"\"\n    输入query，调用google搜索，获取arxiv_id，再从arxiv获取文章信息\n    \"\"\"\n    try:\n        arxiv_lst = google_search_arxiv_id(\n            query=query, try_num=try_num, end_date=end_date\n        )\n        logger.info(f\"arxiv_lst: {len(arxiv_lst)}\")\n        doc_info = parallel_search_search_paper_from_arxiv(arxiv_lst)",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "get_doc_info_from_api",
-        "kind": 2,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "def get_doc_info_from_api(query, try_num=5, end_date=\"\"):\n    \"\"\"\n    输入query，调用google搜索，获取arxiv_id，再从arxiv获取文章信息\n    \"\"\"\n    try:\n        arxiv_lst = google_search_arxiv_id(\n            query=query, try_num=try_num, end_date=end_date\n        )\n        logger.info(f\"arxiv_lst: {len(arxiv_lst)}\")\n        doc_info = parallel_search_search_paper_from_arxiv(arxiv_lst)",
-        "detail": "core.generation.api_web",
-        "documentation": {}
-    },
-    {
-        "label": "Entrez.email",
-        "kind": 5,
-        "importPath": "core.generation.api_web",
-        "description": "core.generation.api_web",
-        "peekOfCode": "Entrez.email = \"xxx@163.com\"\ndef fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)\n    - Publication dates (year, month, day)\n    - Research fields/MeSH terms\n    - DOI identifiers\n    - Journal information",
-        "detail": "core.generation.api_web",
         "documentation": {}
     },
     {
@@ -5174,65 +5368,11 @@
         "documentation": {}
     },
     {
-        "label": "GOOGLE_KEY",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "GOOGLE_KEY = \"763472cad2f21aeb110715293b0c472efae149ae\"  # jinxin\nGOOGLE_KEY = \"1bcfd523ebf332cb3dcab96ca826cff9019ca4f8\"  # 13521092651\nS2_API_KEY = \"\"  # semantic scholar api\nDO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
-        "label": "GOOGLE_KEY",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "GOOGLE_KEY = \"1bcfd523ebf332cb3dcab96ca826cff9019ca4f8\"  # 13521092651\nS2_API_KEY = \"\"  # semantic scholar api\nDO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
-        "label": "S2_API_KEY",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "S2_API_KEY = \"\"  # semantic scholar api\nDO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://172.24.214.62:5008/search\"",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
-        "label": "DO_REFERENCE_SEARCH",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "DO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://172.24.214.62:5008/search\"\n# 排序模型",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
-        "label": "DO_REFERENCE_SEARCH",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "DO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://172.24.214.62:5008/search\"\n# 排序模型\nrerank_model_url = \"http://120.92.91.62:9756/v1/score/rerank\"",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
         "label": "proxies",
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://172.24.214.62:5008/search\"\n# 排序模型\nrerank_model_url = \"http://120.92.91.62:9756/v1/score/rerank\"\n# 核心chat模型",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
-        "label": "arxiv_client",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "arxiv_client = arxiv.Client(delay_seconds=0.05)\n# 向量化模型\nretrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://172.24.214.62:5008/search\"\n# 排序模型\nrerank_model_url = \"http://120.92.91.62:9756/v1/score/rerank\"\n# 核心chat模型\nchat_system = \"You are a helpful AI assistant for scientific literature review. Please carefully follow user's instruction and help them to understand the most recent papers.\"",
+        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5241,7 +5381,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "retrival_model_url = \"http://172.24.212.149:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://172.24.214.62:5008/search\"\n# 排序模型\nrerank_model_url = \"http://120.92.91.62:9756/v1/score/rerank\"\n# 核心chat模型\nchat_system = \"You are a helpful AI assistant for scientific literature review. Please carefully follow user's instruction and help them to understand the most recent papers.\"\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://120.92.91.62:9089/v1/chat/completions\"  # r1-70b",
+        "peekOfCode": "retrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5250,7 +5390,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "recall_server_url = \"http://172.24.214.62:5008/search\"\n# 排序模型\nrerank_model_url = \"http://120.92.91.62:9756/v1/score/rerank\"\n# 核心chat模型\nchat_system = \"You are a helpful AI assistant for scientific literature review. Please carefully follow user's instruction and help them to understand the most recent papers.\"\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://120.92.91.62:9089/v1/chat/completions\"  # r1-70b\n# CHAT_MODEL_NAME = \"r1-llama70b\"\nCHAT_MODEL_NAME = \"openscholar\"",
+        "peekOfCode": "recall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5259,16 +5399,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "rerank_model_url = \"http://120.92.91.62:9756/v1/score/rerank\"\n# 核心chat模型\nchat_system = \"You are a helpful AI assistant for scientific literature review. Please carefully follow user's instruction and help them to understand the most recent papers.\"\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://120.92.91.62:9089/v1/chat/completions\"  # r1-70b\n# CHAT_MODEL_NAME = \"r1-llama70b\"\nCHAT_MODEL_NAME = \"openscholar\"",
-        "detail": "core.generation.global_config",
-        "documentation": {}
-    },
-    {
-        "label": "chat_system",
-        "kind": 5,
-        "importPath": "core.generation.global_config",
-        "description": "core.generation.global_config",
-        "peekOfCode": "chat_system = \"You are a helpful AI assistant for scientific literature review. Please carefully follow user's instruction and help them to understand the most recent papers.\"\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://120.92.91.62:9089/v1/chat/completions\"  # r1-70b\n# CHAT_MODEL_NAME = \"r1-llama70b\"\nCHAT_MODEL_NAME = \"openscholar\"",
+        "peekOfCode": "rerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5277,7 +5408,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "chat_url = \"http://120.92.91.62:9089/v1/chat/completions\"  # r1-70b\n# CHAT_MODEL_NAME = \"r1-llama70b\"\nCHAT_MODEL_NAME = \"openscholar\"",
+        "peekOfCode": "chat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5286,7 +5417,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "CHAT_MODEL_NAME = \"openscholar\"",
+        "peekOfCode": "CHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5597,6 +5728,24 @@
         "documentation": {}
     },
     {
+        "label": "PAGE_REFINE_PROMPT",
+        "kind": 5,
+        "importPath": "core.generation.instruction_pro",
+        "description": "core.generation.instruction_pro",
+        "peekOfCode": "PAGE_REFINE_PROMPT = \"\"\"Analyze and process the following web page content related to '{topic}'. Output the main body text, removing image links, website URLs, advertisements, meaningless repeated characters, etc. Summarization of the content is prohibited, and all information related to the topic should be retained.\nOriginal web page content:\n{raw_content}\n[Output requirements]\n- Title: <TITLE>Your title</TITLE>\n- Filtered text: <CONTENT>Filtered text</CONTENT>\n\"\"\"\nSIMILARITY_PROMPT = \"\"\"Evaluate the quality of the following content retrieved from the internet based on the given topic, and give a suitable title about the content. Provide a critical and strict assessment.\nTopic: {topic}\nContent: {content}",
+        "detail": "core.generation.instruction_pro",
+        "documentation": {}
+    },
+    {
+        "label": "SIMILARITY_PROMPT",
+        "kind": 5,
+        "importPath": "core.generation.instruction_pro",
+        "description": "core.generation.instruction_pro",
+        "peekOfCode": "SIMILARITY_PROMPT = \"\"\"Evaluate the quality of the following content retrieved from the internet based on the given topic, and give a suitable title about the content. Provide a critical and strict assessment.\nTopic: {topic}\nContent: {content}\nEvaluate the content based on the following dimensions:\n1. **Relevance to the topic**: Assess whether the content can be considered a subset or expansion of the topic.\n2. **Usability for writing about the topic**: Consider factors such as text length (e.g., very short texts have lower reference value), presence of garbled characters, and overall text quality.\nProvide a rationale for your evaluation before assigning scores. Score each dimension on a scale of 0-100, where 0 indicates no relevance and 100 indicates perfect relevance. Calculate the final average score after scoring each dimension.\nEnclose the scores in `<SCORE></SCORE>` tags. For example: `<SCORE>78</SCORE>`\nEnclose the title in `<TITLE></TITLE>` tags. For example: `<TITLE>Title</TITLE>`\nExample response:",
+        "detail": "core.generation.instruction_pro",
+        "documentation": {}
+    },
+    {
         "label": "ArxivDatabase",
         "kind": 6,
         "importPath": "core.generation.local_db_v2",
@@ -5610,7 +5759,7 @@
         "kind": 5,
         "importPath": "core.generation.local_db_v2",
         "description": "core.generation.local_db_v2",
-        "peekOfCode": "db_path = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db\"\n# with ArxivDatabase(db_path) as db:\n#     all_records = db.get_all()\n#     print(f\"Total Records: {len(all_records)}\")\n# 示例用法\n# if __name__ == \"__main__\":\n#     # 初始化数据库\n#     db_path = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db\"\n#     jsonl_file = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/id2docs.jsonl\"\n#     db = ArxivDatabase(db_path)",
+        "peekOfCode": "db_path = \"./database/new.db\"\n# with ArxivDatabase(db_path) as db:\n#     all_records = db.get_all()\n#     print(f\"Total Records: {len(all_records)}\")\n# 示例用法\n# if __name__ == \"__main__\":\n#     # 初始化数据库\n#     db_path = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db\"\n#     jsonl_file = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/id2docs.jsonl\"\n#     db = ArxivDatabase(db_path)",
         "detail": "core.generation.local_db_v2",
         "documentation": {}
     },
@@ -5777,6 +5926,15 @@
         "documentation": {}
     },
     {
+        "label": "proxies",
+        "kind": 5,
+        "importPath": "core.generation.retrival",
+        "description": "core.generation.retrival",
+        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# 初始化 FastAPI 应用\napp = FastAPI()\n# 使用何种retrival方式\nRETRIVAL_TYPE = \"bm25\"  # bm25 emb\nRETRIVAL_TYPE = \"emb\"  # bm25 emb\nRECALL_DOCS = 5\n# 模拟的请求处理函数 1（可以替换为实际的 API 调用或计算任务）\ndef retrival_offline(data: Dict[str, Any]) -> Dict[str, Any]:\n    try:",
+        "detail": "core.generation.retrival",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "core.generation.retrival",
@@ -5844,7 +6002,7 @@
         "kind": 6,
         "importPath": "core.generation.section_writer_actor",
         "description": "core.generation.section_writer_actor",
-        "peekOfCode": "class OpenScholarAPI:\n    \"\"\"\n    A class to interact with scientific literature APIs for tasks like retrieval,\n    ranking, and response generation. Enhanced with improved error handling,\n    data structures, and logical flow.\n    \"\"\"\n    def __init__(\n        self,\n        client=None,  # Consider type hinting if possible\n        api_model_name: Optional[str] = CHAT_MODEL_NAME,  # Use constant default",
+        "peekOfCode": "class OpenScholarAPI:\n    \"\"\"\n    A class to interact with scientific literature APIs for tasks like retrieval,\n    ranking, and response generation. Enhanced with improved error handling,\n    data structures, and logical flow.\n    \"\"\"\n    def __init__(\n        self,\n        client=None,  # Consider type hinting if possible\n        api_model_name: Optional[str] = \"Qwen3-8B\",  # Use constant default",
         "detail": "core.generation.section_writer_actor",
         "documentation": {}
     },
@@ -5890,15 +6048,6 @@
         "importPath": "core.generation.section_writer_actor",
         "description": "core.generation.section_writer_actor",
         "peekOfCode": "REVISED_ANSWER_HEADER = \"Here is the revised answer:\\n\\n\"\n# Load spaCy model once\ntry:\n    nlp = spacy.load(\"en_core_web_sm\")\nexcept OSError:\n    logger.error(\n        \"spaCy model 'en_core_web_sm' not found. Please download it: python -m spacy download en_core_web_sm\"\n    )\n    # Depending on the application's criticality, you might want to exit or use a fallback\n    nlp = None  # Or raise an exception",
-        "detail": "core.generation.section_writer_actor",
-        "documentation": {}
-    },
-    {
-        "label": "relevance_evaluator",
-        "kind": 5,
-        "importPath": "core.generation.section_writer_actor",
-        "description": "core.generation.section_writer_actor",
-        "peekOfCode": "relevance_evaluator = DocumentRelevanceEvaluator(model_name=\"Qwen3-8B\", max_workers=4)\nasync def run_section_writer_actor(query, task_id):\n    try:\n        request_id = f\"SectionWriterActor-{uuid.uuid4().hex}\"\n        time_cost = {}\n        start_time = time.time()\n        data = {\n            \"query\": query,\n            \"task_id\": task_id,\n        }",
         "detail": "core.generation.section_writer_actor",
         "documentation": {}
     },
@@ -5966,6 +6115,366 @@
         "documentation": {}
     },
     {
+        "label": "GeneralCrawer",
+        "kind": 6,
+        "importPath": "core.generation.websearch_general",
+        "description": "core.generation.websearch_general",
+        "peekOfCode": "class GeneralCrawer:\n    # Configuration constants\n    MAX_CONCURRENT_CRAWLS = 10\n    MAX_CONCURRENT_PROCESSES = 10\n    # Document processing constants\n    DEFAULT_SIMILARITY_THRESHOLD = 80\n    DEFAULT_MIN_LENGTH = 350\n    DEFAULT_MAX_LENGTH = 20000\n    def __init__(self, model=\"Qwen3-8B\", infer_type=\"local\"):\n        \"\"\"",
+        "detail": "core.generation.websearch_general",
+        "documentation": {}
+    },
+    {
+        "label": "searxng_search",
+        "kind": 2,
+        "importPath": "core.generation.websearch_general",
+        "description": "core.generation.websearch_general",
+        "peekOfCode": "def searxng_search(query, instance_url=\"https://searx.namejeff.xyz\", num_results=5):\n    search_url = f\"{instance_url}/search\"\n    params = {\n        \"q\": query,\n        \"format\": \"json\",\n        \"language\": \"zh-CN\",\n        \"categories\": \"news\",\n        \"safesearch\": 1,\n    }\n    try:",
+        "detail": "core.generation.websearch_general",
+        "documentation": {}
+    },
+    {
+        "label": "get_random_headers",
+        "kind": 2,
+        "importPath": "core.generation.websearch_general",
+        "description": "core.generation.websearch_general",
+        "peekOfCode": "def get_random_headers():\n    user_agents = [\n        \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36\",\n        \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15\",\n        \"Mozilla/5.0 (X11; Linux x86_64) Gecko/20100101 Firefox/117.0\",\n        \"Mozilla/5.0\",\n        # 更多 user-agent 可添加\n    ]\n    return {\n        \"User-Agent\": random.choice(user_agents),",
+        "detail": "core.generation.websearch_general",
+        "documentation": {}
+    },
+    {
+        "label": "web_search",
+        "kind": 2,
+        "importPath": "core.generation.websearch_general",
+        "description": "core.generation.websearch_general",
+        "peekOfCode": "def web_search(query, engine=\"auto\", api_key=None, num_results=5, use_proxy=False):\n    \"\"\"\n    统一的网络搜索接口，优先使用 Bing 搜索，失败时使用 SerpAPI\n    Args:\n        query (str): 搜索查询\n        engine (str): 搜索引擎 (\"auto\", \"bing\", \"serpapi\")\n        api_key (str, optional): SerpAPI 密钥\n        num_results (int): 返回结果数量\n        use_proxy (bool): 是否使用代理\n    Returns:",
+        "detail": "core.generation.websearch_general",
+        "documentation": {}
+    },
+    {
+        "label": "proxies",
+        "kind": 5,
+        "importPath": "core.generation.websearch_general",
+        "description": "core.generation.websearch_general",
+        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\nclass GeneralCrawer:\n    # Configuration constants\n    MAX_CONCURRENT_CRAWLS = 10\n    MAX_CONCURRENT_PROCESSES = 10\n    # Document processing constants\n    DEFAULT_SIMILARITY_THRESHOLD = 80\n    DEFAULT_MIN_LENGTH = 350\n    DEFAULT_MAX_LENGTH = 20000\n    def __init__(self, model=\"Qwen3-8B\", infer_type=\"local\"):",
+        "detail": "core.generation.websearch_general",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_pubmed_json",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)\n    - Publication dates (year, month, day)\n    - Research fields/MeSH terms\n    - DOI identifiers\n    - Journal information\n    - Citation counts (when available)",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_from_pubmed",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_from_pubmed(query, max_results=10):\n    \"\"\"在 PubMed 上搜索论文\"\"\"\n    # 1. 在 PubMed 上执行搜索\n    handle = Entrez.esearch(\n        db=\"pubmed\",\n        term=query,\n        retmax=max_results,\n        sort=\"relevance\",\n        httppost={\"proxies\": proxies},  # 添加代理信息\n    )",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_reference_openalex",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def fetch_reference_openalex(ref_id):\n    \"\"\"获取单个文献的详细信息\"\"\"\n    try:\n        ref_url = f\"https://api.openalex.org/works/{ref_id}\"\n        ref_response = requests.get(ref_url)\n        if ref_response.status_code != 200:\n            logger.error(\n                f\"Reference Failed to retrieve reference data: {ref_response.status_code}\"\n            )\n            return None",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_doc_via_url_parallel_openalex",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_doc_via_url_parallel_openalex(referenced_works, max_workers=4, timeout=10):\n    \"\"\"并行获取多个文献信息\"\"\"\n    references = []\n    if len(referenced_works) > 100:\n        referenced_works = random.sample(referenced_works, 20)\n    with ThreadPoolExecutor(max_workers=max_workers) as executor:\n        future_to_ref = {\n            executor.submit(fetch_reference_openalex, ref_id): ref_id\n            for ref_id in referenced_works\n        }",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_doc_via_url_from_openalex",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_doc_via_url_from_openalex(data):\n    referenced_works = data\n    references = []\n    for ref_id in referenced_works:\n        try:\n            ref_url = f\"https://api.openalex.org/works/{ref_id}\"\n            ref_response = requests.get(ref_url, timeout=10)\n            if ref_response.status_code == 200:\n                ref_data = ref_response.json()\n                is_open = ref_data.get(\"open_access\", {}).get(\"is_oa\", False)",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_paper_via_query_from_openalex",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_paper_via_query_from_openalex(\n    keyword, page=1, per_page=10, search_reference=False\n):\n    \"\"\"从openalex获取相关论文，要输入关键词，不支持自然语言的输入，效果不好\"\"\"\n    try:\n        logger.info(\"search_paper_via_query_from_openalex\")\n        base_url = \"https://api.openalex.org/works\"\n        current_year = datetime.now().year\n        start_year = current_year - 20\n        # print(f\"start_year: {start_year}\")",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_paper_via_query_from_semantic",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_paper_via_query_from_semantic(query, max_paper_num=15, end_date=None):\n    \"\"\"\n    从semantic sholar获取相关关query，失败率较高，query是对应的关键词，自然语言查询表现不好\n    find schema info here:\n    https://api.semanticscholar.org/api-docs/#tag/Paper-Data/operation/get_graph_paper_relevance_search\n    citationCount: 引用本文的论文数量\n    referenceCount: 本文引用的论文的数量\n    \"\"\"\n    logger.info(\"run search_paper_via_query_from_semantic...\")\n    if \"Search queries: \" in query:",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "google_search_arxiv_id",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def google_search_arxiv_id(query, try_num=4, num=10, end_date=\"\"):\n    \"\"\"从google搜索arxiv id, 要是用api，免费额度2500\"\"\"\n    # refer from: https://serper.dev/playground\n    url = \"https://google.serper.dev/search\"\n    search_query = f\"{query} site:arxiv.org\"\n    # logger.info(f\"end_date: {end_date}\")\n    if end_date != \"\":\n        try:\n            end_date = datetime.strptime(end_date, \"%Y%m%d\").strftime(\"%Y-%m-%d\")\n            search_query = f\"{query} before:{end_date} site:arxiv.org\"",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "get_doc_info_from_semantic_scholar_by_arxivid",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def get_doc_info_from_semantic_scholar_by_arxivid(\n    arxiv_id: str, try_num: int = 5, timeout: float = 10.0, raise_on_error: bool = False\n) -> Optional[Dict[str, Any]]:\n    \"\"\"\n    根据 arXiv ID 从 Semantic Scholar 获取论文信息，信息非常丰富\n    Args:\n        arxiv_id (str): arXiv 论文 ID，例如 \"1706.03762\"。\n        try_num (int): 最大重试次数，默认 5。\n        timeout (float): 单次请求超时时间（秒），默认 20.0。\n        raise_on_error (bool): 是否在失败时抛出异常而非警告，默认 False。",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "get_openalex_info",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def get_openalex_info(arxiv_id):\n    # 没跑通\n    url = f\"https://api.openalex.org/works/https://arxiv.org/abs/{arxiv_id}\"\n    response = requests.get(url, proxies=proxies)\n    if response.status_code == 200:\n        data = response.json()\n        return {\n            \"title\": data.get(\"title\"),\n            \"cited_by_count\": data.get(\"cited_by_count\"),\n            \"referenced_works\": data.get(\"referenced_works\"),",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_paper_from_arxiv_by_arxiv_id",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_paper_from_arxiv_by_arxiv_id(arxiv_id, try_num=5):\n    \"\"\"\n    Search paper by arxiv id from Arxiv.\n    :param arxiv_id: arxiv id of the paper\n    :return: paper list\n    \"\"\"\n    logger.info(\"search_paper_from_arxiv_by_arxiv_id ... \")\n    search = arxiv.Search(\n        query=\"\",\n        id_list=[arxiv_id],",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "search_paper_from_arxiv_by_arxiv_id_bsz",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def search_paper_from_arxiv_by_arxiv_id_bsz(arxiv_ids, max_retries=3):\n    \"\"\"\n    批量查询多个 Arxiv ID，加入重试机制\n    :param arxiv_ids: 论文 ID 列表\n    :param max_retries: 最大重试次数\n    :return: Dict[str, Dict] -> {arxivId: paper_info}\n    \"\"\"\n    for attempt in range(max_retries):\n        try:\n            search = arxiv.Search(",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "parallel_search_search_paper_from_arxiv",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def parallel_search_search_paper_from_arxiv(\n    arxiv_id_list: List[str],\n    batch_size: int = 5,\n    max_workers: int = 2\n) -> Dict[str, Dict]:\n    \"\"\"\n    使用线程池并行查询 Arxiv 论文（优化版本）\n    \"\"\"\n    if not arxiv_id_list:\n        return {}",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "get_doc_info_from_api",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def get_doc_info_from_api(query, try_num=5, end_date=\"\"):\n    \"\"\"\n    输入query，调用google搜索，获取arxiv_id，再从arxiv获取文章信息\n    \"\"\"\n    try:\n        arxiv_lst = google_search_arxiv_id(\n            query=query, try_num=try_num, end_date=end_date\n        )\n        logger.info(f\"arxiv_lst: {len(arxiv_lst)}\")\n        doc_info = parallel_search_search_paper_from_arxiv(arxiv_lst)",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "get_doc_info_from_api",
+        "kind": 2,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "def get_doc_info_from_api(query, try_num=5, end_date=\"\"):\n    \"\"\"\n    输入query，调用google搜索，获取arxiv_id，再从arxiv获取文章信息\n    \"\"\"\n    try:\n        arxiv_lst = google_search_arxiv_id(\n            query=query, try_num=try_num, end_date=end_date\n        )\n        logger.info(f\"arxiv_lst: {len(arxiv_lst)}\")\n        doc_info = parallel_search_search_paper_from_arxiv(arxiv_lst)",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "Entrez.email",
+        "kind": 5,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "Entrez.email = \"xxx@163.com\"\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# Register at: https://serper.dev/\nGOOGLE_SERPER_KEY = os.getenv(\"GOOGLE_SERPER_KEY\", \"xxx\")\ndef fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "proxies",
+        "kind": 5,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\narxiv_client = arxiv.Client(delay_seconds=0.05)\n# Register at: https://serper.dev/\nGOOGLE_SERPER_KEY = os.getenv(\"GOOGLE_SERPER_KEY\", \"xxx\")\ndef fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)\n    - Publication dates (year, month, day)",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "arxiv_client",
+        "kind": 5,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "arxiv_client = arxiv.Client(delay_seconds=0.05)\n# Register at: https://serper.dev/\nGOOGLE_SERPER_KEY = os.getenv(\"GOOGLE_SERPER_KEY\", \"xxx\")\ndef fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)\n    - Publication dates (year, month, day)\n    - Research fields/MeSH terms",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_SERPER_KEY",
+        "kind": 5,
+        "importPath": "core.generation.websearch_scholar",
+        "description": "core.generation.websearch_scholar",
+        "peekOfCode": "GOOGLE_SERPER_KEY = os.getenv(\"GOOGLE_SERPER_KEY\", \"xxx\")\ndef fetch_pubmed_json(pmid_list):\n    \"\"\"\n    Retrieve structured PubMed paper information with enhanced metadata extraction.\n    Extracts comprehensive information including:\n    - ArXiv identifiers (when available)\n    - Publication dates (year, month, day)\n    - Research fields/MeSH terms\n    - DOI identifiers\n    - Journal information",
+        "detail": "core.generation.websearch_scholar",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIRequest",
+        "kind": 6,
+        "importPath": "core.request_warp._openai",
+        "description": "core.request_warp._openai",
+        "peekOfCode": "class OpenAIRequest:\n    def __init__(self, model):\n        self.client = OpenAI(\n            api_key=os.environ.get(\"OPENAI_API_KEY\"),\n            base_url=os.environ.get(\"OPENAI_API_BASE\"),\n        )\n        self.model = model\n    @retry(\n        wait=wait_random_exponential(multiplier=2, max=60),\n        stop=stop_after_attempt(100),",
+        "detail": "core.request_warp._openai",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "core.request_warp._openai",
+        "description": "core.request_warp._openai",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass OpenAIRequest:\n    def __init__(self, model):\n        self.client = OpenAI(\n            api_key=os.environ.get(\"OPENAI_API_KEY\"),\n            base_url=os.environ.get(\"OPENAI_API_BASE\"),\n        )\n        self.model = model\n    @retry(\n        wait=wait_random_exponential(multiplier=2, max=60),",
+        "detail": "core.request_warp._openai",
+        "documentation": {}
+    },
+    {
+        "label": "GoogleRequest",
+        "kind": 6,
+        "importPath": "core.request_warp.google",
+        "description": "core.request_warp.google",
+        "peekOfCode": "class GoogleRequest:\n    def __init__(self, model: str):\n        self.client = genai.Client(\n            api_key=os.environ.get(\"GOOGLE_API_KEY\"),\n            )\n        self.model = model\n    @retry(\n        wait=wait_random_exponential(multiplier=2, max=60),\n        stop=stop_after_attempt(10),\n        retry=retry_if_exception_type(Exception)  # 网络、限流、服务端错误等都重试",
+        "detail": "core.request_warp.google",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "core.request_warp.google",
+        "description": "core.request_warp.google",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# proxy = \"http://127.0.0.1:7890\"\n# os.environ[\"HTTP_PROXY\"]  = proxy\n# os.environ[\"http_proxy\"]  = proxy\n# os.environ[\"HTTPS_PROXY\"] = proxy\n# os.environ[\"https_proxy\"] = proxy\nfrom google import genai\nclass GoogleRequest:\n    def __init__(self, model: str):\n        self.client = genai.Client(",
+        "detail": "core.request_warp.google",
+        "documentation": {}
+    },
+    {
+        "label": "LocalRequest",
+        "kind": 6,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "class LocalRequest:\n    def __init__(self, model=\"xxx\"):\n        self.model = model\n        logger.warning(\n            f\"Token counter is not supported in LocalRequest, each request will be counted as 1 token\"\n        )\n    @retry(\n        wait=wait_random_exponential(multiplier=2, max=60),\n        stop=stop_after_attempt(30),\n        retry=retry_if_exception_type(",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "file_path",
+        "kind": 5,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "file_path = \"./local_request_v2.py\"\n# 2. 设置模块名（随便起，但不能和已有模块冲突）\nmodule_name = \"local_request\"\n# 3. 动态导入模块\nspec = importlib.util.spec_from_file_location(module_name, file_path)\nyour_script = importlib.util.module_from_spec(spec)\nsys.modules[module_name] = your_script\nspec.loader.exec_module(your_script)\nfrom collections import defaultdict\nfrom json.decoder import JSONDecodeError",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "module_name",
+        "kind": 5,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "module_name = \"local_request\"\n# 3. 动态导入模块\nspec = importlib.util.spec_from_file_location(module_name, file_path)\nyour_script = importlib.util.module_from_spec(spec)\nsys.modules[module_name] = your_script\nspec.loader.exec_module(your_script)\nfrom collections import defaultdict\nfrom json.decoder import JSONDecodeError\nfrom tenacity import (\n    retry,",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "spec",
+        "kind": 5,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "spec = importlib.util.spec_from_file_location(module_name, file_path)\nyour_script = importlib.util.module_from_spec(spec)\nsys.modules[module_name] = your_script\nspec.loader.exec_module(your_script)\nfrom collections import defaultdict\nfrom json.decoder import JSONDecodeError\nfrom tenacity import (\n    retry,\n    stop_after_attempt,\n    wait_random_exponential,",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "your_script",
+        "kind": 5,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "your_script = importlib.util.module_from_spec(spec)\nsys.modules[module_name] = your_script\nspec.loader.exec_module(your_script)\nfrom collections import defaultdict\nfrom json.decoder import JSONDecodeError\nfrom tenacity import (\n    retry,\n    stop_after_attempt,\n    wait_random_exponential,\n    before_sleep_log,",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules[module_name]",
+        "kind": 5,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "sys.modules[module_name] = your_script\nspec.loader.exec_module(your_script)\nfrom collections import defaultdict\nfrom json.decoder import JSONDecodeError\nfrom tenacity import (\n    retry,\n    stop_after_attempt,\n    wait_random_exponential,\n    before_sleep_log,\n    retry_if_exception_type,",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "core.request_warp.local",
+        "description": "core.request_warp.local",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass LocalRequest:\n    def __init__(self, model=\"xxx\"):\n        self.model = model\n        logger.warning(\n            f\"Token counter is not supported in LocalRequest, each request will be counted as 1 token\"\n        )\n    @retry(\n        wait=wait_random_exponential(multiplier=2, max=60),\n        stop=stop_after_attempt(30),",
+        "detail": "core.request_warp.local",
+        "documentation": {}
+    },
+    {
+        "label": "track_completion_calls",
+        "kind": 2,
+        "importPath": "core.request_warp.token_counter",
+        "description": "core.request_warp.token_counter",
+        "peekOfCode": "def track_completion_calls(cls):\n    original_completion = cls.completion\n    def _completion_counter():\n        cls._calls_count += 1\n        logger.info(f\"Current total count of openai api calls: {cls._calls_count}\")\n        return\n    def token_logger(self, *args, **kwargs):\n        answer = original_completion(self, *args, **kwargs)\n        _completion_counter()\n        table_data = []",
+        "detail": "core.request_warp.token_counter",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "core.request_warp.token_counter",
+        "description": "core.request_warp.token_counter",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef track_completion_calls(cls):\n    original_completion = cls.completion\n    def _completion_counter():\n        cls._calls_count += 1\n        logger.info(f\"Current total count of openai api calls: {cls._calls_count}\")\n        return\n    def token_logger(self, *args, **kwargs):\n        answer = original_completion(self, *args, **kwargs)\n        _completion_counter()",
+        "detail": "core.request_warp.token_counter",
+        "documentation": {}
+    },
+    {
+        "label": "RequestWrapper",
+        "kind": 6,
+        "importPath": "core.request_warp.wrapper",
+        "description": "core.request_warp.wrapper",
+        "peekOfCode": "class RequestWrapper:\n    _connection_semaphore = {}\n    _calls_count = 0  # 用来统计api的调用次数\n    _token_usage_history = []  # 用来统计每次调用时使用的token数\n    def __init__(self, model=\"xxx\", infer_type=\"local\", connection=20, port=None):\n        self.request_pool = None\n        self.model = model\n        self._connection_semaphore[model] = Semaphore(connection)\n        self.request_pool = LocalRequest(model=model)\n    def completion(self, message, **kwargs):",
+        "detail": "core.request_warp.wrapper",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "core.request_warp.wrapper",
+        "description": "core.request_warp.wrapper",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass RequestWrapper:\n    _connection_semaphore = {}\n    _calls_count = 0  # 用来统计api的调用次数\n    _token_usage_history = []  # 用来统计每次调用时使用的token数\n    def __init__(self, model=\"xxx\", infer_type=\"local\", connection=20, port=None):\n        self.request_pool = None\n        self.model = model\n        self._connection_semaphore[model] = Semaphore(connection)\n        self.request_pool = LocalRequest(model=model)",
+        "detail": "core.request_warp.wrapper",
+        "documentation": {}
+    },
+    {
+        "label": "ModelConfig",
+        "kind": 6,
+        "importPath": "core.configuration",
+        "description": "core.configuration",
+        "peekOfCode": "class ModelConfig:\n    \"\"\"Configuration for LLM models\"\"\"\n    url: str\n    max_len: int\n    temperature: float = 0.8\n    model_name: str = \"\"\n    top_p: float = 0.9\n    top_k: int = 20\n    min_p: int = 0\n    retry_attempts: int = 20",
+        "detail": "core.configuration",
+        "documentation": {}
+    },
+    {
         "label": "GlobalSemaphorePool",
         "kind": 6,
         "importPath": "core.configuration",
@@ -5975,11 +6484,38 @@
         "documentation": {}
     },
     {
+        "label": "MODEL_CONFIGS",
+        "kind": 5,
+        "importPath": "core.configuration",
+        "description": "core.configuration",
+        "peekOfCode": "MODEL_CONFIGS = {\n    \"llama3-70b\": ModelConfig(\n        url=\"http://0.0.0.0:9087/v1/chat/completions\",\n        max_len=131072,\n    ),\n    \"Qwen3-8B\": ModelConfig(\n        url=\"http://0.0.0.0:9096/v1\",\n        max_len=131072,\n        model_name=\"Qwen/Qwen3-8B\",\n        think_bool=False,",
+        "detail": "core.configuration",
+        "documentation": {}
+    },
+    {
         "label": "DEFAULT_MODEL_FOR_QUERY_INTENT",
         "kind": 5,
         "importPath": "core.configuration",
         "description": "core.configuration",
-        "peekOfCode": "DEFAULT_MODEL_FOR_QUERY_INTENT = (\n    \"Qwen3-32B\"  # Model used for generating search queries from outline content points\n)\n# -- OUTLINE --\nDEFAULT_MODEL_FOR_OUTLINE: str = \"Qwen3-32B\"  # Changed from gpt-4-32k to Qwen25-72B\n# Currently using only Qwen model for outline generation\nOUTLINE_GENERAOR_MODELS: List[str] = [\n    \"Qwen3-32B\",\n    \"Qwen3-14B\",\n    \"Qwen25-72B\",",
+        "peekOfCode": "DEFAULT_MODEL_FOR_QUERY_INTENT = (\n    \"Qwen3-32B\"  # Model used for generating search queries from outline content points\n)\n# -- OUTLINE --\nDEFAULT_MODEL_FOR_OUTLINE: str = \"Qwen3-32B\"  # Changed from gpt-4-32k to Qwen25-72B\n# Currently using only Qwen model for outline generation\nOUTLINE_GENERAOR_MODELS: List[str] = [\n    \"Qwen3-32B\",\n    \"Qwen3-14B\",\n]",
+        "detail": "core.configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str",
+        "kind": 5,
+        "importPath": "core.configuration",
+        "description": "core.configuration",
+        "peekOfCode": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = \"Qwen3-14B\"\nDEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = \"Qwen3-14B\"\nSECTION_SUMMARY_MODEL: str = \"Qwen3-32B\"  # gpt-4-32k\nSECTION_REFLECTION_MODEL_LST = [\"Qwen3-32B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-32B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1",
+        "detail": "core.configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str",
+        "kind": 5,
+        "importPath": "core.configuration",
+        "description": "core.configuration",
+        "peekOfCode": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = \"Qwen3-14B\"\nSECTION_SUMMARY_MODEL: str = \"Qwen3-32B\"  # gpt-4-32k\nSECTION_REFLECTION_MODEL_LST = [\"Qwen3-32B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-32B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1\nMODEL_GEN_ABSTRACT_CONCLUSION: str = \"Qwen3-32B\"",
         "detail": "core.configuration",
         "documentation": {}
     },
@@ -6200,15 +6736,6 @@
         "documentation": {}
     },
     {
-        "label": "ModelConfig",
-        "kind": 6,
-        "importPath": "core.local_model_langchain",
-        "description": "core.local_model_langchain",
-        "peekOfCode": "class ModelConfig:\n    \"\"\"Configuration for LLM models\"\"\"\n    url: str\n    max_len: int\n    temperature: float = 0.8\n    top_p: float = 0.9\n    top_k: int = 20\n    min_p: int = 0\n    retry_attempts: int = 10\n    timeout: int = 200",
-        "detail": "core.local_model_langchain",
-        "documentation": {}
-    },
-    {
         "label": "RequestsClient",
         "kind": 6,
         "importPath": "core.local_model_langchain",
@@ -6245,15 +6772,6 @@
         "documentation": {}
     },
     {
-        "label": "MODEL_CONFIGS",
-        "kind": 5,
-        "importPath": "core.local_model_langchain",
-        "description": "core.local_model_langchain",
-        "peekOfCode": "MODEL_CONFIGS = {\n    \"Qwen25-72B\": ModelConfig(\n        url=\"http://0.0.0.0:9071/v1/chat/completions\",\n        max_len=5800,\n    ),\n    \"Qwen25-7B\": ModelConfig(\n        url=\"http://0.0.0.0:9072/v1/chat/completions\",\n        max_len=8192,\n    ),\n    \"llama3-70b\": ModelConfig(",
-        "detail": "core.local_model_langchain",
-        "documentation": {}
-    },
-    {
         "label": "Callbacks",
         "kind": 5,
         "importPath": "core.local_model_langchain",
@@ -6276,17 +6794,8 @@
         "kind": 5,
         "importPath": "core.local_model_langchain",
         "description": "core.local_model_langchain",
-        "peekOfCode": "LOCAL_MODELS = {\n    model_name: LocalChatModel(\n        model_name=model_name, stop=[\"\\n\\n\"], presence_penalty=0.1\n    )\n    for model_name in MODEL_CONFIGS\n}\n# if __name__ == \"__main__\":\n#     # Example 1: Simple message\n#     model = LocalChatModel(model_name=\"Qwen3-32B\", temperature=0.5, max_tokens=2000)\n#     response = model.invoke(\"Tell me about artificial intelligence\")",
+        "peekOfCode": "LOCAL_MODELS = {\n    model_name: LocalChatModel(\n        model_name=model_name, stop=[\"\\n\\n\"], presence_penalty=0.1\n    )\n    for model_name in MODEL_CONFIGS\n}\nif __name__ == \"__main__\":\n    # Example 1: Simple message\n    model = LocalChatModel(model_name=\"Qwen3-14B\", temperature=0.5, max_tokens=2000)\n    response = model.invoke(\"Tell me who you are? \")",
         "detail": "core.local_model_langchain",
-        "documentation": {}
-    },
-    {
-        "label": "ModelConfig",
-        "kind": 6,
-        "importPath": "core.local_request_v2",
-        "description": "core.local_request_v2",
-        "peekOfCode": "class ModelConfig:\n    \"\"\"Configuration for LLM models\"\"\"\n    url: str\n    max_len: int\n    temperature: float = 0.8\n    model_name: str = \"\"\n    top_p: float = 0.9\n    top_k: int = 20\n    min_p: int = 0\n    retry_attempts: int = 20",
-        "detail": "core.local_request_v2",
         "documentation": {}
     },
     {
@@ -6304,15 +6813,6 @@
         "importPath": "core.local_request_v2",
         "description": "core.local_request_v2",
         "peekOfCode": "def get_from_llm(\n    messages: Union[str, List[Dict[str, str]]], model_name: str = \"Qwen25-7B\", **kwargs\n) -> Optional[str]:\n    \"\"\"\n    Get response from LLM with improved error handling and retries.\n    Args:\n        messages: Input messages (string or list of message dicts)\n        model_name: Name of the model to use\n        **kwargs: Additional parameters to override defaults\n    Returns:",
-        "detail": "core.local_request_v2",
-        "documentation": {}
-    },
-    {
-        "label": "MODEL_CONFIGS",
-        "kind": 5,
-        "importPath": "core.local_request_v2",
-        "description": "core.local_request_v2",
-        "peekOfCode": "MODEL_CONFIGS = {\n    \"Qwen3-8B\": ModelConfig(\n        url=\"http://0.0.0.0:9096/v1\",\n        max_len=131072,\n        model_name=\"Qwen/Qwen3-8B\",\n        think_bool=False,\n        temperature=0.7,\n        top_p=0.8,\n        top_k=20,\n        min_p=0,",
         "detail": "core.local_request_v2",
         "documentation": {}
     },
@@ -8600,6 +9100,87 @@
         "description": "eval.local_request",
         "peekOfCode": "client = LLMClient()\n@func_set_timeout(200)\ndef get_from_llm(\n    messages: Union[str, List[Dict[str, str]]], model_name: str = \"Qwen25-7B\", **kwargs\n) -> Optional[str]:\n    \"\"\"\n    Get response from LLM with improved error handling and retries.\n    Args:\n        messages: Input messages (string or list of message dicts)\n        model_name: Name of the model to use",
         "detail": "eval.local_request",
+        "documentation": {}
+    },
+    {
+        "label": "remove_version_tags",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def remove_version_tags(text):\n    \"\"\"\n    Remove 'v1', 'v2', 'v3' from a string.\n    Args:\n        text (str): input string\n    Returns:\n        str: string after removing version tags\n    \"\"\"\n    return re.sub(r'\\bv[1-3]\\b', '', text)\ndef string_similarity(s1, s2):",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "string_similarity",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def string_similarity(s1, s2):\n    s1 = s1.lower()\n    s2 = s2.lower()\n    return SequenceMatcher(None, s1, s2).ratio()\ndef is_similar(sentence, paragraph, threshold=0.8):\n    sentence = sentence.strip().lower()\n    sub_sentences = re.split(r'[.!?。\\n]', paragraph.lower())\n    for sub in sub_sentences:\n        if string_similarity(sentence, sub.strip()) >= threshold:\n            print(\"sentence:\", sentence)",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "is_similar",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def is_similar(sentence, paragraph, threshold=0.8):\n    sentence = sentence.strip().lower()\n    sub_sentences = re.split(r'[.!?。\\n]', paragraph.lower())\n    for sub in sub_sentences:\n        if string_similarity(sentence, sub.strip()) >= threshold:\n            print(\"sentence:\", sentence)\n            print(\"sub:\", sub.strip())\n            return 1\n    return 0\ndef read_jsonl_file(filepath):",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "read_jsonl_file",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def read_jsonl_file(filepath):\n    \"\"\"\n    Read a .jsonl file and return a list of parsed JSON objects, one per line.\n    Args:\n        filepath (str): path to the .jsonl file\n    Returns:\n        List[dict]: list of JSON objects from each line\n    \"\"\"\n    data = []\n    with open(filepath, 'r', encoding='utf-8') as f:",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "write_jsonl",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def write_jsonl(data_list, save_path):\n    \"\"\"\n    Write a list of dictionaries to a JSONL file.\n    Args:\n    - data_list: List[dict], data to write, each dict is one JSON line.\n    - save_path: str, path to save the file, e.g., \"output.jsonl\"\n    \"\"\"\n    with open(save_path, 'w', encoding='utf-8') as f:\n        for item in data_list:\n            json_line = json.dumps(item, ensure_ascii=False)",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "extract_all_second_sentences",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def extract_all_second_sentences(text):\n    \"\"\"\n    Extract from the text:\n    1. The second sentence following any [xxx] or 【xxx】 brackets;\n    2. The second sentence of every paragraph after line breaks.\n    Returns a list of all extracted sentences.\n    \"\"\"\n    def get_second_sentence(fragment):\n        # Simple sentence splitting: split by . ! ? followed by space or end of string\n        sentences = re.split(r'(?<=[.?!。？！])\\s+', fragment.strip())",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "load_all_jsonl_from_folder",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def load_all_jsonl_from_folder(folder_path):\n    \"\"\"\n    Traverse all .jsonl files in a folder and merge their contents into a single list.\n    Args:\n        folder_path: path to the folder containing multiple .jsonl files\n    Returns:\n        list: combined list of all entries from all .jsonl files\n    \"\"\"\n    all_data = []\n    for filename in os.listdir(folder_path):",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "clean_arxiv_url",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def clean_arxiv_url(url):\n    \"\"\"\n    Remove version numbers (like v1, v2, v3) from arXiv URLs.\n    Args:\n        url (str): string containing an arXiv URL\n    Returns:\n        str: URL with version numbers removed\n    \"\"\"\n    return re.sub(r'(http://arxiv\\.org/abs/\\d+\\.\\d+)(v\\d+)', r'\\1', url)\ndef optimized_similarity_match(datas_SurveyScope, generate_papers_file_path):",
+        "detail": "eval.reference_eval",
+        "documentation": {}
+    },
+    {
+        "label": "optimized_similarity_match",
+        "kind": 2,
+        "importPath": "eval.reference_eval",
+        "description": "eval.reference_eval",
+        "peekOfCode": "def optimized_similarity_match(datas_SurveyScope, generate_papers_file_path):\n    reference_n = 0\n    SurveyScope_references_n = 0\n    paper_references_n = 0\n    # Step 1: 缓存所有 .jsonl 文件路径\n    jsonl_files = []\n    for root, _, files in os.walk(generate_papers_file_path):\n        for filename in files:\n            if filename.endswith('.jsonl'):\n                jsonl_files.append((filename, os.path.join(root, filename)))",
+        "detail": "eval.reference_eval",
         "documentation": {}
     }
 ]

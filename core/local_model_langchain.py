@@ -41,47 +41,9 @@ from langchain_core.outputs import (
 from langchain_core.runnables import RunnableConfig
 
 from log import logger
-from openai import OpenAI  # 引入 OpenAI 客户端
 
+from configuration import MODEL_CONFIGS
 
-@dataclass
-class ModelConfig:
-    """Configuration for LLM models"""
-
-    url: str
-    max_len: int
-    temperature: float = 0.8
-    top_p: float = 0.9
-    top_k: int = 20
-    min_p: int = 0
-    retry_attempts: int = 10
-    timeout: int = 200
-    additional_kwargs: Dict[str, Any] = field(default_factory=dict)
-    openai_client: Optional[Any] = None
-
-# Model configurations
-MODEL_CONFIGS = {
-    "Qwen25-72B": ModelConfig(
-        url="http://0.0.0.0:9071/v1/chat/completions",
-        max_len=5800,
-    ),
-    "Qwen25-7B": ModelConfig(
-        url="http://0.0.0.0:9072/v1/chat/completions",
-        max_len=8192,
-    ),
-    "llama3-70b": ModelConfig(
-        url="http://0.0.0.0:9087/v1/chat/completions",
-        max_len=131072,
-    ),
-    "Qwen3-32B": ModelConfig(
-        url="http://0.0.0.0:9094/v1",
-        max_len=131072,
-        openai_client=OpenAI(
-            api_key="EMPTY",
-            base_url="http://0.0.0.0:9094/v1",
-        ),
-    ),
-}
 
 
 
@@ -115,7 +77,7 @@ class RequestsClient:
     ) -> Optional[str]:
         """Make HTTP request with caching"""
         try:
-            if "Qwen3-32B" in data["model"]:  # 判断是否使用 Qwen3-32B 模型
+            if "Qwen3" in data["model"]:  # 判断是否使用 Qwen3-32B 模型
                 return self._make_qwen3_request(data)
             else:
                 response = self.session.post(url, json=data, timeout=timeout)
@@ -133,17 +95,19 @@ class RequestsClient:
 
     def _make_qwen3_request(self, data: Dict[str, Any]) -> Optional[str]:
         """Handle requests specifically for Qwen3-32B using OpenAI client"""
-        logger.info("_make_qwen3_request")
+        # logger.info("_make_qwen3_request")
         try:
             openai_client = MODEL_CONFIGS[data["model"]].openai_client
             chat_response = openai_client.chat.completions.create(
-                model="Qwen/Qwen3-32B",
+                model=MODEL_CONFIGS[data["model"]].model_name,
                 messages=data["messages"],
                 temperature=data.get("temperature", 0.7),
                 top_p=data.get("top_p", 0.8),
                 presence_penalty=1.5,
                 extra_body={
-                    "chat_template_kwargs": {"enable_thinking": False},
+                    "chat_template_kwargs": {
+                        "enable_thinking": data.get("think_bool", False),
+                    },
                     "top_k": data.get("top_k", 20),  # Added to extra_body
                     "min_p": data.get("min_p", 0),  # Added to extra_body
                 },  # Disable thinking mode
@@ -581,13 +545,13 @@ LOCAL_MODELS = {
     for model_name in MODEL_CONFIGS
 }
 
-# if __name__ == "__main__":
-#     # Example 1: Simple message
-#     model = LocalChatModel(model_name="Qwen3-32B", temperature=0.5, max_tokens=2000)
-#     response = model.invoke("Tell me about artificial intelligence")
-#     print(f"s1 Response: {response.content}")
+if __name__ == "__main__":
+    # Example 1: Simple message
+    model = LocalChatModel(model_name="Qwen3-14B", temperature=0.5, max_tokens=2000)
+    response = model.invoke("Tell me who you are? ")
+    print(f"s1 Response: {response.content}")
 
-#     # Example 3: Using ChatOpenAI-style parameters
+#     # Example 2: Using ChatOpenAI-style parameters
 #     messages = [
 #         SystemMessage(content="You are a helpful assistant"),
 #         HumanMessage(content="Write a short poem about technology"),

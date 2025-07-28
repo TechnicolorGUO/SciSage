@@ -11,7 +11,7 @@ from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime
 import traceback
 from log import logger
-from generation.local_request_v2 import get_from_llm
+from local_request_v2 import get_from_llm
 
 # 重排序提示模板
 RERANK_TEMPLATE = """You are an expert academic researcher tasked with ranking research papers based on their relevance, authority, and timeliness for a given query.

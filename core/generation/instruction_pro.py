@@ -573,3 +573,117 @@ template_extract_keywords_source_aware = """Extract optimal search keywords from
 Now, extract optimized search keywords for {source} from this question:
 {user_query}
 """
+
+
+
+# crawl4ai prompts
+PAGE_REFINE_PROMPT = """Analyze and process the following web page content related to '{topic}'. Output the main body text, removing image links, website URLs, advertisements, meaningless repeated characters, etc. Summarization of the content is prohibited, and all information related to the topic should be retained.
+
+Original web page content:
+{raw_content}
+
+[Output requirements]
+- Title: <TITLE>Your title</TITLE>
+- Filtered text: <CONTENT>Filtered text</CONTENT>
+"""
+
+SIMILARITY_PROMPT = """Evaluate the quality of the following content retrieved from the internet based on the given topic, and give a suitable title about the content. Provide a critical and strict assessment.
+
+Topic: {topic}
+Content: {content}
+
+Evaluate the content based on the following dimensions:
+
+1. **Relevance to the topic**: Assess whether the content can be considered a subset or expansion of the topic.
+2. **Usability for writing about the topic**: Consider factors such as text length (e.g., very short texts have lower reference value), presence of garbled characters, and overall text quality.
+
+Provide a rationale for your evaluation before assigning scores. Score each dimension on a scale of 0-100, where 0 indicates no relevance and 100 indicates perfect relevance. Calculate the final average score after scoring each dimension.
+
+Enclose the scores in `<SCORE></SCORE>` tags. For example: `<SCORE>78</SCORE>`
+Enclose the title in `<TITLE></TITLE>` tags. For example: `<TITLE>Title</TITLE>`
+
+Example response:
+Rationale: ...
+Relevance score: <SCORE>89</SCORE>
+Title: <TITLE>Title</TITLE>
+"""
+
+
+
+# crawl4ai prompts
+PAGE_REFINE_PROMPT="""分析并处理以下与‘{topic}’相关的网页内容。输出主体文本，去除图片链接，网址链接，广告，无意义重复字符等。禁止对内容进行总结，应保留所有与主题相关的信息。
+
+原始网页内容：
+{raw_content}
+
+[输出要求]
+- 标题：<TITLE>你的标题</TITLE>
+- 过滤后文本：<CONTENT>过滤后文本</CONTENT>
+"""
+
+SIMILARITY_PROMPT="""请你依据下列主题和在互联网上检索到的内容，判断这段内容的质量分数。
+
+主题：{topic}
+检索到的内容：{content}
+
+请你依据以下几个维度，对这段检索到的内容进行打分。请你尽可能严格，批判性给分。
+
+1. 内容与主题的相关程度。这需要考虑内容是否能被视为主题的一部分子内容进行展开。
+2. 内容能够用于撰写与主题的文本的质量。这需要考虑文本的长度（例如：如果长度非常短，则用于参考的价值相对较低）、文本中是否包含较多乱码、文本本身的质量等。
+
+请你综合考量上述两个维度，先给出评分的理由，再进行评分。你需要对每一个维度进行评分，评分范围是0-100。0表示完全不相关，100表示完全相关。完成每一个维度的评分后，你需要进行计算，得出最后的平均分。
+
+注意，评分需要用<SCORE></SCORE>包裹起来。例如<SCORE>78<SCORE>
+
+回答示例：
+理由：...
+相似度评分：<SCORE>89</SCORE>
+"""
+
+
+
+PAGE_REFINE_PROMPT="""请你处理以下与主题“{topic}”相关的网页内容，提取其核心文本信息，去除无关或冗余内容，输出结构化结果。
+
+原始网页内容：
+{raw_content}
+
+【处理要求】
+- 必须保留所有与主题紧密相关的文本信息，包括关键信息、事实描述、数据、段落等。
+- **禁止进行总结或内容改写**，不得省略任何与主题相关的信息。
+- 请**去除**以下内容：图片链接、网址链接、广告标语、导航菜单、无意义重复字符、乱码、版权声明等无效信息。
+- 输出结构化内容，格式如下：
+
+【输出格式】
+- 标题：使用网页中最能代表主题的标题文字。
+  `<TITLE>标题文本</TITLE>`
+- 主体文本：为处理和清洗后的正文内容，按原始段落顺序保留。
+  `<CONTENT>正文文本</CONTENT>`
+
+【输出示例】
+<TITLE>清洁能源在中国城市供热中的应用</TITLE>
+<CONTENT>近年来，随着双碳目标的推进，中国多个城市开始探索以清洁能源替代传统燃煤锅炉……</CONTENT>
+"""
+
+SIMILARITY_PROMPT="""请你根据下列主题与其检索到的内容，从两个维度严格评估该内容的质量，并进行打分：
+
+主题：{topic}
+内容：{content}
+
+评估维度如下，请逐项给出评分理由与具体分数（0~100，0表示极差，100表示极好）：
+
+1. **主题相关性**：内容与主题的契合程度。请判断内容是否为主题的合理延伸或重要子内容，是否具有实质性关联。
+2. **写作参考价值**：该内容是否可用于撰写与主题相关的文本。请考虑其信息量（长度是否充分）、文本可读性（是否存在乱码、无意义片段）、语言质量等。
+
+请你：
+- 对每个维度分别打分，格式为 `<SUB_SCORE>xx</SUB_SCORE>`。
+- 给出详细评分理由。
+- 最后计算两个维度的平均分，并输出总评分，格式为：
+  **总评分：<SCORE>xx</SCORE>**
+
+回答示例：
+理由1：……
+主题相关性评分：<SUB_SCORE>85</SUB_SCORE>
+理由2：……
+写作参考价值评分：<SUB_SCORE>70</SUB_SCORE>
+总评分：<SCORE>77.5</SCORE>
+"""

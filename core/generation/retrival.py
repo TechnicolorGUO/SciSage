@@ -12,18 +12,20 @@ import time
 from typing import Dict, List, Any
 from generation.utils import flow_information_sync, keep_letters
 from log import logger
-from generation.api_web import (
+from generation.websearch_scholar import (
     get_doc_info_from_api,
     search_paper_via_query_from_openalex,
 )
 import requests
 from generation.global_config import recall_server_url
 import traceback
-from generation.generation_instructions import (
-    template_extract_keywords_source_aware,
-)
-from generation.local_request_v2 import get_from_llm
+from generation.generation_instructions import template_extract_keywords_source_aware
+
+from local_request_v2 import get_from_llm
 import re
+
+
+proxies = {"http": "http://localhost:1080", "https": "http://localhost:1080"}
 
 # 初始化 FastAPI 应用
 app = FastAPI()

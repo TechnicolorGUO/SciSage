@@ -22,7 +22,9 @@ from log import logger
 from models import SectionContent, Reference, Figure
 from configuration import (
     global_semaphores,
-    DEFAULT_MODEL_FOR_SECTION_WRITER
+    DEFAULT_MODEL_FOR_SECTION_WRITER,
+    DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT,
+    DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK
 )
 from generation.section_writer_actor import run_section_writer_actor
 
@@ -203,7 +205,12 @@ async def run_rag_chat(
                 )
 
                 # Call run_section_writer_actor instead of making HTTP request
-                response_data = await run_section_writer_actor(query, state.sub_task_id)
+                section_writer_model_info = {
+                    "rag_model":state.rag_model,
+                    "image_extraction_model": DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT,
+                    "reranker_model_name": DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK
+                }
+                response_data = await run_section_writer_actor(query, state.sub_task_id,section_writer_model_info)
 
                 # Check if the response is valid
                 if not response_data:

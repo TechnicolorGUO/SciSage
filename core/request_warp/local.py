@@ -1,0 +1,55 @@
+import os
+import requests
+from requests.exceptions import HTTPError
+import json
+import importlib.util
+import sys
+
+file_path = "./local_request_v2.py"
+# 2. 设置模块名（随便起，但不能和已有模块冲突）
+module_name = "local_request"
+# 3. 动态导入模块
+spec = importlib.util.spec_from_file_location(module_name, file_path)
+your_script = importlib.util.module_from_spec(spec)
+sys.modules[module_name] = your_script
+spec.loader.exec_module(your_script)
+
+
+from collections import defaultdict
+from json.decoder import JSONDecodeError
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_random_exponential,
+    before_sleep_log,
+    retry_if_exception_type,
+)
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class LocalRequest:
+    def __init__(self, model="xxx"):
+        self.model = model
+        logger.warning(
+            f"Token counter is not supported in LocalRequest, each request will be counted as 1 token"
+        )
+
+    @retry(
+        wait=wait_random_exponential(multiplier=2, max=60),
+        stop=stop_after_attempt(30),
+        retry=retry_if_exception_type(
+            (JSONDecodeError, HTTPError)
+        ),  # 如果不是这几个错就不retry了
+    )
+    def completion(self, messages, **kwargs):
+        config = self._format_config_params(kwargs)
+        answer = your_script.get_from_llm(messages[0]["content"], model_name=self.model)
+        return answer, 1
+
+    def _format_config_params(self, kwargs):
+        config = {}
+        for key, value in kwargs.items():
+            config[key] = value
+        return config
