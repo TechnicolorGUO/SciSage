@@ -232,8 +232,8 @@ db_path = "./database/new.db"
 # 示例用法
 # if __name__ == "__main__":
 #     # 初始化数据库
-#     db_path = "/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db"
-#     jsonl_file = "/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/id2docs.jsonl"
+#     db_path = "./database/arxiv_data.db"
+#     jsonl_file = "./database/id2docs.jsonl"
 
 #     db = ArxivDatabase(db_path)
 

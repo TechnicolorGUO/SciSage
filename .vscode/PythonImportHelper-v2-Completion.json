@@ -5368,11 +5368,47 @@
         "documentation": {}
     },
     {
+        "label": "GOOGLE_KEY",
+        "kind": 5,
+        "importPath": "core.generation.global_config",
+        "description": "core.generation.global_config",
+        "peekOfCode": "GOOGLE_KEY = \"xxx\"  # find here:\nS2_API_KEY = \"\"  # semantic scholar api\nDO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://0.0.0.0:5008/search\"",
+        "detail": "core.generation.global_config",
+        "documentation": {}
+    },
+    {
+        "label": "S2_API_KEY",
+        "kind": 5,
+        "importPath": "core.generation.global_config",
+        "description": "core.generation.global_config",
+        "peekOfCode": "S2_API_KEY = \"\"  # semantic scholar api\nDO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型",
+        "detail": "core.generation.global_config",
+        "documentation": {}
+    },
+    {
+        "label": "DO_REFERENCE_SEARCH",
+        "kind": 5,
+        "importPath": "core.generation.global_config",
+        "description": "core.generation.global_config",
+        "peekOfCode": "DO_REFERENCE_SEARCH = True\nDO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"",
+        "detail": "core.generation.global_config",
+        "documentation": {}
+    },
+    {
+        "label": "DO_REFERENCE_SEARCH",
+        "kind": 5,
+        "importPath": "core.generation.global_config",
+        "description": "core.generation.global_config",
+        "peekOfCode": "DO_REFERENCE_SEARCH = False\nproxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型",
+        "detail": "core.generation.global_config",
+        "documentation": {}
+    },
+    {
         "label": "proxies",
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b",
+        "peekOfCode": "proxies = {\"http\": \"http://localhost:1080\", \"https\": \"http://localhost:1080\"}\n# bge embedding model\nretrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5381,7 +5417,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "retrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
+        "peekOfCode": "retrival_model_url = \"http://0.0.0.0:9655/v1/emb/encoder\"\n# 召回服务\n# recall_server_url = recall_server_url\nrecall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5390,7 +5426,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "recall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
+        "peekOfCode": "recall_server_url = \"http://0.0.0.0:5008/search\"\n# 排序模型\nrerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5399,7 +5435,7 @@
         "kind": 5,
         "importPath": "core.generation.global_config",
         "description": "core.generation.global_config",
-        "peekOfCode": "rerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\n# chat_url = f\"http://120.92.91.62:9757/v1/chat/completions\" ## openscholar\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
+        "peekOfCode": "rerank_model_url = \"http://0.0.0.0:9756/v1/score/rerank\"\n# 核心chat模型\nchat_url = \"http://0.0.0.0:9089/v1/chat/completions\"  # r1-70b\nCHAT_MODEL_NAME = \"r1-llama70b\"",
         "detail": "core.generation.global_config",
         "documentation": {}
     },
@@ -5759,7 +5795,7 @@
         "kind": 5,
         "importPath": "core.generation.local_db_v2",
         "description": "core.generation.local_db_v2",
-        "peekOfCode": "db_path = \"./database/new.db\"\n# with ArxivDatabase(db_path) as db:\n#     all_records = db.get_all()\n#     print(f\"Total Records: {len(all_records)}\")\n# 示例用法\n# if __name__ == \"__main__\":\n#     # 初始化数据库\n#     db_path = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/arxiv_data.db\"\n#     jsonl_file = \"/share/project/shixiaofeng/code/scholar-paper-agent-retrieval/database/id2docs.jsonl\"\n#     db = ArxivDatabase(db_path)",
+        "peekOfCode": "db_path = \"./database/new.db\"\n# with ArxivDatabase(db_path) as db:\n#     all_records = db.get_all()\n#     print(f\"Total Records: {len(all_records)}\")\n# 示例用法\n# if __name__ == \"__main__\":\n#     # 初始化数据库\n#     db_path = \"./database/arxiv_data.db\"\n#     jsonl_file = \"./database/id2docs.jsonl\"\n#     db = ArxivDatabase(db_path)",
         "detail": "core.generation.local_db_v2",
         "documentation": {}
     },

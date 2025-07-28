@@ -1,8 +1,9 @@
-# SciSage
+# [WIP] SciSage
 
 An intelligent academic paper analysis system that leverages AI to understand research papers and generate comprehensive analysis reports.
 
 📄 **Paper**: https://arxiv.org/abs/2506.12689
+
 📊 **Benchmark**: https://huggingface.co/datasets/BAAI/SurveyScope
 
 ## Features
