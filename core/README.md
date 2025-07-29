@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ```
 
 ### Configure Models
-Edit [`model_factory.py`](model_factory.py):
+1. Edit [`model_factory.py`](model_factory.py):
 ```python
 llm_map = {
     "gpt-4": AzureChatOpenAI(
@@ -29,6 +29,9 @@ llm_map = {
     ),
 }
 ```
+
+2. Edit [`run.sh`](run.sh), set the environment.
+
 
 ### Configure Pipeline
 Edit [`configuration.py`](configuration.py):
@@ -39,13 +42,8 @@ CONTENT_GENERATION_MODEL = "gpt-4"
 ```
 
 ### Run Pipeline
-```python
-from main_workflow_opt_for_paper import main_workflow
-
-result = await main_workflow(
-    user_query="Your research question",
-    paper_data=paper_content
-)
+```bash
+bash run.sh
 ```
 
 ## Key Components

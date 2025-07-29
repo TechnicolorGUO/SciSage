@@ -37,3 +37,7 @@ accelerate>=0.20.0
 # Optional: For enhanced text processing
 nltk>=3.8.0
 spacy>=3.6.0
+
+crawl4ai==0.6.3
+
+fastapi

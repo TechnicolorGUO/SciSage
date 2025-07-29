@@ -324,6 +324,14 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
+        "isExtraImport": true,
+        "detail": "log",
+        "documentation": {}
+    },
+    {
         "label": "traceback",
         "kind": 6,
         "isExtraImport": true,
@@ -729,6 +737,30 @@
     },
     {
         "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
         "importPath": "typing",
         "description": "typing",
         "isExtraImport": true,
@@ -2090,6 +2122,14 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -2099,6 +2139,30 @@
     },
     {
         "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BackgroundTasks",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -2139,6 +2203,22 @@
     },
     {
         "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "FileResponse",
         "importPath": "fastapi.responses",
         "description": "fastapi.responses",
         "isExtraImport": true,
@@ -2324,6 +2404,22 @@
     },
     {
         "label": "ValidationError",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
         "isExtraImport": true,
@@ -2892,6 +2988,55 @@
         "documentation": {}
     },
     {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Lock",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "PaperGenerationPipeline",
+        "importPath": "main_workflow_opt_for_paper",
+        "description": "main_workflow_opt_for_paper",
+        "isExtraImport": true,
+        "detail": "main_workflow_opt_for_paper",
+        "documentation": {}
+    },
+    {
+        "label": "save_results",
+        "importPath": "main_workflow_opt_for_paper",
+        "description": "main_workflow_opt_for_paper",
+        "isExtraImport": true,
+        "detail": "main_workflow_opt_for_paper",
+        "documentation": {}
+    },
+    {
         "label": "uvicorn",
         "kind": 6,
         "isExtraImport": true,
@@ -2906,14 +3051,6 @@
         "description": "langgraph_service",
         "isExtraImport": true,
         "detail": "langgraph_service",
-        "documentation": {}
-    },
-    {
-        "label": "CORSMiddleware",
-        "importPath": "fastapi.middleware.cors",
-        "description": "fastapi.middleware.cors",
-        "isExtraImport": true,
-        "detail": "fastapi.middleware.cors",
         "documentation": {}
     },
     {
@@ -4542,15 +4679,6 @@
         "description": "graphviz",
         "isExtraImport": true,
         "detail": "graphviz",
-        "documentation": {}
-    },
-    {
-        "label": "threading",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "threading",
-        "description": "threading",
-        "detail": "threading",
         "documentation": {}
     },
     {
@@ -6532,6 +6660,42 @@
         "description": "core.request_warp.wrapper",
         "peekOfCode": "logger = logging.getLogger(__name__)\nclass RequestWrapper:\n    _connection_semaphore = {}\n    _calls_count = 0  # 用来统计api的调用次数\n    _token_usage_history = []  # 用来统计每次调用时使用的token数\n    def __init__(self, model=\"xxx\", infer_type=\"local\", connection=20, port=None):\n        self.request_pool = None\n        self.model = model\n        self._connection_semaphore[model] = Semaphore(connection)\n        self.request_pool = LocalRequest(model=model)",
         "detail": "core.request_warp.wrapper",
+        "documentation": {}
+    },
+    {
+        "label": "PaperGenerationRequest",
+        "kind": 6,
+        "importPath": "core.app",
+        "description": "core.app",
+        "peekOfCode": "class PaperGenerationRequest(BaseModel):\n    \"\"\"Request model for paper generation\"\"\"\n    user_query: str = Field(..., description=\"User's research query\")\n    user_name: str = Field(default=\"researcher\", description=\"Username\")\n    task_id: Optional[str] = Field(default=None, description=\"Custom task ID\")\n    output_dir: str = Field(default=\"temp\", description=\"Output directory\")\n    rag_service_url: Optional[str] = Field(default=None, description=\"RAG service URL\")\n    # Pipeline configuration\n    outline_max_reflections: int = Field(default=1, description=\"Max outline reflections\")\n    outline_max_sections: int = Field(default=5, description=\"Max sections in outline\")",
+        "detail": "core.app",
+        "documentation": {}
+    },
+    {
+        "label": "TaskStatusResponse",
+        "kind": 6,
+        "importPath": "core.app",
+        "description": "core.app",
+        "peekOfCode": "class TaskStatusResponse(BaseModel):\n    \"\"\"Response model for task status\"\"\"\n    task_id: str\n    status: str  # \"running\", \"completed\", \"error\", \"not_found\"\n    progress: Dict[str, Any]\n    result: Optional[Dict[str, Any]] = None\n    error: Optional[str] = None\n    created_at: str\n    updated_at: str\nasync def run_paper_generation_task(",
+        "detail": "core.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "core.app",
+        "description": "core.app",
+        "peekOfCode": "app = FastAPI(\n    title=\"Academic Paper Generation API\",\n    description=\"API for generating academic papers using AI\",\n    version=\"1.0.0\"\n)\n# Add CORS middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],  # In production, specify allowed origins\n    allow_credentials=True,",
+        "detail": "core.app",
+        "documentation": {}
+    },
+    {
+        "label": "task_lock",
+        "kind": 5,
+        "importPath": "core.app",
+        "description": "core.app",
+        "peekOfCode": "task_lock = Lock()\nclass PaperGenerationRequest(BaseModel):\n    \"\"\"Request model for paper generation\"\"\"\n    user_query: str = Field(..., description=\"User's research query\")\n    user_name: str = Field(default=\"researcher\", description=\"Username\")\n    task_id: Optional[str] = Field(default=None, description=\"Custom task ID\")\n    output_dir: str = Field(default=\"temp\", description=\"Output directory\")\n    rag_service_url: Optional[str] = Field(default=None, description=\"RAG service URL\")\n    # Pipeline configuration\n    outline_max_reflections: int = Field(default=1, description=\"Max outline reflections\")",
+        "detail": "core.app",
         "documentation": {}
     },
     {
