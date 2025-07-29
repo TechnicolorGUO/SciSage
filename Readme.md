@@ -1,4 +1,4 @@
-# [WIP] SciSage
+# SciSage
 
 An intelligent academic paper analysis system that leverages AI to understand research papers and generate comprehensive analysis reports.
 

@@ -50,14 +50,18 @@ class ModelConfig:
     openai_client: Optional[Any] = None
     additional_kwargs: Dict[str, Any] = field(default_factory=dict)
 
+
+HOST = os.getenv("LOCAL_LLM_HOST", "http://0.0.0.0")
+
+print(f"Using LLM host: {HOST}")
 # Model configurations
 MODEL_CONFIGS = {
     "llama3-70b": ModelConfig(
-        url="http://0.0.0.0:9087/v1/chat/completions",
+        url=f"{HOST}:9087/v1/chat/completions",
         max_len=131072,
     ),
     "Qwen3-8B": ModelConfig(
-        url="http://0.0.0.0:9096/v1",
+        url=f"{HOST}:9096/v1",
         max_len=131072,
         model_name="Qwen/Qwen3-8B",
         think_bool=False,
@@ -67,11 +71,11 @@ MODEL_CONFIGS = {
         min_p=0,
         openai_client=OpenAI(
             api_key="EMPTY",
-            base_url="http://0.0.0.0:9096/v1",
+            base_url=f"{HOST}:9096/v1",
         ),
     ),
     "Qwen3-14B": ModelConfig(
-        url="http://0.0.0.0:9095/v1",
+        url=f"{HOST}:9095/v1",
         max_len=131072,
         model_name="Qwen/Qwen3-14B",
         think_bool=False,
@@ -81,11 +85,11 @@ MODEL_CONFIGS = {
         min_p=0,
         openai_client=OpenAI(
             api_key="EMPTY",
-            base_url="http://0.0.0.0:9095/v1",
+            base_url=f"{HOST}:9095/v1",
         ),
     ),
     "Qwen3-32B": ModelConfig(
-        url="http://0.0.0.0:9094/v1",
+        url=f"{HOST}:9094/v1",
         max_len=131072,
         model_name="Qwen/Qwen3-32B",
         think_bool=False,
@@ -95,11 +99,11 @@ MODEL_CONFIGS = {
         min_p=0,
         openai_client=OpenAI(
             api_key="EMPTY",
-            base_url="http://0.0.0.0:9094/v1",
+            base_url=f"{HOST}:9094/v1",
         ),
     ),
     "Qwen3-32B-think": ModelConfig(
-        url="http://0.0.0.0:9094/v1",
+        url=f"{HOST}:9094/v1",
         max_len=131072,
         model_name="Qwen/Qwen3-32B",
         think_bool=True,
@@ -109,7 +113,7 @@ MODEL_CONFIGS = {
         min_p=0,
         openai_client=OpenAI(
             api_key="EMPTY",
-            base_url="http://0.0.0.0:9094/v1",
+            base_url=f"{HOST}:9094/v1",
         ),
     ),
 }

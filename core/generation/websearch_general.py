@@ -680,7 +680,7 @@ def web_search(query, engine="auto", api_key=None, num_results=5, use_proxy=Fals
         print(f"错误: {e}")
         return []
 
-
+import os
 async def search_and_crawl(
     query: str,
     output_file_path: str = None,
@@ -726,6 +726,7 @@ async def search_and_crawl(
 
     try:
         logger.info(f"开始搜索和爬虫流程，查询: '{query}'")
+        api_key = os.getenv("SERPAPI_API_KEY","xxx")
 
         # 第一步：网络搜索获取URL列表（如果没有提供url_list）
         if not url_list:
@@ -898,10 +899,10 @@ async def main():
     print(f"示例3处理后的数据: {processed_data3}")
 
 # 运行示例
-if __name__ == "__main__":
-    # 方法1：使用 asyncio.run()
-    import asyncio
-    asyncio.run(main())
+# if __name__ == "__main__":
+#     # 方法1：使用 asyncio.run()
+#     import asyncio
+#     asyncio.run(main())
 
     # 方法2：在已有事件循环中运行（如果已经在异步环境中）
     # await main()

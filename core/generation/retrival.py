@@ -20,6 +20,7 @@ import requests
 from generation.global_config import recall_server_url
 import traceback
 from generation.generation_instructions import template_extract_keywords_source_aware
+from generation.websearch_general import search_and_crawl_data_only
 
 from local_request_v2 import get_from_llm
 import re
@@ -168,10 +169,98 @@ def retrival_online_openalex(data: Dict[str, Any]) -> Dict[str, Any]:
         return {}
 
 
-async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
+def convert_crawl_results_to_ctxs(crawl_results: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
-    Priority is given to calling retrival_online.
-    If all 5 attempts fail, then call retrival_online_openalex, with a maximum retry count of 3.
+    将通用爬虫结果转换为标准的ctxs格式
+
+    Args:
+        crawl_results: search_and_crawl_data_only的返回结果
+
+    Returns:
+        标准格式的ctxs列表
+    """
+    ctxs = []
+
+    if not crawl_results or not crawl_results.get("success"):
+        return ctxs
+
+    processed_data = crawl_results.get("processed_data", {})
+
+    for topic, topic_data in processed_data.items():
+        papers = topic_data.get("papers", [])
+
+        for paper in papers:
+            ctx = {
+                "title": paper.get("title", ""),
+                "text": paper.get("txt", ""),  # 爬虫结果中是txt字段
+                "abstract": paper.get("txt", "")[:500] + "..." if len(paper.get("txt", "")) > 500 else paper.get("txt", ""),
+                "url": paper.get("url", ""),
+                "arxivUrl": "",  # 通用爬虫结果没有arxiv信息
+                "arxivId": "",
+                "authors": "",  # 通用爬虫结果通常没有作者信息
+                "year": "Unknown",
+                "venue": "Web Content",
+                "source": "General Web Search",
+                "citationCount": "Unknown",
+                "similarity": paper.get("similarity", 0),
+                "keywords": "",
+                "id": paper.get("url", "").replace("/", "_").replace(":", "")  # 生成简单ID
+            }
+            ctxs.append(ctx)
+
+    return ctxs
+
+async def retrival_general_web(data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    使用通用网络搜索和爬虫进行检索
+
+    Args:
+        data: 包含query和task_id的字典
+
+    Returns:
+        标准格式的检索结果
+    """
+    try:
+        query = data["query"]
+        task_id = data.get("task_id", "example_id")
+
+        logger.info(f"Using general web search for query: {query}")
+
+        # 调用通用搜索和爬虫
+        crawl_result = await search_and_crawl_data_only(
+            query=query,
+            top_n=20,  # 获取更多结果
+            num_search_results=15,  # 搜索更多URL
+            search_engine="auto",
+            use_proxy=False,
+            crawler_model="Qwen3-8B",
+            similarity_threshold=70  # 降低相似度阈值以获取更多相关内容
+        )
+
+        if not crawl_result.get("success"):
+            logger.warning(f"General web search failed: {crawl_result.get('message', 'Unknown error')}")
+            return {}
+
+        # 转换为标准ctxs格式
+        ctxs = convert_crawl_results_to_ctxs(crawl_result)
+
+        # 转换为与学术检索相同的格式
+        output = {}
+        for ctx in ctxs:
+            if ctx.get("title") and ctx.get("text"):
+                key = keep_letters(ctx["title"])
+                output[key] = ctx
+
+        logger.info(f"General web search returned {len(output)} results")
+        return output
+
+    except Exception as e:
+        logger.error(f"General web search failed: {traceback.format_exc()}")
+        return {}
+
+async def run_academic_retrieval(data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    执行学术检索（原有逻辑）
     """
     try:
         t0 = time.time()
@@ -190,7 +279,7 @@ async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
         online_success = False
         for attempt in range(10):
             try:
-                logger.info(f"Attempting retrival_online, attempt {attempt + 1}/5")
+                logger.info(f"Attempting retrival_online, attempt {attempt + 1}/10")
                 with ThreadPoolExecutor() as executor:
                     future_online = loop.run_in_executor(executor, retrival_online, data)
                     result_online = await future_online
@@ -207,12 +296,12 @@ async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
                 logger.error(f"retrival_online attempt {attempt + 1} failed: {str(e)}")
 
             # 如果不是最后一次尝试，等待一段时间再重试
-            if attempt < 4:
-                await asyncio.sleep(1)  # 等待1秒再重试
+            if attempt < 9:
+                await asyncio.sleep(1)
 
         # 如果retrival_online失败，尝试retrival_online_openalex，最多3次
-        if not online_success or len(result_online)<15:
-            logger.info("retrival_online failed after 5 attempts, trying retrival_online_openalex")
+        if not online_success or len(result_online) < 15:
+            logger.info("retrival_online failed after 10 attempts, trying retrival_online_openalex")
 
             for attempt in range(3):
                 try:
@@ -233,7 +322,7 @@ async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
 
                 # 如果不是最后一次尝试，等待一段时间再重试
                 if attempt < 2:
-                    await asyncio.sleep(1)  # 等待1秒再重试
+                    await asyncio.sleep(1)
 
         logger.info(f"offline retrival num is: {len(result_offline)}")
         logger.info(f"online retrival num is: {len(result_online)}")
@@ -244,7 +333,63 @@ async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
         merged_result.update(result_online)
         merged_result.update(result_online_openalex)
 
-        logger.info(f"retrival final result num is: {len(merged_result)}")
+        return merged_result, {
+            "offline": len(result_offline),
+            "online": len(result_online),
+            "openalex": len(result_online_openalex)
+        }
+
+    except Exception as e:
+        logger.error(f"Error in academic retrieval: {traceback.format_exc()}")
+        return {}, {"offline": 0, "online": 0, "openalex": 0}
+
+
+async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    根据query_domain参数选择检索方法:
+    - 'academic': 使用学术检索 (run_academic_retrieval)
+    - 'general': 使用通用网络检索 (retrival_general_web)
+    - 'mixed' 或其他: 同时使用两种检索方法
+    """
+    try:
+        t0 = time.time()
+        query_domain = data.get("query_domain", "academic").lower()
+
+        logger.info(f"Query domain: {query_domain}")
+
+        # 根据query_domain选择检索策略
+        if query_domain == "academic":
+            # 只使用学术检索
+            logger.info("Using academic retrieval only")
+            merged_result, sources = await run_academic_retrieval(data)
+
+        elif query_domain == "general":
+            # 只使用通用网络检索
+            logger.info("Using general web retrieval only")
+            general_result = await retrival_general_web(data)
+            merged_result = general_result
+            sources = {"general_web": len(general_result), "offline": 0, "online": 0, "openalex": 0}
+
+        else:
+            # 混合模式：同时使用学术检索和通用网络检索
+            logger.info("Using mixed retrieval (academic + general web)")
+
+            # 并行执行学术检索和通用网络检索
+            academic_task = run_academic_retrieval(data)
+            general_task = retrival_general_web(data)
+
+            academic_result, academic_sources = await academic_task
+            general_result = await general_task
+
+            # 合并结果，优先级：学术检索 > 通用网络检索
+            merged_result = general_result.copy()  # 先添加通用检索结果
+            merged_result.update(academic_result)  # 学术检索结果覆盖相同key的内容
+
+            # 合并源统计
+            sources = academic_sources.copy()
+            sources["general_web"] = len(general_result)
+
+        logger.info(f"Final retrieval result num: {len(merged_result)}")
 
         t1 = time.time()
         retrival_response = {
@@ -254,11 +399,8 @@ async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
             "time_cost": {"retrival_time": t1 - t0},
             "message": "search completed",
             "status": 200,
-            "retrival_sources": {
-                "offline": len(result_offline),
-                "online": len(result_online),
-                "openalex": len(result_online_openalex)
-            }
+            "retrival_sources": sources,
+            "query_domain": query_domain
         }
         return retrival_response
 
@@ -269,7 +411,8 @@ async def run_requests_parallel(data: Dict[str, Any]) -> Dict[str, Any]:
             "message": f"parallel search failed: {str(e)}",
             "query": data.get("query", ""),
             "ctxs": [],
-            "n_docs": 0
+            "n_docs": 0,
+            "query_domain": data.get("query_domain", "mixed")
         }
 
 # # 定义 FastAPI 路由

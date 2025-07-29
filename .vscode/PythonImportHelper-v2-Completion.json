@@ -324,6 +324,14 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "importPath": "log",
+        "description": "log",
+        "isExtraImport": true,
+        "detail": "log",
+        "documentation": {}
+    },
+    {
         "label": "traceback",
         "kind": 6,
         "isExtraImport": true,
@@ -1272,6 +1280,46 @@
         "documentation": {}
     },
     {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
         "label": "Any",
         "importPath": "typing",
         "description": "typing",
@@ -1677,6 +1725,22 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "get_from_llm",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
+        "isExtraImport": true,
+        "detail": "local_request_v2",
+        "documentation": {}
+    },
+    {
+        "label": "get_from_llm",
+        "importPath": "local_request_v2",
+        "description": "local_request_v2",
+        "isExtraImport": true,
+        "detail": "local_request_v2",
         "documentation": {}
     },
     {
@@ -2226,6 +2290,14 @@
         "documentation": {}
     },
     {
+        "label": "search_and_crawl_data_only",
+        "importPath": "generation.websearch_general",
+        "description": "generation.websearch_general",
+        "isExtraImport": true,
+        "detail": "generation.websearch_general",
+        "documentation": {}
+    },
+    {
         "label": "nltk",
         "kind": 6,
         "isExtraImport": true,
@@ -2396,6 +2468,22 @@
     },
     {
         "label": "ValidationError",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
         "importPath": "pydantic",
         "description": "pydantic",
         "isExtraImport": true,
@@ -3463,6 +3551,14 @@
         "documentation": {}
     },
     {
+        "label": "DEFAULT_MODEL_FOR_QUERY_INTENT",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
         "label": "SECTION_SUMMARY_MODEL",
         "importPath": "configuration",
         "description": "configuration",
@@ -3560,6 +3656,14 @@
     },
     {
         "label": "auto",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
         "importPath": "enum",
         "description": "enum",
         "isExtraImport": true,
@@ -3783,7 +3887,23 @@
         "documentation": {}
     },
     {
+        "label": "safe_invoke",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
         "label": "SectionData",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "QueryIntent",
         "importPath": "models",
         "description": "models",
         "isExtraImport": true,
@@ -3972,6 +4092,14 @@
         "description": "langchain_core.output_parsers",
         "isExtraImport": true,
         "detail": "langchain_core.output_parsers",
+        "documentation": {}
+    },
+    {
+        "label": "llm_map",
+        "importPath": "model_factory",
+        "description": "model_factory",
+        "isExtraImport": true,
+        "detail": "model_factory",
         "documentation": {}
     },
     {
@@ -4287,6 +4415,46 @@
         "documentation": {}
     },
     {
+        "label": "QUERY_TYPE_CLASSIFICATION_TEMPLATE",
+        "importPath": "prompt_manager",
+        "description": "prompt_manager",
+        "isExtraImport": true,
+        "detail": "prompt_manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_intent_classification_prompt",
+        "importPath": "prompt_manager",
+        "description": "prompt_manager",
+        "isExtraImport": true,
+        "detail": "prompt_manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_language_detection_prompt",
+        "importPath": "prompt_manager",
+        "description": "prompt_manager",
+        "isExtraImport": true,
+        "detail": "prompt_manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_query_rewrite_prompt",
+        "importPath": "prompt_manager",
+        "description": "prompt_manager",
+        "isExtraImport": true,
+        "detail": "prompt_manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_query_type_classification_prompt",
+        "importPath": "prompt_manager",
+        "description": "prompt_manager",
+        "isExtraImport": true,
+        "detail": "prompt_manager",
+        "documentation": {}
+    },
+    {
         "label": "get_section_summary_intro_prompt",
         "importPath": "prompt_manager",
         "description": "prompt_manager",
@@ -4439,6 +4607,22 @@
         "documentation": {}
     },
     {
+        "label": "StateGraph",
+        "importPath": "langgraph.graph",
+        "description": "langgraph.graph",
+        "isExtraImport": true,
+        "detail": "langgraph.graph",
+        "documentation": {}
+    },
+    {
+        "label": "END",
+        "importPath": "langgraph.graph",
+        "description": "langgraph.graph",
+        "isExtraImport": true,
+        "detail": "langgraph.graph",
+        "documentation": {}
+    },
+    {
         "label": "ChatPromptTemplate",
         "importPath": "langchain_core.prompts",
         "description": "langchain_core.prompts",
@@ -4485,6 +4669,14 @@
         "importPath": "copy",
         "description": "copy",
         "detail": "copy",
+        "documentation": {}
+    },
+    {
+        "label": "PydanticOutputParser",
+        "importPath": "langchain.output_parsers",
+        "description": "langchain.output_parsers",
+        "isExtraImport": true,
+        "detail": "langchain.output_parsers",
         "documentation": {}
     },
     {
@@ -5962,6 +6154,15 @@
         "documentation": {}
     },
     {
+        "label": "convert_crawl_results_to_ctxs",
+        "kind": 2,
+        "importPath": "core.generation.retrival",
+        "description": "core.generation.retrival",
+        "peekOfCode": "def convert_crawl_results_to_ctxs(crawl_results: Dict[str, Any]) -> List[Dict[str, Any]]:\n    \"\"\"\n    将通用爬虫结果转换为标准的ctxs格式\n    Args:\n        crawl_results: search_and_crawl_data_only的返回结果\n    Returns:\n        标准格式的ctxs列表\n    \"\"\"\n    ctxs = []\n    if not crawl_results or not crawl_results.get(\"success\"):",
+        "detail": "core.generation.retrival",
+        "documentation": {}
+    },
+    {
         "label": "proxies",
         "kind": 5,
         "importPath": "core.generation.retrival",
@@ -6520,11 +6721,20 @@
         "documentation": {}
     },
     {
+        "label": "HOST",
+        "kind": 5,
+        "importPath": "core.configuration",
+        "description": "core.configuration",
+        "peekOfCode": "HOST = os.getenv(\"LOCAL_LLM_HOST\", \"http://0.0.0.0\")\nprint(f\"Using LLM host: {HOST}\")\n# Model configurations\nMODEL_CONFIGS = {\n    \"llama3-70b\": ModelConfig(\n        url=f\"{HOST}:9087/v1/chat/completions\",\n        max_len=131072,\n    ),\n    \"Qwen3-8B\": ModelConfig(\n        url=f\"{HOST}:9096/v1\",",
+        "detail": "core.configuration",
+        "documentation": {}
+    },
+    {
         "label": "MODEL_CONFIGS",
         "kind": 5,
         "importPath": "core.configuration",
         "description": "core.configuration",
-        "peekOfCode": "MODEL_CONFIGS = {\n    \"llama3-70b\": ModelConfig(\n        url=\"http://0.0.0.0:9087/v1/chat/completions\",\n        max_len=131072,\n    ),\n    \"Qwen3-8B\": ModelConfig(\n        url=\"http://0.0.0.0:9096/v1\",\n        max_len=131072,\n        model_name=\"Qwen/Qwen3-8B\",\n        think_bool=False,",
+        "peekOfCode": "MODEL_CONFIGS = {\n    \"llama3-70b\": ModelConfig(\n        url=f\"{HOST}:9087/v1/chat/completions\",\n        max_len=131072,\n    ),\n    \"Qwen3-8B\": ModelConfig(\n        url=f\"{HOST}:9096/v1\",\n        max_len=131072,\n        model_name=\"Qwen/Qwen3-8B\",\n        think_bool=False,",
         "detail": "core.configuration",
         "documentation": {}
     },
@@ -6938,7 +7148,7 @@
         "kind": 6,
         "importPath": "core.main_workflow_opt_for_paper",
         "description": "core.main_workflow_opt_for_paper",
-        "peekOfCode": "class PaperGenerationState:\n    \"\"\"State container for the paper generation process\"\"\"\n    task_id: str\n    user_name: str\n    user_query: str\n    timestamp: str = \"\"\n    rewrite_query: str = \"\"\n    query_type: str = \"\"\n    research_field: str = \"\"\n    rag_service_url: str = \"\"",
+        "peekOfCode": "class PaperGenerationState:\n    \"\"\"State container for the paper generation process\"\"\"\n    task_id: str\n    user_name: str\n    user_query: str\n    timestamp: str = \"\"\n    rewrite_query: str = \"\"\n    query_type: str = \"\"\n    query_domain: str= \"\"\n    research_field: str = \"\"",
         "detail": "core.main_workflow_opt_for_paper",
         "documentation": {}
     },
@@ -7737,6 +7947,114 @@
     {
         "label": "QueryRewrite",
         "kind": 6,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "class QueryRewrite(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    rewritten_query: str = Field(description=\"The rewritten query with improved clarity\")\n    needs_rewrite: bool = Field(description=\"Whether the query needed rewriting\")\n    explanation: str = Field(description=\"Explanation of changes made or why no changes were needed\")\nclass QueryTranslation(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    is_english: bool = Field(description=\"Whether the original query is in English\")\n    translated_query: str = Field(description=\"The query translated to English if needed\")\n    detected_language: str = Field(description=\"The detected language of the original query\")",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "QueryTranslation",
+        "kind": 6,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "class QueryTranslation(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    is_english: bool = Field(description=\"Whether the original query is in English\")\n    translated_query: str = Field(description=\"The query translated to English if needed\")\n    detected_language: str = Field(description=\"The detected language of the original query\")\nclass QueryTypeClassification(BaseModel):\n    query_type: str = Field(description=\"The type of query: 'academic' or 'general'\")\n    confidence: float = Field(description=\"Confidence score between 0 and 1\")\n    reasoning: str = Field(description=\"Explanation for the classification decision\")\nclass QueryProcessingState(BaseModel):",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "QueryTypeClassification",
+        "kind": 6,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "class QueryTypeClassification(BaseModel):\n    query_type: str = Field(description=\"The type of query: 'academic' or 'general'\")\n    confidence: float = Field(description=\"Confidence score between 0 and 1\")\n    reasoning: str = Field(description=\"Explanation for the classification decision\")\nclass QueryProcessingState(BaseModel):\n    user_query: str = Field(description=\"The original user query\")\n    intent: Optional[QueryIntent] = Field(default=None, description=\"The detected intent of the query\")\n    rewrite: Optional[QueryRewrite] = Field(default=None, description=\"The query rewrite information\")\n    translation: Optional[QueryTranslation] = Field(default=None, description=\"The query translation information\")\n    final_query: str = Field(default=\"\", description=\"The final processed query ready for use\")",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "QueryProcessingState",
+        "kind": 6,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "class QueryProcessingState(BaseModel):\n    user_query: str = Field(description=\"The original user query\")\n    intent: Optional[QueryIntent] = Field(default=None, description=\"The detected intent of the query\")\n    rewrite: Optional[QueryRewrite] = Field(default=None, description=\"The query rewrite information\")\n    translation: Optional[QueryTranslation] = Field(default=None, description=\"The query translation information\")\n    final_query: str = Field(default=\"\", description=\"The final processed query ready for use\")\n    classification: Optional[QueryTypeClassification] = Field(default=None, description=\"The query type classification\")\n    errors: List[str] = Field(default_factory=list, description=\"List of errors encountered during processing\")\n    retry_count: Dict[str, int] = Field(\n        default_factory=lambda: {",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "classify_query_type",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def classify_query_type(state: QueryProcessingState) -> QueryProcessingState:\n    \"\"\"\n    使用LLM判断查询类型：学术(academic)或通用(general)\n    \"\"\"\n    logger.info(\"classify_query_type ...\")\n    try:\n        prompt = QUERY_TYPE_CLASSIFICATION_TEMPLATE.format(query=state.user_query)\n        for attempt in range(state.max_retries):\n            try:\n                response = get_from_llm(prompt, model_name=\"Qwen3-8B\", temperature=0.3)",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "detect_language_and_translate",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def detect_language_and_translate(state: QueryProcessingState) -> QueryProcessingState:\n    logger.info(\"detect_language_and_translate ...\")\n    llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]\n    translation_parser = PydanticOutputParser(pydantic_object=QueryTranslation)\n    translation_prompt = get_language_detection_prompt(\n        query=state.user_query,\n        format_instructions=translation_parser.get_format_instructions(),\n    )\n    chain = translation_prompt | llm | translation_parser\n    result = safe_invoke(",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "detect_query_intent",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def detect_query_intent(state: QueryProcessingState) -> QueryProcessingState:\n    logger.info(\"detect_query_intent ...\")\n    llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]\n    intent_parser = PydanticOutputParser(pydantic_object=QueryIntent)\n    intent_prompt = get_intent_classification_prompt(\n        query=state.user_query,\n        format_instructions=intent_parser.get_format_instructions(),\n    )\n    chain = intent_prompt | llm | intent_parser\n    result = safe_invoke(",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "rewrite_query",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def rewrite_query(state: QueryProcessingState) -> QueryProcessingState:\n    logger.info(\"rewrite_query\")\n    llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]\n    rewrite_parser = PydanticOutputParser(pydantic_object=QueryRewrite)\n    rewrite_prompt = get_query_rewrite_prompt(\n        query=state.user_query,\n        research_domain=state.intent.research_field,\n        query_type=state.intent.paper_type,\n        format_instructions=rewrite_parser.get_format_instructions(),\n    )",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "finalize_query",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def finalize_query(state: QueryProcessingState) -> QueryProcessingState:\n    # Prioritize the rewritten query if available\n    if state.rewrite and state.rewrite.needs_rewrite:\n        state.final_query = state.rewrite.rewritten_query\n    # Otherwise use the translated query if translation was needed\n    elif state.translation and not state.translation.is_english:\n        state.final_query = state.translation.translated_query\n    # Otherwise use the original query\n    else:\n        state.final_query = state.user_query",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "create_query_processor_graph",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def create_query_processor_graph():\n    workflow = StateGraph(QueryProcessingState)\n    # Add nodes\n    workflow.add_node(\"detect_language_and_translate\", detect_language_and_translate)\n    workflow.add_node(\"detect_query_intent\", detect_query_intent)\n    workflow.add_node(\"rewrite_query\", rewrite_query)\n    workflow.add_node(\"finalize_query\", finalize_query)\n    # Add edges (sequential workflow)\n    workflow.set_entry_point(\"detect_language_and_translate\")\n    workflow.add_edge(\"detect_language_and_translate\", \"detect_query_intent\")",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "process_query",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def process_query(user_query: str, max_retries: int = 3) -> Dict[str, Any]:\n    try:\n        logger.info(f\"Processing new query: {user_query}\")\n        # Initialize state\n        initial_state = QueryProcessingState(user_query=user_query, max_retries=max_retries)\n        # Create and run graph\n        workflow = create_query_processor_graph()\n        # Execute the graph\n        start_time = time.time()\n        result = workflow.invoke(initial_state)  # result is likely a dictionary",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "test",
+        "kind": 2,
+        "importPath": "core.paper_understant_query copy",
+        "description": "core.paper_understant_query copy",
+        "peekOfCode": "def test():\n    # Example queries to test\n    test_queries = [\n        \"What are the latest advances in transformer models?\",\n        \"我想了解人工智能在医疗领域的应用\",  # Chinese: \"I want to learn about AI applications in healthcare\"\n        \"what is better, lstm or transformers for nlp tasks\",\n    ]\n    for query in test_queries:\n        print(\"\\n\" + \"=\" * 80)\n        print(f\"PROCESSING QUERY: {query}\")",
+        "detail": "core.paper_understant_query copy",
+        "documentation": {}
+    },
+    {
+        "label": "QueryRewrite",
+        "kind": 6,
         "importPath": "core.paper_understant_query",
         "description": "core.paper_understant_query",
         "peekOfCode": "class QueryRewrite(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    rewritten_query: str = Field(description=\"The rewritten query with improved clarity\")\n    needs_rewrite: bool = Field(description=\"Whether the query needed rewriting\")\n    explanation: str = Field(description=\"Explanation of changes made or why no changes were needed\")\nclass QueryTranslation(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    is_english: bool = Field(description=\"Whether the original query is in English\")\n    translated_query: str = Field(description=\"The query translated to English if needed\")\n    detected_language: str = Field(description=\"The detected language of the original query\")",
@@ -7748,7 +8066,16 @@
         "kind": 6,
         "importPath": "core.paper_understant_query",
         "description": "core.paper_understant_query",
-        "peekOfCode": "class QueryTranslation(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    is_english: bool = Field(description=\"Whether the original query is in English\")\n    translated_query: str = Field(description=\"The query translated to English if needed\")\n    detected_language: str = Field(description=\"The detected language of the original query\")\nclass QueryProcessingState(BaseModel):\n    user_query: str = Field(description=\"The original user query\")\n    intent: Optional[QueryIntent] = Field(default=None, description=\"The detected intent of the query\")\n    rewrite: Optional[QueryRewrite] = Field(default=None, description=\"The query rewrite information\")\n    translation: Optional[QueryTranslation] = Field(default=None, description=\"The query translation information\")",
+        "peekOfCode": "class QueryTranslation(BaseModel):\n    original_query: str = Field(description=\"The original user query\")\n    is_english: bool = Field(description=\"Whether the original query is in English\")\n    translated_query: str = Field(description=\"The query translated to English if needed\")\n    detected_language: str = Field(description=\"The detected language of the original query\")\nclass QueryTypeClassification(BaseModel):\n    query_type: str = Field(description=\"The type of query: 'academic' or 'general'\")\n    confidence: float = Field(description=\"Confidence score between 0 and 1\")\n    reasoning: str = Field(description=\"Explanation for the classification decision\")\nclass QueryProcessingState(BaseModel):",
+        "detail": "core.paper_understant_query",
+        "documentation": {}
+    },
+    {
+        "label": "QueryTypeClassification",
+        "kind": 6,
+        "importPath": "core.paper_understant_query",
+        "description": "core.paper_understant_query",
+        "peekOfCode": "class QueryTypeClassification(BaseModel):\n    query_type: str = Field(description=\"The type of query: 'academic' or 'general'\")\n    confidence: float = Field(description=\"Confidence score between 0 and 1\")\n    reasoning: str = Field(description=\"Explanation for the classification decision\")\nclass QueryProcessingState(BaseModel):\n    user_query: str = Field(description=\"The original user query\")\n    intent: Optional[QueryIntent] = Field(default=None, description=\"The detected intent of the query\")\n    rewrite: Optional[QueryRewrite] = Field(default=None, description=\"The query rewrite information\")\n    translation: Optional[QueryTranslation] = Field(default=None, description=\"The query translation information\")\n    classification: Optional[QueryTypeClassification] = Field(default=None, description=\"The query type classification\")",
         "detail": "core.paper_understant_query",
         "documentation": {}
     },
@@ -7757,7 +8084,25 @@
         "kind": 6,
         "importPath": "core.paper_understant_query",
         "description": "core.paper_understant_query",
-        "peekOfCode": "class QueryProcessingState(BaseModel):\n    user_query: str = Field(description=\"The original user query\")\n    intent: Optional[QueryIntent] = Field(default=None, description=\"The detected intent of the query\")\n    rewrite: Optional[QueryRewrite] = Field(default=None, description=\"The query rewrite information\")\n    translation: Optional[QueryTranslation] = Field(default=None, description=\"The query translation information\")\n    final_query: str = Field(default=\"\", description=\"The final processed query ready for use\")\n    errors: List[str] = Field(default_factory=list, description=\"List of errors encountered during processing\")\n    retry_count: Dict[str, int] = Field(\n        default_factory=lambda: {\n            \"detect_intent\": 0,",
+        "peekOfCode": "class QueryProcessingState(BaseModel):\n    user_query: str = Field(description=\"The original user query\")\n    intent: Optional[QueryIntent] = Field(default=None, description=\"The detected intent of the query\")\n    rewrite: Optional[QueryRewrite] = Field(default=None, description=\"The query rewrite information\")\n    translation: Optional[QueryTranslation] = Field(default=None, description=\"The query translation information\")\n    classification: Optional[QueryTypeClassification] = Field(default=None, description=\"The query type classification\")\n    final_query: str = Field(default=\"\", description=\"The final processed query ready for use\")\n    errors: List[str] = Field(default_factory=list, description=\"List of errors encountered during processing\")\n    retry_count: Dict[str, int] = Field(\n        default_factory=lambda: {",
+        "detail": "core.paper_understant_query",
+        "documentation": {}
+    },
+    {
+        "label": "classify_query_type",
+        "kind": 2,
+        "importPath": "core.paper_understant_query",
+        "description": "core.paper_understant_query",
+        "peekOfCode": "def classify_query_type(state: QueryProcessingState) -> QueryProcessingState:\n    \"\"\"\n    使用LLM判断查询类型：学术(academic)或通用(general)\n    \"\"\"\n    logger.info(\"classify_query_type ...\")\n    try:\n        llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]\n        classification_parser = PydanticOutputParser(pydantic_object=QueryTypeClassification)\n        classification_prompt = get_query_type_classification_prompt(\n            query=state.user_query,",
+        "detail": "core.paper_understant_query",
+        "documentation": {}
+    },
+    {
+        "label": "classify_query_type_standalone",
+        "kind": 2,
+        "importPath": "core.paper_understant_query",
+        "description": "core.paper_understant_query",
+        "peekOfCode": "def classify_query_type_standalone(query: str) -> Dict[str, Any]:\n    \"\"\"\n    独立的查询类型分类函数，可以单独调用\n    Args:\n        query: 用户查询\n    Returns:\n        分类结果字典\n    \"\"\"\n    try:\n        llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]",
         "detail": "core.paper_understant_query",
         "documentation": {}
     },
@@ -7802,7 +8147,7 @@
         "kind": 2,
         "importPath": "core.paper_understant_query",
         "description": "core.paper_understant_query",
-        "peekOfCode": "def create_query_processor_graph():\n    workflow = StateGraph(QueryProcessingState)\n    # Add nodes\n    workflow.add_node(\"detect_language_and_translate\", detect_language_and_translate)\n    workflow.add_node(\"detect_query_intent\", detect_query_intent)\n    workflow.add_node(\"rewrite_query\", rewrite_query)\n    workflow.add_node(\"finalize_query\", finalize_query)\n    # Add edges (sequential workflow)\n    workflow.set_entry_point(\"detect_language_and_translate\")\n    workflow.add_edge(\"detect_language_and_translate\", \"detect_query_intent\")",
+        "peekOfCode": "def create_query_processor_graph(include_classification: bool = True):\n    \"\"\"\n    创建查询处理图，可选择是否包含查询类型分类\n    Args:\n        include_classification: 是否包含查询类型分类步骤\n    \"\"\"\n    workflow = StateGraph(QueryProcessingState)\n    # Add nodes\n    workflow.add_node(\"detect_language_and_translate\", detect_language_and_translate)\n    workflow.add_node(\"detect_query_intent\", detect_query_intent)",
         "detail": "core.paper_understant_query",
         "documentation": {}
     },
@@ -7811,7 +8156,7 @@
         "kind": 2,
         "importPath": "core.paper_understant_query",
         "description": "core.paper_understant_query",
-        "peekOfCode": "def process_query(user_query: str, max_retries: int = 3) -> Dict[str, Any]:\n    try:\n        logger.info(f\"Processing new query: {user_query}\")\n        # Initialize state\n        initial_state = QueryProcessingState(user_query=user_query, max_retries=max_retries)\n        # Create and run graph\n        workflow = create_query_processor_graph()\n        # Execute the graph\n        start_time = time.time()\n        result = workflow.invoke(initial_state)  # result is likely a dictionary",
+        "peekOfCode": "def process_query(user_query: str, max_retries: int = 3, include_classification: bool = True) -> Dict[str, Any]:\n    \"\"\"\n    处理查询的主函数\n    Args:\n        user_query: 用户原始查询\n        max_retries: 每个步骤的最大重试次数\n        include_classification: 是否包含查询类型分类\n    \"\"\"\n    try:\n        logger.info(f\"Processing new query: {user_query}\")",
         "detail": "core.paper_understant_query",
         "documentation": {}
     },
@@ -7820,7 +8165,7 @@
         "kind": 2,
         "importPath": "core.paper_understant_query",
         "description": "core.paper_understant_query",
-        "peekOfCode": "def test():\n    # Example queries to test\n    test_queries = [\n        \"What are the latest advances in transformer models?\",\n        \"我想了解人工智能在医疗领域的应用\",  # Chinese: \"I want to learn about AI applications in healthcare\"\n        \"what is better, lstm or transformers for nlp tasks\",\n    ]\n    for query in test_queries:\n        print(\"\\n\" + \"=\" * 80)\n        print(f\"PROCESSING QUERY: {query}\")",
+        "peekOfCode": "def test():\n    \"\"\"测试查询处理的同步版本\"\"\"\n    # Example queries to test\n    test_queries = [\n        \"What are the latest advances in transformer models?\",  # Academic\n        \"我想了解人工智能在医疗领域的应用\",  # Academic (Chinese)\n        \"what is better, lstm or transformers for nlp tasks\",  # Academic\n        \"2024年中国经济政策最新变化\",  # General (Chinese)\n        \"今日股市行情分析\",  # General\n        \"COVID-19 vaccine policy updates\",  # General",
         "detail": "core.paper_understant_query",
         "documentation": {}
     },
@@ -8149,6 +8494,15 @@
         "documentation": {}
     },
     {
+        "label": "get_query_type_classification_prompt",
+        "kind": 2,
+        "importPath": "core.prompt_manager",
+        "description": "core.prompt_manager",
+        "peekOfCode": "def get_query_type_classification_prompt(\n    query: str, format_instructions: str\n) -> ChatPromptTemplate:\n    \"\"\"\n    Generates a prompt template for classifying the type of user query: academic or general.\n    Args:\n        query: The user query to classify.\n        format_instructions: Instructions for the expected output format (e.g., Pydantic schema).\n    Returns:\n        A ChatPromptTemplate object configured for query type classification.",
+        "detail": "core.prompt_manager",
+        "documentation": {}
+    },
+    {
         "label": "SectionReflectionResult",
         "kind": 6,
         "importPath": "core.section_reflection_opt",
@@ -8324,7 +8678,7 @@
         "kind": 6,
         "importPath": "core.section_writer_opt_local",
         "description": "core.section_writer_opt_local",
-        "peekOfCode": "class SectionWriterState(BaseModel):\n    \"\"\"State container for the section writer workflow.\"\"\"\n    section_name: str = Field(description=\"Name of the section\")\n    section_index: int = Field(description=\"Index of the section\")\n    parent_section: Optional[str] = Field(\n        default=None, description=\"Parent section name\"\n    )\n    user_query: str = Field(description=\"Original user query\")\n    section_key_points: List[str] = Field(description=\"Content key points from outline\")\n    paper_title: str = Field(description=\"Paper title\")",
+        "peekOfCode": "class SectionWriterState(BaseModel):\n    \"\"\"State container for the section writer workflow.\"\"\"\n    section_name: str = Field(description=\"Name of the section\")\n    section_index: int = Field(description=\"Index of the section\")\n    parent_section: Optional[str] = Field(\n        default=None, description=\"Parent section name\"\n    )\n    user_query: str = Field(description=\"Original user query\")\n    query_domain: str=Field(description=\"Query domain type: [academic or general]\")\n    section_key_points: List[str] = Field(description=\"Content key points from outline\")",
         "detail": "core.section_writer_opt_local",
         "documentation": {}
     },

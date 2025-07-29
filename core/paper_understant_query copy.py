@@ -26,12 +26,14 @@ from configuration import DEFAULT_MODEL_FOR_QUERY_INTENT
 from prompt_manager import (
     get_intent_classification_prompt,
     get_language_detection_prompt,
-    get_query_rewrite_prompt,get_query_type_classification_prompt
+    get_query_rewrite_prompt,
+    QUERY_TYPE_CLASSIFICATION_TEMPLATE
 )
 from utils import safe_invoke
 import asyncio
 from models import QueryIntent
 from local_request_v2 import get_from_llm
+
 
 
 class QueryRewrite(BaseModel):
@@ -48,6 +50,7 @@ class QueryTranslation(BaseModel):
     detected_language: str = Field(description="The detected language of the original query")
 
 
+
 class QueryTypeClassification(BaseModel):
     query_type: str = Field(description="The type of query: 'academic' or 'general'")
     confidence: float = Field(description="Confidence score between 0 and 1")
@@ -59,19 +62,19 @@ class QueryProcessingState(BaseModel):
     intent: Optional[QueryIntent] = Field(default=None, description="The detected intent of the query")
     rewrite: Optional[QueryRewrite] = Field(default=None, description="The query rewrite information")
     translation: Optional[QueryTranslation] = Field(default=None, description="The query translation information")
-    classification: Optional[QueryTypeClassification] = Field(default=None, description="The query type classification")
     final_query: str = Field(default="", description="The final processed query ready for use")
+    classification: Optional[QueryTypeClassification] = Field(default=None, description="The query type classification")
     errors: List[str] = Field(default_factory=list, description="List of errors encountered during processing")
     retry_count: Dict[str, int] = Field(
         default_factory=lambda: {
             "detect_intent": 0,
             "rewrite_query": 0,
             "translate_query": 0,
-            "classify_query_type": 0,
         },
         description="Count of retries for each processing step",
     )
     max_retries: int = Field(default=3, description="Maximum number of retries for each step")
+
 
 
 def classify_query_type(state: QueryProcessingState) -> QueryProcessingState:
@@ -81,35 +84,38 @@ def classify_query_type(state: QueryProcessingState) -> QueryProcessingState:
     logger.info("classify_query_type ...")
 
     try:
-        llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]
-        classification_parser = PydanticOutputParser(pydantic_object=QueryTypeClassification)
-        classification_prompt = get_query_type_classification_prompt(
-            query=state.user_query,
-            format_instructions=classification_parser.get_format_instructions(),
-        )
+        prompt = QUERY_TYPE_CLASSIFICATION_TEMPLATE.format(query=state.user_query)
 
-        chain = classification_prompt | llm | classification_parser
+        for attempt in range(state.max_retries):
+            try:
 
-        result = safe_invoke(
-            chain_func=chain,
-            inputs={},
-            default_value=None,
-            error_msg="Error in query type classification",
-            max_retries=state.max_retries,
-        )
+                response = get_from_llm(prompt, model_name="Qwen3-8B", temperature=0.3)
+                # 提取JSON
+                json_match = re.search(r'\{.*?\}', response, re.DOTALL)
+                if json_match:
+                    result_dict = json.loads(json_match.group(0))
 
-        if result is not None:
-            state.classification = result
-            logger.info(f"Query classified as: {result.query_type} (confidence: {result.confidence})")
-            logger.info(f"Classification reasoning: {result.reasoning}")
-            return state
-        else:
-            # 如果chain失败，使用fallback逻辑
-            logger.warning("Chain failed, using fallback classification")
-            raise Exception("Chain classification failed")
+                    # 验证必需字段
+                    if ("query_type" in result_dict and
+                        result_dict["query_type"] in ["academic", "general"] and
+                        "confidence" in result_dict and
+                        "reasoning" in result_dict):
 
-    except Exception as e:
-        logger.warning(f"Query classification with chain failed: {e}")
+                        classification = QueryTypeClassification(
+                            query_type=result_dict["query_type"],
+                            confidence=float(result_dict["confidence"]),
+                            reasoning=result_dict["reasoning"]
+                        )
+
+                        state.classification = classification
+                        logger.info(f"Query classified as: {classification.query_type} (confidence: {classification.confidence})")
+                        logger.info(f"Classification reasoning: {classification.reasoning}")
+                        return state
+
+            except Exception as e:
+                logger.warning(f"Query classification attempt {attempt + 1} failed: {e}")
+                state.retry_count["classify_query_type"] += 1
+                continue
 
         # 默认fallback：如果包含学术关键词则判断为academic，否则为general
         academic_keywords = [
@@ -132,70 +138,17 @@ def classify_query_type(state: QueryProcessingState) -> QueryProcessingState:
         state.classification = fallback_classification
         logger.info(f"Using fallback classification: {fallback_classification.query_type}")
 
-        if result is None:
-            state.errors.append(f"Failed to classify query type: {str(e)}")
+    except Exception as e:
+        logger.error(f"Query classification failed: {e}")
+        # 最终fallback：默认为学术查询
+        state.classification = QueryTypeClassification(
+            query_type="academic",
+            confidence=0.5,
+            reasoning="Classification failed, defaulting to academic"
+        )
+        state.errors.append(f"Failed to classify query type: {str(e)}")
 
     return state
-
-
-def classify_query_type_standalone(query: str) -> Dict[str, Any]:
-    """
-    独立的查询类型分类函数，可以单独调用
-
-    Args:
-        query: 用户查询
-
-    Returns:
-        分类结果字典
-    """
-    try:
-        llm = llm_map[DEFAULT_MODEL_FOR_QUERY_INTENT]
-        classification_parser = PydanticOutputParser(pydantic_object=QueryTypeClassification)
-        classification_prompt = get_query_type_classification_prompt(
-            query=query,
-            format_instructions=classification_parser.get_format_instructions(),
-        )
-
-        chain = classification_prompt | llm | classification_parser
-
-        result = safe_invoke(
-            chain_func=chain,
-            inputs={},
-            default_value=None,
-            error_msg="Error in standalone query type classification",
-            max_retries=3,
-        )
-
-        if result is not None:
-            logger.info(f"Standalone query classification result: {result}")
-            return {
-                "query_type": result.query_type,
-                "confidence": result.confidence,
-                "reasoning": result.reasoning
-            }
-
-    except Exception as e:
-        logger.warning(f"Standalone query classification failed: {e}")
-
-    # 默认fallback
-    academic_keywords = [
-        "algorithm", "model", "method", "research", "analysis", "学习", "算法",
-        "模型", "方法", "研究", "分析", "技术", "理论", "框架", "deep learning",
-        "machine learning", "neural network", "artificial intelligence", "AI",
-        "自然语言处理", "计算机视觉", "数据挖掘", "论文", "paper"
-    ]
-
-    query_lower = query.lower()
-    is_academic = any(keyword in query_lower for keyword in academic_keywords)
-
-    fallback_result = {
-        "query_type": "academic" if is_academic else "general",
-        "confidence": 0.7,
-        "reasoning": f"Fallback classification based on keyword matching"
-    }
-
-    logger.info(f"Using fallback classification: {fallback_result}")
-    return fallback_result
 
 def detect_language_and_translate(state: QueryProcessingState) -> QueryProcessingState:
     logger.info("detect_language_and_translate ...")
@@ -305,13 +258,7 @@ def finalize_query(state: QueryProcessingState) -> QueryProcessingState:
     return state
 
 
-def create_query_processor_graph(include_classification: bool = True):
-    """
-    创建查询处理图，可选择是否包含查询类型分类
-
-    Args:
-        include_classification: 是否包含查询类型分类步骤
-    """
+def create_query_processor_graph():
     workflow = StateGraph(QueryProcessingState)
 
     # Add nodes
@@ -320,19 +267,10 @@ def create_query_processor_graph(include_classification: bool = True):
     workflow.add_node("rewrite_query", rewrite_query)
     workflow.add_node("finalize_query", finalize_query)
 
-    if include_classification:
-        workflow.add_node("classify_query_type", classify_query_type)
-
-    # Add edges
+    # Add edges (sequential workflow)
     workflow.set_entry_point("detect_language_and_translate")
     workflow.add_edge("detect_language_and_translate", "detect_query_intent")
-
-    if include_classification:
-        workflow.add_edge("detect_query_intent", "classify_query_type")
-        workflow.add_edge("classify_query_type", "rewrite_query")
-    else:
-        workflow.add_edge("detect_query_intent", "rewrite_query")
-
+    workflow.add_edge("detect_query_intent", "rewrite_query")
     workflow.add_edge("rewrite_query", "finalize_query")
     workflow.add_edge("finalize_query", END)
 
@@ -340,15 +278,8 @@ def create_query_processor_graph(include_classification: bool = True):
     return workflow.compile()
 
 
-def process_query(user_query: str, max_retries: int = 3, include_classification: bool = True) -> Dict[str, Any]:
-    """
-    处理查询的主函数
-
-    Args:
-        user_query: 用户原始查询
-        max_retries: 每个步骤的最大重试次数
-        include_classification: 是否包含查询类型分类
-    """
+# Main function to process a query
+def process_query(user_query: str, max_retries: int = 3) -> Dict[str, Any]:
     try:
         logger.info(f"Processing new query: {user_query}")
 
@@ -356,19 +287,20 @@ def process_query(user_query: str, max_retries: int = 3, include_classification:
         initial_state = QueryProcessingState(user_query=user_query, max_retries=max_retries)
 
         # Create and run graph
-        workflow = create_query_processor_graph(include_classification=include_classification)
+        workflow = create_query_processor_graph()
 
         # Execute the graph
         start_time = time.time()
-        result = workflow.invoke(initial_state)
+        result = workflow.invoke(initial_state)  # result is likely a dictionary
         end_time = time.time()
 
         logger.info(f"Query processing completed in {end_time - start_time:.2f} seconds")
 
+        logger.info(f"result: {result}")
         # Format the result for return
         output = {
             "original_query": user_query,
-            "final_query": result["final_query"],
+            "final_query": result["final_query"],  # Access as a dictionary
             "processing_time": f"{end_time - start_time:.2f}s",
             "errors": result["errors"] if result["errors"] else None,
         }
@@ -395,14 +327,6 @@ def process_query(user_query: str, max_retries: int = 3, include_classification:
                 "explanation": result["rewrite"].explanation,
             }
 
-        # 新增：查询类型分类结果
-        if "classification" in result and result["classification"]:
-            output["classification"] = {
-                "query_type": result["classification"].query_type,
-                "confidence": result["classification"].confidence,
-                "reasoning": result["classification"].reasoning,
-            }
-
         return output
 
     except Exception as e:
@@ -410,31 +334,27 @@ def process_query(user_query: str, max_retries: int = 3, include_classification:
         logger.error(traceback.format_exc())
         return {
             "original_query": user_query,
-            "final_query": user_query,
+            "final_query": user_query,  # Return original query as fallback
             "error": f"Critical error: {str(e)}",
         }
 
 
-async def process_query_async(user_query: str, max_retries: int = 3, include_classification: bool = True) -> Dict[str, Any]:
+async def process_query_async(user_query: str, max_retries: int = 3) -> Dict[str, Any]:
     """
-    查询处理的异步版本
+    Asynchronous version of the query processing function.
 
     Args:
-        user_query: 用户原始查询
-        max_retries: 每个步骤的最大重试次数
-        include_classification: 是否包含查询类型分类
+        user_query: The user's original query
+        max_retries: Maximum number of retries for each processing step
 
     Returns:
-        包含处理结果和分析结果的字典
+        A dictionary containing the processed query and analysis results
     """
     try:
         logger.info(f"Processing query asynchronously: {user_query}")
         # Run the synchronous function in a separate thread to avoid blocking
         loop = asyncio.get_running_loop()
-        result = await loop.run_in_executor(
-            None,
-            lambda: process_query(user_query, max_retries, include_classification)
-        )
+        result = await loop.run_in_executor(None, lambda: process_query(user_query, max_retries))
 
         logger.info("Async query processing completed")
         return result
@@ -444,22 +364,17 @@ async def process_query_async(user_query: str, max_retries: int = 3, include_cla
         logger.error(traceback.format_exc())
         return {
             "original_query": user_query,
-            "final_query": user_query,
+            "final_query": user_query,  # Return original query as fallback
             "error": f"Critical error in async processing: {str(e)}",
         }
 
+
 def test():
-    """测试查询处理的同步版本"""
     # Example queries to test
     test_queries = [
-        "What are the latest advances in transformer models?",  # Academic
-        "我想了解人工智能在医疗领域的应用",  # Academic (Chinese)
-        "what is better, lstm or transformers for nlp tasks",  # Academic
-        "2024年中国经济政策最新变化",  # General (Chinese)
-        "今日股市行情分析",  # General
-        "COVID-19 vaccine policy updates",  # General
-        "深度学习在计算机视觉中的应用研究",  # Academic (Chinese)
-        "苹果公司最新财报分析",  # General
+        "What are the latest advances in transformer models?",
+        "我想了解人工智能在医疗领域的应用",  # Chinese: "I want to learn about AI applications in healthcare"
+        "what is better, lstm or transformers for nlp tasks",
     ]
 
     for query in test_queries:
@@ -467,31 +382,23 @@ def test():
         print(f"PROCESSING QUERY: {query}")
         print("=" * 80)
 
-        result = process_query(query, include_classification=True)
+        result = process_query(query)
 
         print("\nRESULT:")
+
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # 特别显示分类结果
-        if "classification" in result:
-            print(f"\n>>> Classification: {result['classification']['query_type']} "
-                  f"(confidence: {result['classification']['confidence']:.2f})")
-            print(f">>> Reasoning: {result['classification']['reasoning']}")
 
-
-
-
-async def test_async():
+async def test_aysnc():
     # Example queries to test
     test_queries = [
         "What are the latest advances in transformer models?",
-        "我想了解人工智能在医疗领域的应用",
+        "我想了解人工智能在医疗领域的应用",  # Chinese: "I want to learn about AI applications in healthcare"
         "what is better, lstm or transformers for nlp tasks",
-        "2024年中国经济政策最新变化",
     ]
 
     # Process all queries concurrently
-    tasks = [process_query_async(query, include_classification=True) for query in test_queries]
+    tasks = [process_query_async(query) for query in test_queries]
     results = await asyncio.gather(*tasks)
 
     # Display the results
@@ -505,13 +412,6 @@ async def test_async():
 
 # Example usage
 if __name__ == "__main__":
-    pass
-    # 测试完整流程
     # test()
-
-    # 测试异步版本
-    # asyncio.run(test_async())
-
-    # 测试独立分类功能
-    # standalone_result = classify_query_type_standalone("饮食和减肥的关系")
-    # print(f"\nStandalone classification result: {standalone_result}")
+    # asyncio.run(test_aysnc())
+    pass

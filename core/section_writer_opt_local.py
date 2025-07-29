@@ -63,6 +63,7 @@ class SectionWriterState(BaseModel):
         default=None, description="Parent section name"
     )
     user_query: str = Field(description="Original user query")
+    query_domain: str=Field(description="Query domain type: [academic or general]")
     section_key_points: List[str] = Field(description="Content key points from outline")
     paper_title: str = Field(description="Paper title")
     search_queries: List[str] = Field(description="Search queries for RAG service")
@@ -193,6 +194,7 @@ async def run_rag_chat(
                 # Prepare the item data for run_section_writer_actor
                 item_data = {
                     "query": query,
+                    "query_domain":state.query_domain,
                     "request_id": rag_config.generate_serial_number(),
                     "task_id": state.sub_task_id,
                     "section_name": key_point,
@@ -210,7 +212,7 @@ async def run_rag_chat(
                     "image_extraction_model": DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT,
                     "reranker_model_name": DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK
                 }
-                response_data = await run_section_writer_actor(query, state.sub_task_id,section_writer_model_info)
+                response_data = await run_section_writer_actor(query, state.query_domain, state.sub_task_id,section_writer_model_info)
 
                 # Check if the response is valid
                 if not response_data:
@@ -578,6 +580,7 @@ async def section_writer_async(
             section_index=params.get("section_index", 0),
             parent_section=params.get("parent_section"),
             user_query=params["user_query"],
+            query_domain=params["query_domain"],
             paper_title=params["paper_title"],
             section_key_points=section_key_points,
             search_queries=search_queries,

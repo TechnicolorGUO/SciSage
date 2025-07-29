@@ -2094,14 +2094,15 @@ class ResponseRagChat(BaseModel):
     main_figure_caption: str = None
 
 
-async def run_section_writer_actor(query, task_id, model_info):
+async def run_section_writer_actor(query,query_domain, task_id, model_info):
     try:
         request_id = f"SectionWriterActor-{uuid.uuid4().hex}"
         time_cost = {}
         start_time = time.time()
         data = {
             "query": query,
-            "task_id": task_id,
+            "query_domain":query_domain,
+            "task_id": task_id
         }
         for _ in range(5):
             retrival_result = await run_requests_parallel(data)

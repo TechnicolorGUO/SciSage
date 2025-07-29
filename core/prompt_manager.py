@@ -2695,3 +2695,59 @@ Output ONLY the search query string.
             ),
         ]
     )
+
+def get_query_type_classification_prompt(
+    query: str, format_instructions: str
+) -> ChatPromptTemplate:
+    """
+    Generates a prompt template for classifying the type of user query: academic or general.
+
+    Args:
+        query: The user query to classify.
+        format_instructions: Instructions for the expected output format (e.g., Pydantic schema).
+
+    Returns:
+        A ChatPromptTemplate object configured for query type classification.
+    """
+    return ChatPromptTemplate.from_messages(
+        [
+            SystemMessage(
+                content=f"""You are an expert query classifier specializing in distinguishing between academic research queries and general information queries.
+
+Your task is to analyze the given user query and classify it into one of two categories:
+
+**ACADEMIC RESEARCH QUERIES** are characterized by:
+- Focus on scientific research, technical methods, theoretical frameworks
+- Contains professional terminology, algorithm names, technical concepts
+- Seeks research papers, academic materials, technical documentation
+- Examples: machine learning algorithms, deep learning models, natural language processing techniques, theoretical analysis, empirical studies
+
+**GENERAL INFORMATION QUERIES** are characterized by:
+- Focus on news, policies, regulations, business information
+- Contains current events, market dynamics, industry reports
+- Seeks latest news, real-time information, official policies
+- Examples: government policies, market trends, news events, company updates, product information
+
+Analyze the query content, terminology used, and likely information-seeking intent to make your classification.
+
+Provide your analysis with:
+1. Classification (academic or general)
+2. Confidence level (0.0 to 1.0)
+3. Clear reasoning for your decision
+
+Output Schema Instructions:
+{format_instructions}
+
+Provide the classification strictly following the schema. Return *only* the JSON object."""
+            ),
+            HumanMessage(
+                content=f"""Please classify the following user query:
+
+Query: "{query}"
+
+Analyze this query and determine whether it is seeking academic research information or general information. Consider the terminology used, the type of information likely being sought, and the overall context.
+
+Return your classification following the specified schema format."""
+            ),
+        ]
+    )

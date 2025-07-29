@@ -72,6 +72,7 @@ class PaperGenerationState:
     timestamp: str = ""
     rewrite_query: str = ""
     query_type: str = ""
+    query_domain: str= ""
     research_field: str = ""
     rag_service_url: str = ""
     paper_title: str = ""
@@ -418,6 +419,7 @@ async def process_section(
         "section_index": section_data.section_index,
         "parent_section": section_name,
         "user_query": state.user_query,
+        "query_domain": state.query_domain,
         "paper_title": state.paper_title,
         "section_key_points": section_data.key_points,
         "search_queries": section_data.search_queries,
@@ -922,6 +924,9 @@ class PaperGenerationPipeline:
                             "query_type", "Unknown"
                         )
 
+                        query_domain_type = query_intent.get("classification",{}).get("query_type","academic")
+                        self.state.query_domain = query_domain_type
+
                         logger.info(f"Query processed: {processed_query}")
                         logger.info(f"Query intent analysis: {query_intent}")
                     except Exception as e:
@@ -1115,7 +1120,9 @@ def save_results(results: Dict[str, Any], output_dir: str = "temp") -> str:
     return process_file
 
 
-async def main():
+
+
+async def example():
     """Main entry point for running the paper generation pipeline"""
     # Example parameters
     user_name = "researcher"
@@ -1134,7 +1141,7 @@ Introduce the content and implementation method of multimodal RAG""".split(
     )
 
     query_lst = query_lst[:1]
-    query_lst = ["The relationship between staying up late and cancer"]
+    query_lst = ["Is long-term coffee drinking good for the body"]
     already_query_lst = []
     for user_query in query_lst:
         if user_query in already_query_lst:
@@ -1184,4 +1191,4 @@ Introduce the content and implementation method of multimodal RAG""".split(
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(query_lst())

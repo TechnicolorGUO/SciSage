@@ -4,3 +4,4 @@ arxiv_cache/
 eval/
 output/
 ai_results.jsonl
+run_example.sh
