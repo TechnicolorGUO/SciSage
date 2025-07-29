@@ -222,7 +222,7 @@ class ArxivDatabase:
         self.close()
 
 
-db_path = "./database/new.db"
+db_path = "./generation/database/new.db"
 
 # with ArxivDatabase(db_path) as db:
 #     all_records = db.get_all()

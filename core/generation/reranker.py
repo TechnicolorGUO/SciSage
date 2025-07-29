@@ -12,6 +12,8 @@ from datetime import datetime
 import traceback
 from log import logger
 from local_request_v2 import get_from_llm
+from configuration import DEFAULT_MODEL_FOR_SECTION_RETRIVAL
+
 
 # 重排序提示模板
 RERANK_TEMPLATE = """You are an expert academic researcher tasked with ranking research papers based on their relevance, authority, and timeliness for a given query.
@@ -192,7 +194,7 @@ def extract_scores_from_response_robust(response: str, num_papers: int) -> List[
 def rerank_papers_with_llm(
     papers: List[Dict[str, Any]],
     query: str,
-    model_name: str = "Qwen3-32B-long-ctx",
+    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,
     max_papers: int = 20,
     max_retries: int = 5,
 ) -> List[Dict[str, Any]]:
@@ -542,7 +544,7 @@ def rerank_papers_batch(
     papers: List[Dict[str, Any]],
     query: str,
     batch_size: int = 10,
-    model_name: str = "Qwen3-32B",
+    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,
 ) -> List[Dict[str, Any]]:
     """
     Rerank papers in batches for better performance with large lists.
@@ -647,7 +649,7 @@ import time
 def rerank_papers_hybrid(
     papers: List[Dict[str, Any]],
     query: str,
-    model_name: str = "Qwen3-14B",
+    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,
     use_llm: bool = True,
     max_papers_for_llm: int = 20,
 ) -> List[Dict[str, Any]]:

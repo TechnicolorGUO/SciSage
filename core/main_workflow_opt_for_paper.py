@@ -1190,5 +1190,6 @@ Introduce the content and implementation method of multimodal RAG""".split(
             print(f"Successfully generated paper: '{results.get('paper_title', '')}'")
 
 
-if __name__ == "__main__":
-    asyncio.run(query_lst())
+# if __name__ == "__main__":
+#     asyncio.run(example())
+

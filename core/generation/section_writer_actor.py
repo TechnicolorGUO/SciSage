@@ -206,7 +206,7 @@ class OpenScholarAPI:
         try:
             # Using a potentially more capable model for judgment tasks might be beneficial
             content = self._call_llm(
-                message, model_name="Qwen3-14B", temperature=0.8
+                message, model_name=self.model_name, temperature=0.8
             )  # Consider making model configurable
 
             # More robust JSON extraction
@@ -1073,7 +1073,7 @@ class OpenScholarAPI:
         self,
         markdown_text: str,
         max_tokens: int = 8192,
-        model_name: Optional[str] = "Qwen3-32B",
+        model_name: Optional[str] = "Qwen3-8B",
     ) -> str:
         """
         Refine the given markdown content using an LLM.
@@ -1593,7 +1593,7 @@ class OpenScholarAPI:
                         f"{task_id}: Output is empty. Skipping markdown refinement."
                     )
                 else:
-                    refined_text = self.refine_markdown_content(markdown_text)
+                    refined_text = self.refine_markdown_content(markdown_text,model_name=self.model_name)
                     if refined_text:
                         logger.info("refine text done.")
                         item["output"] = refined_text
@@ -1696,7 +1696,7 @@ class OpenScholarAPI:
 
                                         validation_response = self._call_llm(
                                             [{"role": "user", "content": prompt}],
-                                            model_name="Qwen3-32B",
+                                            model_name=self.model_name,
                                             temperature=0.1,
                                             max_tokens=100,
                                         )
@@ -2109,9 +2109,9 @@ async def run_section_writer_actor(query,query_domain, task_id, model_info):
             if "ctxs" in retrival_result:
                 break
 
-        model_name = model_info.get("rag_model","Qwen3-32B")
-        image_extraction_model = model_info.get("image_extraction_model", "Qwen3-14B")
-        reranker_model_name = model_info.get("reranker_model_name", "Qwen3-14B")
+        model_name = model_info.get("rag_model","Qwen3-8B")
+        image_extraction_model = model_info.get("image_extraction_model", "Qwen3-8B")
+        reranker_model_name = model_info.get("reranker_model_name", "Qwen3-8B")
         keyword_extraiction_model = image_extraction_model
 
         relevance_evaluator = DocumentRelevanceEvaluator(model_name=keyword_extraiction_model, max_workers=4)
@@ -2224,9 +2224,9 @@ async def main_example():
     try:
         # Initialize API (consider adding reranker model path if needed)
 
-        model_name = "Qwen3-32B"
-        image_extraction_model = "Qwen3-14B"
-        reranker_model_name = "Qwen3-14B"
+        model_name = "Qwen3-8B"
+        image_extraction_model = "Qwen3-8B"
+        reranker_model_name = "Qwen3-8B"
         api = OpenScholarAPI(
             online_retriver=True,
             use_contexts=use_contexts,

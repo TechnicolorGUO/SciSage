@@ -21,6 +21,7 @@ from generation.global_config import recall_server_url
 import traceback
 from generation.generation_instructions import template_extract_keywords_source_aware
 from generation.websearch_general import search_and_crawl_data_only
+from configuration import DEFAULT_MODEL_FOR_SECTION_RETRIVAL
 
 from local_request_v2 import get_from_llm
 import re
@@ -122,7 +123,7 @@ def retrival_online(data: Dict[str, Any]) -> Dict[str, Any]:
 def extract_keywords(query: str, source: str = "semantic") -> List[str]:
     """Extract keywords from query optimized for a specific source."""
     # LLM_MODEL_NAME = "Qwen3-32B"
-    LLM_MODEL_NAME = "Qwen3-14B"
+    LLM_MODEL_NAME = DEFAULT_MODEL_FOR_SECTION_RETRIVAL
     query = query.lower()
     model_inp = template_extract_keywords_source_aware.format(
         user_query=query, source=source
@@ -210,6 +211,7 @@ def convert_crawl_results_to_ctxs(crawl_results: Dict[str, Any]) -> List[Dict[st
 
     return ctxs
 
+
 async def retrival_general_web(data: Dict[str, Any]) -> Dict[str, Any]:
     """
     使用通用网络搜索和爬虫进行检索
@@ -233,7 +235,7 @@ async def retrival_general_web(data: Dict[str, Any]) -> Dict[str, Any]:
             num_search_results=15,  # 搜索更多URL
             search_engine="auto",
             use_proxy=False,
-            crawler_model="Qwen3-8B",
+            crawler_model=DEFAULT_MODEL_FOR_SECTION_RETRIVAL,
             similarity_threshold=70  # 降低相似度阈值以获取更多相关内容
         )
 

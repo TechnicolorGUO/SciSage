@@ -128,17 +128,18 @@ MODEL_CONFIGS = {
 # ==========================================================================
 # -- QUERY INTENT --
 DEFAULT_MODEL_FOR_QUERY_INTENT = (
-    "Qwen3-32B"  # Model used for generating search queries from outline content points
+    "Qwen3-8B"  # Model used for generating search queries from outline content points
 )
 
 # -- OUTLINE --
-DEFAULT_MODEL_FOR_OUTLINE: str = "Qwen3-32B"  # Changed from gpt-4-32k to Qwen25-72B
+DEFAULT_MODEL_FOR_OUTLINE: str = "Qwen3-8B"  # Changed from gpt-4-32k to Qwen25-72B
 # Currently using only Qwen model for outline generation
 OUTLINE_GENERAOR_MODELS: List[str] = [
-    "Qwen3-32B",
-    "Qwen3-14B",
+    # "Qwen3-32B",
+    # "Qwen3-14B",
+    "Qwen3-8B",
 ]
-MODEL_GEN_QUERY: str = "Qwen3-32B"
+MODEL_GEN_QUERY: str = "Qwen3-8B"
 
 # Maximum number of outline reflections to perform
 OUTLINE_REFLECTION_MAX_TURNS: int = 2
@@ -157,25 +158,28 @@ SECTION_REFLECTION_MAX_TURNS: int = 0
 
 MAX_SECTION_RETRY_NUM: int = 3  # Maximum number of retries for section generation
 
-DEFAULT_MODEL_FOR_SECTION_WRITER: str = "Qwen3-32B"
-DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = "Qwen3-14B"
-DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = "Qwen3-14B"
+DEFAULT_MODEL_FOR_SECTION_RETRIVAL: str = "Qwen3-8B"
 
-SECTION_SUMMARY_MODEL: str = "Qwen3-32B"  # gpt-4-32k
-SECTION_REFLECTION_MODEL_LST = ["Qwen3-32B", "llama3-70b"]
+
+DEFAULT_MODEL_FOR_SECTION_WRITER: str = "Qwen3-8B"
+DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = "Qwen3-8B"
+DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = "Qwen3-8B"
+
+SECTION_SUMMARY_MODEL: str = "Qwen3-8B"  # gpt-4-32k
+SECTION_REFLECTION_MODEL_LST = ["Qwen3-8B", "llama3-70b"]
 
 
 # ---- GLOBAL REFLECTION ----
 DO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper
 GLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns
-DEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = "Qwen3-32B"
+DEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = "Qwen3-8B"
 
 # --- ABSTRACT & CONCLUSION ---
 GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1
-MODEL_GEN_ABSTRACT_CONCLUSION: str = "Qwen3-32B"
+MODEL_GEN_ABSTRACT_CONCLUSION: str = "Qwen3-8B"
 
 # -- POOLISH --
-DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = "Qwen3-32B"
+DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = "Qwen3-8B"
 
 # ==========================================================================
 # SERVICE CONFIGURATION

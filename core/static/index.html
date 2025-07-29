@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学术论文生成系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
+            position: relative;
+        }
+
+        .tab:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .tab.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #667eea;
+        }
+
+        .tab-content {
+            padding: 30px;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-container {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-control:invalid {
+            border-color: #dc3545;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-group:hover {
+            background: #f1f3f5;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: #667eea;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            color: #495057;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .status-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .status-card.status-running {
+            border-color: #ffc107;
+            background: linear-gradient(135deg, #fff3cd, #ffffff);
+        }
+
+        .status-card.status-completed {
+            border-color: #28a745;
+            background: linear-gradient(135deg, #d4edda, #ffffff);
+        }
+
+        .status-card.status-error {
+            border-color: #dc3545;
+            background: linear-gradient(135deg, #f8d7da, #ffffff);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .task-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .task-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .task-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .task-id {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f8f9fa;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #495057;
+        }
+
+        .task-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-initializing {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-running {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .status-completed {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .status-error {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .status-cancelled {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .task-query {
+            margin: 10px 0;
+            font-style: italic;
+            color: #666;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+
+        .task-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .task-actions .btn {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .loading::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .alert-info {
+            background: #cce8ff;
+            color: #004085;
+            border: 1px solid #bee5eb;
+        }
+
+        .current-task {
+            display: none;
+            margin-bottom: 25px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-content {
+                padding: 20px;
+            }
+
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>学术论文生成系统</h1>
+            <p>基于 AI 的智能学术论文写作助手</p>
+        </div>
+
+        <div class="main-content">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('generate')">生成论文</button>
+                <button class="tab" onclick="switchTab('tasks')">任务管理</button>
+                <button class="tab" onclick="switchTab('settings')">高级设置</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="generate" class="tab-pane active">
+                    <div id="alerts"></div>
+
+                    <form id="paperForm" class="form-container">
+                        <h3 style="margin-bottom: 20px; color: #2c3e50;">论文生成配置</h3>
+
+                        <div class="form-group">
+                            <label for="userQuery">研究主题/问题</label>
+                            <textarea
+                                id="userQuery"
+                                name="user_query"
+                                class="form-control"
+                                rows="3"
+                                placeholder="请输入您要研究的主题或问题，例如：机器学习在自然语言处理中的应用"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="outlineMaxSections">最大章节数</label>
+                                <input
+                                    type="number"
+                                    id="outlineMaxSections"
+                                    name="outline_max_sections"
+                                    class="form-control"
+                                    value="4"
+                                    min="3"
+                                    max="10"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="outlineMaxReflections">最大反思次数</label>
+                                <input
+                                    type="number"
+                                    id="outlineMaxReflections"
+                                    name="outline_max_reflections"
+                                    class="form-control"
+                                    value="0"
+                                    min="0"
+                                    max="5"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sectionWriterModel">论文写作模型</label>
+                            <select id="sectionWriterModel" name="section_writer_model" class="form-control">
+                                <option value="Qwen3-8B" selected>Qwen3 8B</option>
+                                <option value="Qwen3-14B">Qwen3 14B</option>
+                                <option value="Qwen3-32B">Qwen3 32B</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <h4 style="margin-bottom: 15px; color: #2c3e50;">生成选项</h4>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="sectionReflection" checked>
+                                <label for="sectionReflection">启用章节反思优化</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="globalReflection" checked>
+                                <label for="globalReflection">启用全局反思优化</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="queryUnderstand" checked>
+                                <label for="queryUnderstand">启用查询理解增强</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="onlyOutline">
+                                <label for="onlyOutline">仅生成大纲（不生成完整论文）</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="generateBtn" class="btn btn-primary">
+                            开始生成论文
+                        </button>
+                    </form>
+
+                    <div id="currentTask" class="current-task status-card">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;">当前任务状态</h4>
+                        <div id="taskInfo"></div>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <div id="taskActions"></div>
+                    </div>
+                </div>
+
+                <div id="tasks" class="tab-pane">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3>任务管理</h3>
+                        <button class="btn btn-secondary" onclick="refreshTasks()">
+                            刷新列表
+                        </button>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 id="totalTasks">0</h3>
+                            <p>总任务数</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="runningTasks">0</h3>
+                            <p>运行中</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="completedTasks">0</h3>
+                            <p>已完成</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="errorTasks">0</h3>
+                            <p>错误任务</p>
+                        </div>
+                    </div>
+
+                    <div class="loading" id="tasksLoading">
+                        <p>加载任务列表中...</p>
+                    </div>
+
+                    <div id="tasksList" class="task-list"></div>
+                </div>
+
+                <div id="settings" class="tab-pane">
+                    <h3 style="margin-bottom: 30px; color: #2c3e50;">系统配置</h3>
+
+                    <div class="form-container">
+                        <h4 style="margin-bottom: 20px;">API 配置</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="apiEndpoint">API 端点地址</label>
+                                <input
+                                    type="url"
+                                    id="apiEndpoint"
+                                    class="form-control"
+                                    value="http://0.0.0.0:8193"
+                                    placeholder="请输入API服务地址"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="maxConcurrentTasks">最大并发任务数</label>
+                                <input
+                                    type="number"
+                                    id="maxConcurrentTasks"
+                                    class="form-control"
+                                    value="3"
+                                    min="1"
+                                    max="10"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <h4 style="margin-bottom: 20px;">搜索 API 配置</h4>
+                        <div class="form-group">
+                            <label for="googleSerperKey">Google Serper API Key</label>
+                            <input
+                                type="password"
+                                id="googleSerperKey"
+                                class="form-control"
+                                placeholder="从 https://serper.dev 获取"
+                            >
+                            <small style="color: #666; font-size: 0.8rem; margin-top: 5px; display: block;">
+                                用于学术搜索功能，从 <a href="https://serper.dev" target="_blank">https://serper.dev</a> 获取
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="serpApiKey">SerpAPI Key</label>
+                            <input
+                                type="password"
+                                id="serpApiKey"
+                                class="form-control"
+                                placeholder="从 https://serpapi.com/dashboard 获取"
+                            >
+                            <small style="color: #666; font-size: 0.8rem; margin-top: 5px; display: block;">
+                                用于通用网络搜索功能，从 <a href="https://serpapi.com/dashboard" target="_blank">https://serpapi.com/dashboard</a> 获取
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <h4 style="margin-bottom: 20px;">界面配置</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="defaultLanguage">默认语言</label>
+                                <select id="defaultLanguage" class="form-control">
+                                    <option value="zh-CN">中文</option>
+                                    <option value="en-US">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="autoRefreshInterval">自动刷新间隔(秒)</label>
+                                <input
+                                    type="number"
+                                    id="autoRefreshInterval"
+                                    class="form-control"
+                                    value="5"
+                                    min="1"
+                                    max="60"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-container">
+                        <h4 style="margin-bottom: 20px;">功能开关</h4>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="enableAutoRefresh" checked>
+                            <label for="enableAutoRefresh">启用自动刷新任务状态</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="enableNotifications">
+                            <label for="enableNotifications">启用浏览器通知</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="enableDebugMode">
+                            <label for="enableDebugMode">启用调试模式</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="enableDarkMode">
+                            <label for="enableDarkMode">启用深色模式</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" onclick="saveSettings()">保存设置</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetSettings()">重置设置</button>
+                        <button type="button" class="btn btn-danger" onclick="clearCache()">清除缓存</button>
+                    </div>
+
+                    <div id="settingsAlert" style="margin-top: 20px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTaskId = null;
+        let autoRefreshTimer = null;
+        let settings = {
+            apiEndpoint: 'http://0.0.0.0:8193',
+            maxConcurrentTasks: 3,
+            defaultLanguage: 'zh-CN',
+            autoRefreshInterval: 5,
+            enableAutoRefresh: true,
+            enableNotifications: false,
+            enableDebugMode: false,
+            enableDarkMode: false,
+            googleSerperKey: '',
+            serpApiKey: ''
+        };
+
+        function saveSettings() {
+            settings.apiEndpoint = document.getElementById('apiEndpoint').value;
+            settings.maxConcurrentTasks = parseInt(document.getElementById('maxConcurrentTasks').value);
+            settings.defaultLanguage = document.getElementById('defaultLanguage').value;
+            settings.autoRefreshInterval = parseInt(document.getElementById('autoRefreshInterval').value);
+            settings.enableAutoRefresh = document.getElementById('enableAutoRefresh').checked;
+            settings.enableNotifications = document.getElementById('enableNotifications').checked;
+            settings.enableDebugMode = document.getElementById('enableDebugMode').checked;
+            settings.enableDarkMode = document.getElementById('enableDarkMode').checked;
+            settings.googleSerperKey = document.getElementById('googleSerperKey').value;
+            settings.serpApiKey = document.getElementById('serpApiKey').value;
+
+            localStorage.setItem('scisage_settings', JSON.stringify(settings));
+
+            // Send environment variables to backend
+            updateEnvironmentVariables();
+
+            showSettingsAlert('设置已保存', 'success');
+
+            if (settings.enableAutoRefresh) {
+                startAutoRefresh();
+            } else {
+                stopAutoRefresh();
+            }
+        }
+
+        async function updateEnvironmentVariables() {
+            try {
+                const response = await fetch(`${settings.apiEndpoint}/api/update-env`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        GOOGLE_SERPER_KEY: settings.googleSerperKey,
+                        SERPAPI_API_KEY: settings.serpApiKey
+                    })
+                });
+
+                if (!response.ok) {
+                    console.warn('Failed to update environment variables');
+                }
+            } catch (error) {
+                console.warn('Failed to update environment variables:', error);
+            }
+        }
+
+        function loadSettings() {
+            const saved = localStorage.getItem('scisage_settings');
+            if (saved) {
+                settings = { ...settings, ...JSON.parse(saved) };
+            } else {
+                settings.apiEndpoint = 'http://0.0.0.0:8193';
+            }
+
+            // 更新表单字段
+            document.getElementById('apiEndpoint').value = settings.apiEndpoint;
+            document.getElementById('maxConcurrentTasks').value = settings.maxConcurrentTasks;
+            document.getElementById('defaultLanguage').value = settings.defaultLanguage;
+            document.getElementById('autoRefreshInterval').value = settings.autoRefreshInterval;
+            document.getElementById('enableAutoRefresh').checked = settings.enableAutoRefresh;
+            document.getElementById('enableNotifications').checked = settings.enableNotifications;
+            document.getElementById('enableDebugMode').checked = settings.enableDebugMode;
+            document.getElementById('enableDarkMode').checked = settings.enableDarkMode;
+            document.getElementById('googleSerperKey').value = settings.googleSerperKey || '';
+            document.getElementById('serpApiKey').value = settings.serpApiKey || '';
+        }
+
+        function resetSettings() {
+            if (!confirm('确定要重置所有设置吗？')) return;
+
+            document.getElementById('apiEndpoint').value = 'http://0.0.0.0:8193';
+            document.getElementById('maxConcurrentTasks').value = 3;
+            document.getElementById('defaultLanguage').value = 'zh-CN';
+            document.getElementById('autoRefreshInterval').value = 5;
+            document.getElementById('enableAutoRefresh').checked = true;
+            document.getElementById('enableNotifications').checked = false;
+            document.getElementById('enableDebugMode').checked = false;
+            document.getElementById('enableDarkMode').checked = false;
+            document.getElementById('googleSerperKey').value = '';
+            document.getElementById('serpApiKey').value = '';
+
+            showSettingsAlert('设置已重置', 'success');
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+            refreshTasks();
+            setupFormSubmission();
+            startAutoRefresh();
+            updateTaskStats([]);
+        });
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+            document.querySelector(`button[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+
+            if (tabName === 'tasks') {
+                refreshTasks();
+            }
+        }
+
+        function setupFormSubmission() {
+            document.getElementById('paperForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData.entries());
+
+                data.do_section_reflection = document.getElementById('sectionReflection').checked;
+                data.do_global_reflection = document.getElementById('globalReflection').checked;
+                data.do_query_understand = document.getElementById('queryUnderstand').checked;
+                data.only_outline = document.getElementById('onlyOutline').checked;
+
+                data.outline_max_sections = parseInt(data.outline_max_sections);
+                data.outline_max_reflections = parseInt(data.outline_max_reflections);
+
+                await submitPaperGeneration(data);
+            });
+        }
+
+        async function submitPaperGeneration(data) {
+            const generateBtn = document.getElementById('generateBtn');
+
+            try {
+                generateBtn.disabled = true;
+                generateBtn.textContent = '提交中...';
+
+                const response = await fetch(`${settings.apiEndpoint}/api/generate_paper`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    currentTaskId = result.task_id;
+                    showAlert('任务已提交，ID: ' + result.task_id, 'success');
+                    showCurrentTask(currentTaskId);
+                    startTaskPolling(currentTaskId);
+                } else {
+                    showAlert('提交失败: ' + (result.error || '未知错误'), 'error');
+                }
+            } catch (error) {
+                showAlert('网络错误: ' + error.message, 'error');
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = '开始生成论文';
+            }
+        }
+
+        function showCurrentTask(taskId) {
+            const currentTaskDiv = document.getElementById('currentTask');
+            currentTaskDiv.style.display = 'block';
+            currentTaskDiv.className = 'status-card status-running';
+        }
+
+        function startTaskPolling(taskId) {
+            const pollInterval = setInterval(async () => {
+                try {
+                    const response = await fetch(`${settings.apiEndpoint}/api/task-status/${taskId}`);
+                    const task = await response.json();
+
+                    updateCurrentTaskDisplay(task);
+
+                    if (task.status === 'completed' || task.status === 'error') {
+                        clearInterval(pollInterval);
+                        if (settings.enableNotifications) {
+                            showNotification(task);
+                        }
+                    }
+                } catch (error) {
+                    console.error('轮询任务状态失败:', error);
+                }
+            }, 2000);
+        }
+
+        async function refreshTasks() {
+            const loading = document.getElementById('tasksLoading');
+            const tasksList = document.getElementById('tasksList');
+
+            try {
+                loading.classList.add('show');
+
+                const response = await fetch(`${settings.apiEndpoint}/api/tasks`);
+                const tasks = await response.json();
+
+                displayTasks(tasks, tasksList);
+            } catch (error) {
+                tasksList.innerHTML = `<div class="alert alert-error">加载任务失败: ${error.message}</div>`;
+            } finally {
+                loading.classList.remove('show');
+            }
+        }
+
+        function downloadResult(taskId) {
+            window.open(`${settings.apiEndpoint}/api/download/${taskId}?file_type=markdown`, '_blank');
+        }
+
+        async function cancelTask(taskId) {
+            if (!confirm('确定要取消这个任务吗？')) return;
+
+            try {
+                const response = await fetch(`${settings.apiEndpoint}/api/task/${taskId}/cancel`, {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    showAlert('任务已取消', 'success');
+                    refreshTasks();
+                } else {
+                    showAlert('取消任务失败', 'error');
+                }
+            } catch (error) {
+                showAlert('网络错误: ' + error.message, 'error');
+            }
+        }
+
+        function updateCurrentTaskDisplay(task) {
+            const taskInfo = document.getElementById('taskInfo');
+            const progressFill = document.getElementById('progressFill');
+            const taskActions = document.getElementById('taskActions');
+            const currentTaskDiv = document.getElementById('currentTask');
+
+            taskInfo.innerHTML = `
+                <div><strong>任务ID:</strong> ${task.task_id}</div>
+                <div><strong>状态:</strong> <span class="task-status status-${task.status}">${getStatusText(task.status)}</span></div>
+                <div><strong>查询:</strong> ${task.user_query || 'N/A'}</div>
+                <div><strong>开始时间:</strong> ${formatDateTime(task.created_at)}</div>
+                ${task.error ? `<div style="color: #dc3545;"><strong>错误:</strong> ${task.error}</div>` : ''}
+            `;
+
+            const progress = getTaskProgress(task);
+            progressFill.style.width = progress + '%';
+
+            currentTaskDiv.className = `status-card status-${task.status}`;
+
+            updateTaskActions(task, taskActions);
+        }
+
+
+
+        function updateTaskStats(tasks) {
+            const total = tasks.length;
+            const running = tasks.filter(t => t.status === 'running').length;
+            const completed = tasks.filter(t => t.status === 'completed').length;
+            const error = tasks.filter(t => t.status === 'error').length;
+
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('runningTasks').textContent = running;
+            document.getElementById('completedTasks').textContent = completed;
+            document.getElementById('errorTasks').textContent = error;
+        }
+
+        function displayTasks(tasks, container) {
+            updateTaskStats(tasks);
+
+            if (!tasks || tasks.length === 0) {
+                container.innerHTML = '<div class="alert alert-info">暂无任务，点击"生成论文"开始创建第一个任务</div>';
+                return;
+            }
+
+            container.innerHTML = tasks.map(task => `
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-id">ID: ${task.task_id}</span>
+                        <span class="task-status status-${task.status}">${getStatusText(task.status)}</span>
+                    </div>
+                    <div class="task-query">${task.user_query || 'N/A'}</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin: 10px 0; font-size: 0.9rem; color: #666;">
+                        <span>创建时间: ${formatDateTime(task.created_at)}</span>
+                        ${task.updated_at ? `<span>更新时间: ${formatDateTime(task.updated_at)}</span>` : ''}
+                    </div>
+                    ${task.status === 'running' ? `
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${getTaskProgress(task)}%;"></div>
+                        </div>
+                    ` : ''}
+                    ${task.error ? `<div class="alert alert-error" style="margin: 10px 0; padding: 10px;">${task.error}</div>` : ''}
+                    <div class="task-actions">
+                        ${getTaskActionButtons(task)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getTaskActionButtons(task) {
+            let buttons = [];
+
+            if (task.status === 'running') {
+                buttons.push(`<button class="btn btn-danger" onclick="cancelTask('${task.task_id}')">取消</button>`);
+            }
+
+            if (task.status === 'completed') {
+                buttons.push(`<button class="btn btn-success" onclick="downloadResult('${task.task_id}')">下载结果</button>`);
+            }
+
+            buttons.push(`<button class="btn btn-secondary" onclick="viewTaskDetails('${task.task_id}')">查看详情</button>`);
+
+            if (task.status === 'completed' || task.status === 'error') {
+                buttons.push(`<button class="btn btn-danger" onclick="deleteTask('${task.task_id}')">删除</button>`);
+            }
+
+            return buttons.join('');
+        }
+
+        function updateTaskActions(task, container) {
+            container.innerHTML = getTaskActionButtons(task);
+        }
+
+        function viewTaskDetails(taskId) {
+            alert('查看任务详情功能待实现');
+        }
+
+        async function deleteTask(taskId) {
+            if (!confirm('确定要删除这个任务吗？此操作不可恢复。')) return;
+
+            try {
+                const response = await fetch(`${settings.apiEndpoint}/api/task/${taskId}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    showAlert('任务已删除', 'success');
+                    refreshTasks();
+                } else {
+                    showAlert('删除任务失败', 'error');
+                }
+            } catch (error) {
+                showAlert('网络错误: ' + error.message, 'error');
+            }
+        }
+
+
+        function clearCache() {
+            if (!confirm('确定要清除所有缓存数据吗？')) return;
+
+            localStorage.clear();
+            showSettingsAlert('缓存已清除', 'success');
+        }
+
+
+        function startAutoRefresh() {
+            stopAutoRefresh();
+            if (settings.enableAutoRefresh) {
+                autoRefreshTimer = setInterval(() => {
+                    if (document.getElementById('tasks').classList.contains('active')) {
+                        refreshTasks();
+                    }
+                }, settings.autoRefreshInterval * 1000);
+            }
+        }
+
+        function stopAutoRefresh() {
+            if (autoRefreshTimer) {
+                clearInterval(autoRefreshTimer);
+                autoRefreshTimer = null;
+            }
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'initializing': '初始化',
+                'running': '运行中',
+                'completed': '已完成',
+                'error': '错误',
+                'cancelled': '已取消'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getTaskProgress(task) {
+            if (task.status === 'completed') return 100;
+            if (task.status === 'error') return 0;
+            if (task.status === 'running') return 50;
+            return 10;
+        }
+
+        function formatDateTime(dateStr) {
+            if (!dateStr) return 'N/A';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
+        }
+
+        function showAlert(message, type) {
+            const alertsDiv = document.getElementById('alerts');
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+
+            alertsDiv.appendChild(alertDiv);
+
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+
+        function showSettingsAlert(message, type) {
+            const alertsDiv = document.getElementById('settingsAlert');
+            alertsDiv.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+
+            setTimeout(() => {
+                alertsDiv.innerHTML = '';
+            }, 3000);
+        }
+
+        function showNotification(task) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('任务完成', {
+                    body: `任务 ${task.task_id} 已${task.status === 'completed' ? '完成' : '失败'}`,
+                    icon: '/favicon.ico'
+                });
+            }
+        }
+
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    </script>
+</body>
+</html>

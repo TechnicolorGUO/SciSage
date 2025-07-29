@@ -14,13 +14,15 @@ import uuid
 from datetime import datetime
 from typing import Dict, Any, Optional
 from fastapi import FastAPI, HTTPException, BackgroundTasks
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles  # 添加这个导入
 from pydantic import BaseModel, Field
 from threading import Lock
 
 from main_workflow_opt_for_paper import PaperGenerationPipeline, save_results
 from log import logger
+
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -38,6 +40,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# 创建静态文件目录
+static_dir = "static"
+os.makedirs(static_dir, exist_ok=True)
+
+# 挂载静态文件
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+
 # Global task storage
 active_tasks: Dict[str, Dict[str, Any]] = {}
 task_lock = Lock()
@@ -54,7 +64,7 @@ class PaperGenerationRequest(BaseModel):
     outline_max_reflections: int = Field(default=1, description="Max outline reflections")
     outline_max_sections: int = Field(default=5, description="Max sections in outline")
     outline_min_depth: int = Field(default=1, description="Min outline depth")
-    section_writer_model: str = Field(default="Qwen3-32B", description="Model for section writing")
+    section_writer_model: str = Field(default="Qwen3-8B", description="Model for section writing")
     do_section_reflection: bool = Field(default=True, description="Enable section reflection")
     section_reflection_max_turns: int = Field(default=1, description="Max section reflection turns")
     do_global_reflection: bool = Field(default=True, description="Enable global reflection")
@@ -150,13 +160,75 @@ async def run_paper_generation_task(
 
         return {"error": error_msg}
 
-@app.post("/api/generate-paper", response_model=Dict[str, str])
+
+@app.get("/", response_class=HTMLResponse)
+async def serve_frontend():
+    """Serve the frontend HTML page"""
+    html_file_path = os.path.join(static_dir, "index.html")
+
+    # 如果 index.html 不存在，返回简单的重定向页面
+    if not os.path.exists(html_file_path):
+        return HTMLResponse(content="""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Academic Paper Generation API</title>
+        </head>
+        <body>
+            <h1>Academic Paper Generation API</h1>
+            <p>请将 index.html 文件放在 static/ 目录下</p>
+            <p>API 文档: <a href="/docs">/docs</a></p>
+        </body>
+        </html>
+        """)
+
+    # 读取并返回 index.html
+    with open(html_file_path, 'r', encoding='utf-8') as f:
+        html_content = f.read()
+
+    return HTMLResponse(content=html_content)
+
+
+# 添加临时调试端点
+
+@app.get("/api/debug-request")
+async def debug_request(
+    user_query: str = None,
+    user_name: str = "researcher",
+    output_dir: str = "temp",
+    outline_max_sections: int = 5,
+    section_writer_model: str = "Qwen3-32B",
+    outline_max_reflections: int = 1,
+    do_section_reflection: bool = True,
+    do_global_reflection: bool = True,
+    do_query_understand: bool = True,
+    only_outline: bool = False
+):
+    """Debug endpoint to see what's being received"""
+    logger.info("Debug endpoint called with parameters:")
+    params = {
+        "user_query": user_query,
+        "user_name": user_name,
+        "output_dir": output_dir,
+        "outline_max_sections": outline_max_sections,
+        "section_writer_model": section_writer_model,
+        "outline_max_reflections": outline_max_reflections,
+        "do_section_reflection": do_section_reflection,
+        "do_global_reflection": do_global_reflection,
+        "do_query_understand": do_query_understand,
+        "only_outline": only_outline
+    }
+    logger.info(f"Parameters: {params}")
+    return {"message": "Debug endpoint reached", "parameters": params}
+
+@app.post("/api/generate_paper", response_model=Dict[str, str])
 async def generate_paper(
     request: PaperGenerationRequest,
     background_tasks: BackgroundTasks
 ):
     """Start paper generation task"""
     try:
+        logger.info(f"user request come in: {request}")
         # Generate task ID
         task_id = request.task_id or f"{request.user_name}_{str(uuid.uuid4())[:8]}"
 
@@ -204,6 +276,64 @@ async def generate_paper(
             detail=f"Failed to start paper generation: {str(e)}"
         )
 
+
+@app.post("/api/update-env")
+async def update_environment_variables(env_vars: Dict[str, str]):
+    """Update environment variables"""
+    try:
+        for key, value in env_vars.items():
+            if key in ["GOOGLE_SERPER_KEY", "SERPAPI_API_KEY"]:
+                if value:  # Only set if value is not empty
+                    os.environ[key] = value
+                    logger.info(f"Updated environment variable: {key}")
+                else:
+                    # Remove from environment if empty
+                    if key in os.environ:
+                        del os.environ[key]
+                        logger.info(f"Removed environment variable: {key}")
+
+        return {"message": "Environment variables updated successfully"}
+
+    except Exception as e:
+        logger.error(f"Failed to update environment variables: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to update environment variables: {str(e)}"
+        )
+
+
+@app.get("/api/task-result/{task_id}")
+async def get_task_result(task_id: str):
+    """Get complete task result"""
+    try:
+        with task_lock:
+            if task_id not in active_tasks:
+                raise HTTPException(
+                    status_code=404,
+                    detail=f"Task {task_id} not found"
+                )
+
+            task_data = active_tasks[task_id]
+
+            if task_data["status"] != "completed":
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Task {task_id} is not completed yet. Status: {task_data['status']}"
+                )
+
+            return task_data.get("full_results", {})
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Failed to get task result: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to get task result: {str(e)}"
+        )
+
+
+
 @app.get("/api/task-status/{task_id}", response_model=TaskStatusResponse)
 async def get_task_status(task_id: str):
     """Get task status and progress"""
@@ -236,34 +366,29 @@ async def get_task_status(task_id: str):
             detail=f"Failed to get task status: {str(e)}"
         )
 
-@app.get("/api/task-result/{task_id}")
-async def get_task_result(task_id: str):
-    """Get complete task result"""
+@app.get("/api/tasks")
+async def list_tasks():
+    """List all tasks"""
     try:
         with task_lock:
-            if task_id not in active_tasks:
-                raise HTTPException(
-                    status_code=404,
-                    detail=f"Task {task_id} not found"
-                )
+            tasks = []
+            for task_id, task_data in active_tasks.items():
+                tasks.append({
+                    "task_id": task_id,
+                    "status": task_data["status"],
+                    "user_query": task_data.get("request", {}).get("user_query", ""),
+                    "created_at": task_data["created_at"],
+                    "updated_at": task_data["updated_at"],
+                    "error": task_data.get("error")
+                })
 
-            task_data = active_tasks[task_id]
+        return tasks  # Return the tasks array directly, not wrapped in a dict
 
-            if task_data["status"] != "completed":
-                raise HTTPException(
-                    status_code=400,
-                    detail=f"Task {task_id} is not completed yet. Status: {task_data['status']}"
-                )
-
-            return task_data.get("full_results", {})
-
-    except HTTPException:
-        raise
     except Exception as e:
-        logger.error(f"Failed to get task result: {e}")
+        logger.error(f"Failed to list tasks: {e}")
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to get task result: {str(e)}"
+            detail=f"Failed to list tasks: {str(e)}"
         )
 
 @app.get("/api/download/{task_id}")
@@ -285,7 +410,8 @@ async def download_paper(task_id: str, file_type: str = "markdown"):
                     detail=f"Task {task_id} is not completed yet"
                 )
 
-            output_path = task_data.get("result", {}).get("output_path", "")
+            result = task_data.get("result", {})
+            output_path = result.get("output_path", "")
             if not output_path:
                 raise HTTPException(
                     status_code=404,
@@ -331,29 +457,41 @@ async def download_paper(task_id: str, file_type: str = "markdown"):
             detail=f"Failed to download file: {str(e)}"
         )
 
-@app.get("/api/tasks")
-async def list_tasks():
-    """List all tasks"""
+# Add missing cancel task endpoint
+@app.post("/api/task/{task_id}/cancel")
+async def cancel_task(task_id: str):
+    """Cancel a running task"""
     try:
         with task_lock:
-            tasks = []
-            for task_id, task_data in active_tasks.items():
-                tasks.append({
-                    "task_id": task_id,
-                    "status": task_data["status"],
-                    "user_query": task_data.get("request", {}).get("user_query", ""),
-                    "created_at": task_data["created_at"],
-                    "updated_at": task_data["updated_at"]
-                })
+            if task_id not in active_tasks:
+                raise HTTPException(
+                    status_code=404,
+                    detail=f"Task {task_id} not found"
+                )
 
-        return {"tasks": tasks}
+            task_data = active_tasks[task_id]
+            if task_data["status"] not in ["running", "initializing"]:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Task {task_id} cannot be cancelled (status: {task_data['status']})"
+                )
 
+            # Update task status to cancelled
+            active_tasks[task_id]["status"] = "cancelled"
+            active_tasks[task_id]["updated_at"] = datetime.now().isoformat()
+            active_tasks[task_id]["error"] = "Task cancelled by user"
+
+        return {"message": f"Task {task_id} has been cancelled"}
+
+    except HTTPException:
+        raise
     except Exception as e:
-        logger.error(f"Failed to list tasks: {e}")
+        logger.error(f"Failed to cancel task: {e}")
         raise HTTPException(
             status_code=500,
-            detail=f"Failed to list tasks: {str(e)}"
+            detail=f"Failed to cancel task: {str(e)}"
         )
+
 
 @app.delete("/api/task/{task_id}")
 async def delete_task(task_id: str):
@@ -402,8 +540,11 @@ if __name__ == "__main__":
 
     # Create output directory
     os.makedirs("temp", exist_ok=True)
+    os.makedirs(static_dir, exist_ok=True)  # 确保静态文件目录存在
 
     logger.info("Starting Academic Paper Generation Server...")
+    logger.info(f"Frontend will be available at: http://localhost:8193/")
+    logger.info(f"API documentation at: http://localhost:8193/docs")
 
     # Run the server
     uvicorn.run(

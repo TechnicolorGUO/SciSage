@@ -2066,6 +2066,327 @@
         "documentation": {}
     },
     {
+        "label": "configuration",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "configuration",
+        "description": "configuration",
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_RETRIVAL",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_RETRIVAL",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_RETRIVAL",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_CONFIGS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_CONFIGS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "OUTLINE_REFLECTION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "OUTLINE_MAX_SECTIONS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "OUTLINE_MIN_DEPTH",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MAX_SECTION_RETRY_NUM",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DO_SELECT_REFLECTION",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "SECTION_REFLECTION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DO_GLOBAL_REFLECTION",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "GLOBAL_REFLECTION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG_KEY_POINTS_LIMIT",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_RAG_SERVICE_URL",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_GEN_ABSTRACT_CONCLUSION",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_GLOBAL_REFLECTION",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "GLOBAL_REFLECTION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "OUTLINE_GENERAOR_MODELS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_OUTLINE",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_GEN_QUERY",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "global_semaphores",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_QUERY_INTENT",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "SECTION_SUMMARY_MODEL",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "global_semaphores",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "SECTION_REFLECTION_MAX_TURNS",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "SECTION_REFLECTION_MODEL_LST",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "SECTION_SUMMARY_MODEL",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "global_semaphores",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "global_semaphores",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK",
+        "importPath": "configuration",
+        "description": "configuration",
+        "isExtraImport": true,
+        "detail": "configuration",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -2219,6 +2540,14 @@
     },
     {
         "label": "FileResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
         "importPath": "fastapi.responses",
         "description": "fastapi.responses",
         "isExtraImport": true,
@@ -3004,6 +3333,14 @@
         "documentation": {}
     },
     {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
         "label": "threading",
         "kind": 6,
         "isExtraImport": true,
@@ -3404,303 +3741,6 @@
         "description": "langchain_core.runnables",
         "isExtraImport": true,
         "detail": "langchain_core.runnables",
-        "documentation": {}
-    },
-    {
-        "label": "configuration",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "configuration",
-        "description": "configuration",
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "MODEL_CONFIGS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "MODEL_CONFIGS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "OUTLINE_REFLECTION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "OUTLINE_MAX_SECTIONS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "OUTLINE_MIN_DEPTH",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "MAX_SECTION_RETRY_NUM",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DO_SELECT_REFLECTION",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "SECTION_REFLECTION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DO_GLOBAL_REFLECTION",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "GLOBAL_REFLECTION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEBUG_KEY_POINTS_LIMIT",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_RAG_SERVICE_URL",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEBUG",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "MODEL_GEN_ABSTRACT_CONCLUSION",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_GLOBAL_REFLECTION",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "GLOBAL_REFLECTION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "OUTLINE_GENERAOR_MODELS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_OUTLINE",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "MODEL_GEN_QUERY",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "global_semaphores",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_QUERY_INTENT",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "SECTION_SUMMARY_MODEL",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "global_semaphores",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "SECTION_REFLECTION_MAX_TURNS",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "SECTION_REFLECTION_MODEL_LST",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "SECTION_SUMMARY_MODEL",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "global_semaphores",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "global_semaphores",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
-        "documentation": {}
-    },
-    {
-        "label": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK",
-        "importPath": "configuration",
-        "description": "configuration",
-        "isExtraImport": true,
-        "detail": "configuration",
         "documentation": {}
     },
     {
@@ -5947,7 +5987,7 @@
         "kind": 5,
         "importPath": "core.generation.local_db_v2",
         "description": "core.generation.local_db_v2",
-        "peekOfCode": "db_path = \"./database/new.db\"\n# with ArxivDatabase(db_path) as db:\n#     all_records = db.get_all()\n#     print(f\"Total Records: {len(all_records)}\")\n# 示例用法\n# if __name__ == \"__main__\":\n#     # 初始化数据库\n#     db_path = \"./database/arxiv_data.db\"\n#     jsonl_file = \"./database/id2docs.jsonl\"\n#     db = ArxivDatabase(db_path)",
+        "peekOfCode": "db_path = \"./generation/database/new.db\"\n# with ArxivDatabase(db_path) as db:\n#     all_records = db.get_all()\n#     print(f\"Total Records: {len(all_records)}\")\n# 示例用法\n# if __name__ == \"__main__\":\n#     # 初始化数据库\n#     db_path = \"./database/arxiv_data.db\"\n#     jsonl_file = \"./database/id2docs.jsonl\"\n#     db = ArxivDatabase(db_path)",
         "detail": "core.generation.local_db_v2",
         "documentation": {}
     },
@@ -5965,7 +6005,7 @@
         "kind": 6,
         "importPath": "core.generation.relevance",
         "description": "core.generation.relevance",
-        "peekOfCode": "class RelevanceResult:\n    \"\"\"Result of relevance evaluation\"\"\"\n    document: Document\n    relevance_score: float\n    reasoning: Optional[str] = None\n    rank: Optional[int] = None\nclass DocumentRelevanceEvaluator:\n    \"\"\"LLM-based document relevance evaluator\"\"\"\n    def __init__(self, model_name: str = \"Qwen3-32B\", batch_size: int = 5, max_workers: int = 3):\n        \"\"\"",
+        "peekOfCode": "class RelevanceResult:\n    \"\"\"Result of relevance evaluation\"\"\"\n    document: Document\n    relevance_score: float\n    reasoning: Optional[str] = None\n    rank: Optional[int] = None\nclass DocumentRelevanceEvaluator:\n    \"\"\"LLM-based document relevance evaluator\"\"\"\n    def __init__(self, model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL, batch_size: int = 5, max_workers: int = 3):\n        \"\"\"",
         "detail": "core.generation.relevance",
         "documentation": {}
     },
@@ -5974,7 +6014,7 @@
         "kind": 6,
         "importPath": "core.generation.relevance",
         "description": "core.generation.relevance",
-        "peekOfCode": "class DocumentRelevanceEvaluator:\n    \"\"\"LLM-based document relevance evaluator\"\"\"\n    def __init__(self, model_name: str = \"Qwen3-32B\", batch_size: int = 5, max_workers: int = 3):\n        \"\"\"\n        Initialize the evaluator\n        Args:\n            model_name: Name of the LLM model to use\n            batch_size: Number of documents to process in parallel\n            max_workers: Maximum number of worker threads\n        \"\"\"",
+        "peekOfCode": "class DocumentRelevanceEvaluator:\n    \"\"\"LLM-based document relevance evaluator\"\"\"\n    def __init__(self, model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL, batch_size: int = 5, max_workers: int = 3):\n        \"\"\"\n        Initialize the evaluator\n        Args:\n            model_name: Name of the LLM model to use\n            batch_size: Number of documents to process in parallel\n            max_workers: Maximum number of worker threads\n        \"\"\"",
         "detail": "core.generation.relevance",
         "documentation": {}
     },
@@ -6001,7 +6041,7 @@
         "kind": 2,
         "importPath": "core.generation.reranker",
         "description": "core.generation.reranker",
-        "peekOfCode": "def rerank_papers_with_llm(\n    papers: List[Dict[str, Any]],\n    query: str,\n    model_name: str = \"Qwen3-32B-long-ctx\",\n    max_papers: int = 20,\n    max_retries: int = 5,\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Rerank papers using LLM based on relevance, authority, and timeliness.\n    Final score is calculated locally, not by LLM.",
+        "peekOfCode": "def rerank_papers_with_llm(\n    papers: List[Dict[str, Any]],\n    query: str,\n    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,\n    max_papers: int = 20,\n    max_retries: int = 5,\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Rerank papers using LLM based on relevance, authority, and timeliness.\n    Final score is calculated locally, not by LLM.",
         "detail": "core.generation.reranker",
         "documentation": {}
     },
@@ -6037,7 +6077,7 @@
         "kind": 2,
         "importPath": "core.generation.reranker",
         "description": "core.generation.reranker",
-        "peekOfCode": "def extract_scores_from_response(response: str, num_papers: int) -> List[Tuple[int, float]]:\n    \"\"\"Extract paper IDs and scores from LLM response with fallback methods\"\"\"\n    return extract_scores_from_response_robust(response, num_papers)\ndef rerank_papers_batch(\n    papers: List[Dict[str, Any]],\n    query: str,\n    batch_size: int = 10,\n    model_name: str = \"Qwen3-32B\",\n) -> List[Dict[str, Any]]:\n    \"\"\"",
+        "peekOfCode": "def extract_scores_from_response(response: str, num_papers: int) -> List[Tuple[int, float]]:\n    \"\"\"Extract paper IDs and scores from LLM response with fallback methods\"\"\"\n    return extract_scores_from_response_robust(response, num_papers)\ndef rerank_papers_batch(\n    papers: List[Dict[str, Any]],\n    query: str,\n    batch_size: int = 10,\n    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,\n) -> List[Dict[str, Any]]:\n    \"\"\"",
         "detail": "core.generation.reranker",
         "documentation": {}
     },
@@ -6046,7 +6086,7 @@
         "kind": 2,
         "importPath": "core.generation.reranker",
         "description": "core.generation.reranker",
-        "peekOfCode": "def rerank_papers_batch(\n    papers: List[Dict[str, Any]],\n    query: str,\n    batch_size: int = 10,\n    model_name: str = \"Qwen3-32B\",\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Rerank papers in batches for better performance with large lists.\n    Args:\n        papers: List of paper dictionaries",
+        "peekOfCode": "def rerank_papers_batch(\n    papers: List[Dict[str, Any]],\n    query: str,\n    batch_size: int = 10,\n    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Rerank papers in batches for better performance with large lists.\n    Args:\n        papers: List of paper dictionaries",
         "detail": "core.generation.reranker",
         "documentation": {}
     },
@@ -6064,7 +6104,7 @@
         "kind": 2,
         "importPath": "core.generation.reranker",
         "description": "core.generation.reranker",
-        "peekOfCode": "def rerank_papers_hybrid(\n    papers: List[Dict[str, Any]],\n    query: str,\n    model_name: str = \"Qwen3-14B\",\n    use_llm: bool = True,\n    max_papers_for_llm: int = 20,\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Hybrid reranking: use LLM for top papers, rule-based for the rest.\n    Args:",
+        "peekOfCode": "def rerank_papers_hybrid(\n    papers: List[Dict[str, Any]],\n    query: str,\n    model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL,\n    use_llm: bool = True,\n    max_papers_for_llm: int = 20,\n) -> List[Dict[str, Any]]:\n    \"\"\"\n    Hybrid reranking: use LLM for top papers, rule-based for the rest.\n    Args:",
         "detail": "core.generation.reranker",
         "documentation": {}
     },
@@ -6100,7 +6140,7 @@
         "kind": 2,
         "importPath": "core.generation.retrival",
         "description": "core.generation.retrival",
-        "peekOfCode": "def extract_keywords(query: str, source: str = \"semantic\") -> List[str]:\n    \"\"\"Extract keywords from query optimized for a specific source.\"\"\"\n    # LLM_MODEL_NAME = \"Qwen3-32B\"\n    LLM_MODEL_NAME = \"Qwen3-14B\"\n    query = query.lower()\n    model_inp = template_extract_keywords_source_aware.format(\n        user_query=query, source=source\n    )\n    for _ in range(10):\n        try:",
+        "peekOfCode": "def extract_keywords(query: str, source: str = \"semantic\") -> List[str]:\n    \"\"\"Extract keywords from query optimized for a specific source.\"\"\"\n    # LLM_MODEL_NAME = \"Qwen3-32B\"\n    LLM_MODEL_NAME = DEFAULT_MODEL_FOR_SECTION_RETRIVAL\n    query = query.lower()\n    model_inp = template_extract_keywords_source_aware.format(\n        user_query=query, source=source\n    )\n    for _ in range(10):\n        try:",
         "detail": "core.generation.retrival",
         "documentation": {}
     },
@@ -6690,6 +6730,15 @@
         "documentation": {}
     },
     {
+        "label": "static_dir",
+        "kind": 5,
+        "importPath": "core.app",
+        "description": "core.app",
+        "peekOfCode": "static_dir = \"static\"\nos.makedirs(static_dir, exist_ok=True)\n# 挂载静态文件\napp.mount(\"/static\", StaticFiles(directory=static_dir), name=\"static\")\n# Global task storage\nactive_tasks: Dict[str, Dict[str, Any]] = {}\ntask_lock = Lock()\nclass PaperGenerationRequest(BaseModel):\n    \"\"\"Request model for paper generation\"\"\"\n    user_query: str = Field(..., description=\"User's research query\")",
+        "detail": "core.app",
+        "documentation": {}
+    },
+    {
         "label": "task_lock",
         "kind": 5,
         "importPath": "core.app",
@@ -6739,7 +6788,7 @@
         "kind": 5,
         "importPath": "core.configuration",
         "description": "core.configuration",
-        "peekOfCode": "DEFAULT_MODEL_FOR_QUERY_INTENT = (\n    \"Qwen3-32B\"  # Model used for generating search queries from outline content points\n)\n# -- OUTLINE --\nDEFAULT_MODEL_FOR_OUTLINE: str = \"Qwen3-32B\"  # Changed from gpt-4-32k to Qwen25-72B\n# Currently using only Qwen model for outline generation\nOUTLINE_GENERAOR_MODELS: List[str] = [\n    \"Qwen3-32B\",\n    \"Qwen3-14B\",\n]",
+        "peekOfCode": "DEFAULT_MODEL_FOR_QUERY_INTENT = (\n    \"Qwen3-8B\"  # Model used for generating search queries from outline content points\n)\n# -- OUTLINE --\nDEFAULT_MODEL_FOR_OUTLINE: str = \"Qwen3-8B\"  # Changed from gpt-4-32k to Qwen25-72B\n# Currently using only Qwen model for outline generation\nOUTLINE_GENERAOR_MODELS: List[str] = [\n    # \"Qwen3-32B\",\n    # \"Qwen3-14B\",\n    \"Qwen3-8B\",",
         "detail": "core.configuration",
         "documentation": {}
     },
@@ -6748,7 +6797,7 @@
         "kind": 5,
         "importPath": "core.configuration",
         "description": "core.configuration",
-        "peekOfCode": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = \"Qwen3-14B\"\nDEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = \"Qwen3-14B\"\nSECTION_SUMMARY_MODEL: str = \"Qwen3-32B\"  # gpt-4-32k\nSECTION_REFLECTION_MODEL_LST = [\"Qwen3-32B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-32B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1",
+        "peekOfCode": "DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = \"Qwen3-8B\"\nDEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = \"Qwen3-8B\"\nSECTION_SUMMARY_MODEL: str = \"Qwen3-8B\"  # gpt-4-32k\nSECTION_REFLECTION_MODEL_LST = [\"Qwen3-8B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-8B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1",
         "detail": "core.configuration",
         "documentation": {}
     },
@@ -6757,7 +6806,7 @@
         "kind": 5,
         "importPath": "core.configuration",
         "description": "core.configuration",
-        "peekOfCode": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = \"Qwen3-14B\"\nSECTION_SUMMARY_MODEL: str = \"Qwen3-32B\"  # gpt-4-32k\nSECTION_REFLECTION_MODEL_LST = [\"Qwen3-32B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-32B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1\nMODEL_GEN_ABSTRACT_CONCLUSION: str = \"Qwen3-32B\"",
+        "peekOfCode": "DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = \"Qwen3-8B\"\nSECTION_SUMMARY_MODEL: str = \"Qwen3-8B\"  # gpt-4-32k\nSECTION_REFLECTION_MODEL_LST = [\"Qwen3-8B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-8B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1\nMODEL_GEN_ABSTRACT_CONCLUSION: str = \"Qwen3-8B\"",
         "detail": "core.configuration",
         "documentation": {}
     },
@@ -6766,7 +6815,7 @@
         "kind": 5,
         "importPath": "core.configuration",
         "description": "core.configuration",
-        "peekOfCode": "SECTION_REFLECTION_MODEL_LST = [\"Qwen3-32B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-32B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1\nMODEL_GEN_ABSTRACT_CONCLUSION: str = \"Qwen3-32B\"\n# -- POOLISH --\nDEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = \"Qwen3-32B\"",
+        "peekOfCode": "SECTION_REFLECTION_MODEL_LST = [\"Qwen3-8B\", \"llama3-70b\"]\n# ---- GLOBAL REFLECTION ----\nDO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper\nGLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns\nDEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = \"Qwen3-8B\"\n# --- ABSTRACT & CONCLUSION ---\nGLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1\nMODEL_GEN_ABSTRACT_CONCLUSION: str = \"Qwen3-8B\"\n# -- POOLISH --\nDEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = \"Qwen3-8B\"",
         "detail": "core.configuration",
         "documentation": {}
     },

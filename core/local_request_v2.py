@@ -190,5 +190,5 @@ def get_from_llm(
 
 # print("openscholar",get_from_llm("介绍下你自己", model_name="openscholar"))
 # print(get_from_llm("介绍下你自己", model_name="Qwen3-14B"))
-print(get_from_llm("介绍下你自己", model_name="Qwen3-8B"))
+# print(get_from_llm("介绍下你自己", model_name="Qwen3-8B"))
 # print("Qwen3-32B-long-ctx",get_from_llm("介绍下你自己", model_name="Qwen3-32B-long-ctx"))

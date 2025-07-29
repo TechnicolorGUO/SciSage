@@ -6,7 +6,7 @@ The core processing pipeline for intelligent academic paper analysis and content
 
 SciSage Core implements a multi-stage AI pipeline:
 
-1. **Paper Understanding** - Analyze input papers and extract insights
+1. **Paper Understanding** - Analyze input papers and extract insights, support achdemic search and scholar search.
 2. **Outline Generation** - Create structured analysis outlines
 3. **Content Writing** - Generate detailed section content
 4. **Global Reflection** - Review and optimize generated content

@@ -14,6 +14,8 @@ import time
 import traceback
 from local_request_v2 import get_from_llm
 
+from configuration import DEFAULT_MODEL_FOR_SECTION_RETRIVAL
+
 try:
     from log import logger
 except:
@@ -46,7 +48,7 @@ class RelevanceResult:
 class DocumentRelevanceEvaluator:
     """LLM-based document relevance evaluator"""
 
-    def __init__(self, model_name: str = "Qwen3-32B", batch_size: int = 5, max_workers: int = 3):
+    def __init__(self, model_name: str = DEFAULT_MODEL_FOR_SECTION_RETRIVAL, batch_size: int = 5, max_workers: int = 3):
         """
         Initialize the evaluator
 
