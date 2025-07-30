@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学术论文生成系统</title>
+    <title>Academic Paper Generation System</title>
     <style>
         * {
             margin: 0;
@@ -552,15 +552,15 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>学术论文生成系统</h1>
-            <p>基于 AI 的智能学术论文写作助手</p>
+            <h1>Academic Paper Generation System</h1>
+            <p>AI-powered Intelligent Academic Writing Assistant</p>
         </div>
 
         <div class="main-content">
             <div class="tabs">
-                <button class="tab active" onclick="switchTab('generate')">生成论文</button>
-                <button class="tab" onclick="switchTab('tasks')">任务管理</button>
-                <button class="tab" onclick="switchTab('settings')">高级设置</button>
+                <button class="tab active" onclick="switchTab('generate')">Generate Paper</button>
+                <button class="tab" onclick="switchTab('tasks')">Task Management</button>
+                <button class="tab" onclick="switchTab('settings')">Advanced Settings</button>
             </div>
 
             <div class="tab-content">
@@ -568,23 +568,23 @@
                     <div id="alerts"></div>
 
                     <form id="paperForm" class="form-container">
-                        <h3 style="margin-bottom: 20px; color: #2c3e50;">论文生成配置</h3>
+                        <h3 style="margin-bottom: 20px; color: #2c3e50;">Paper Generation Configuration</h3>
 
                         <div class="form-group">
-                            <label for="userQuery">研究主题/问题</label>
+                            <label for="userQuery">Research Topic/Question</label>
                             <textarea
                                 id="userQuery"
                                 name="user_query"
                                 class="form-control"
                                 rows="3"
-                                placeholder="请输入您要研究的主题或问题，例如：机器学习在自然语言处理中的应用"
+                                placeholder="Enter your research topic or question, e.g., Applications of Machine Learning in Natural Language Processing"
                                 required
                             ></textarea>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="outlineMaxSections">最大章节数</label>
+                                <label for="outlineMaxSections">Max Sections</label>
                                 <input
                                     type="number"
                                     id="outlineMaxSections"
@@ -596,7 +596,7 @@
                                 >
                             </div>
                             <div class="form-group">
-                                <label for="outlineMaxReflections">最大反思次数</label>
+                                <label for="outlineMaxReflections">Max Reflections</label>
                                 <input
                                     type="number"
                                     id="outlineMaxReflections"
@@ -610,7 +610,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="sectionWriterModel">论文写作模型</label>
+                            <label for="sectionWriterModel">Writing Model</label>
                             <select id="sectionWriterModel" name="section_writer_model" class="form-control">
                                 <option value="Qwen3-8B" selected>Qwen3 8B</option>
                                 <option value="Qwen3-14B">Qwen3 14B</option>
@@ -619,32 +619,32 @@
                         </div>
 
                         <div class="form-group">
-                            <h4 style="margin-bottom: 15px; color: #2c3e50;">生成选项</h4>
+                            <h4 style="margin-bottom: 15px; color: #2c3e50;">Generation Options</h4>
                             <div class="checkbox-group">
                                 <input type="checkbox" id="sectionReflection" checked="false">
-                                <label for="sectionReflection">启用章节反思优化</label>
+                                <label for="sectionReflection">Enable Section Reflection</label>
                             </div>
                             <div class="checkbox-group">
                                 <input type="checkbox" id="globalReflection" checked="false">
-                                <label for="globalReflection">启用全局反思优化</label>
+                                <label for="globalReflection">Enable Global Reflection</label>
                             </div>
                             <div class="checkbox-group">
                                 <input type="checkbox" id="queryUnderstand" checked="false">
-                                <label for="queryUnderstand">启用查询理解增强</label>
+                                <label for="queryUnderstand">Enable Query Understanding Enhancement</label>
                             </div>
                             <div class="checkbox-group">
                                 <input type="checkbox" id="onlyOutline">
-                                <label for="onlyOutline">仅生成大纲（不生成完整论文）</label>
+                                <label for="onlyOutline">Generate Outline Only (No Full Paper)</label>
                             </div>
                         </div>
 
                         <button type="submit" id="generateBtn" class="btn btn-primary">
-                            开始生成论文
+                            Start Generating Paper
                         </button>
                     </form>
 
                     <div id="currentTask" class="current-task status-card">
-                        <h4 style="margin-bottom: 15px; color: #2c3e50;">当前任务状态</h4>
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;">Current Task Status</h4>
                         <div id="taskInfo"></div>
                         <div class="progress-bar">
                             <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
@@ -655,56 +655,56 @@
 
                 <div id="tasks" class="tab-pane">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h3>任务管理</h3>
+                        <h3>Task Management</h3>
                         <button class="btn btn-secondary" onclick="refreshTasks()">
-                            刷新列表
+                            Refresh List
                         </button>
                     </div>
 
                     <div class="stats-grid">
                         <div class="stat-card">
                             <h3 id="totalTasks">0</h3>
-                            <p>总任务数</p>
+                            <p>Total Tasks</p>
                         </div>
                         <div class="stat-card">
                             <h3 id="runningTasks">0</h3>
-                            <p>运行中</p>
+                            <p>Running</p>
                         </div>
                         <div class="stat-card">
                             <h3 id="completedTasks">0</h3>
-                            <p>已完成</p>
+                            <p>Completed</p>
                         </div>
                         <div class="stat-card">
                             <h3 id="errorTasks">0</h3>
-                            <p>错误任务</p>
+                            <p>Error Tasks</p>
                         </div>
                     </div>
 
                     <div class="loading" id="tasksLoading">
-                        <p>加载任务列表中...</p>
+                        <p>Loading task list...</p>
                     </div>
 
                     <div id="tasksList" class="task-list"></div>
                 </div>
 
                 <div id="settings" class="tab-pane">
-                    <h3 style="margin-bottom: 30px; color: #2c3e50;">系统配置</h3>
+                    <h3 style="margin-bottom: 30px; color: #2c3e50;">System Configuration</h3>
 
                     <div class="form-container">
-                        <h4 style="margin-bottom: 20px;">API 配置</h4>
+                        <h4 style="margin-bottom: 20px;">API Configuration</h4>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="apiEndpoint">API 端点地址</label>
+                                <label for="apiEndpoint">API Endpoint</label>
                                 <input
                                     type="url"
                                     id="apiEndpoint"
                                     class="form-control"
                                     value="http://0.0.0.0:8193"
-                                    placeholder="请输入API服务地址"
+                                    placeholder="Enter API service address"
                                 >
                             </div>
                             <div class="form-group">
-                                <label for="maxConcurrentTasks">最大并发任务数</label>
+                                <label for="maxConcurrentTasks">Max Concurrent Tasks</label>
                                 <input
                                     type="number"
                                     id="maxConcurrentTasks"
@@ -718,17 +718,17 @@
                     </div>
 
                     <div class="form-container">
-                        <h4 style="margin-bottom: 20px;">搜索 API 配置</h4>
+                        <h4 style="margin-bottom: 20px;">Search API Configuration</h4>
                         <div class="form-group">
                             <label for="googleSerperKey">Google Serper API Key</label>
                             <input
                                 type="password"
                                 id="googleSerperKey"
                                 class="form-control"
-                                placeholder="从 https://serper.dev 获取"
+                                placeholder="Get from https://serper.dev"
                             >
                             <small style="color: #666; font-size: 0.8rem; margin-top: 5px; display: block;">
-                                用于学术搜索功能，从 <a href="https://serper.dev" target="_blank">https://serper.dev</a> 获取
+                                For academic search functionality, get from <a href="https://serper.dev" target="_blank">https://serper.dev</a>
                             </small>
                         </div>
                         <div class="form-group">
@@ -737,26 +737,26 @@
                                 type="password"
                                 id="serpApiKey"
                                 class="form-control"
-                                placeholder="从 https://serpapi.com/dashboard 获取"
+                                placeholder="Get from https://serpapi.com/dashboard"
                             >
                             <small style="color: #666; font-size: 0.8rem; margin-top: 5px; display: block;">
-                                用于通用网络搜索功能，从 <a href="https://serpapi.com/dashboard" target="_blank">https://serpapi.com/dashboard</a> 获取
+                                For general web search functionality, get from <a href="https://serpapi.com/dashboard" target="_blank">https://serpapi.com/dashboard</a>
                             </small>
                         </div>
                     </div>
 
                     <div class="form-container">
-                        <h4 style="margin-bottom: 20px;">界面配置</h4>
+                        <h4 style="margin-bottom: 20px;">Interface Configuration</h4>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="defaultLanguage">默认语言</label>
+                                <label for="defaultLanguage">Default Language</label>
                                 <select id="defaultLanguage" class="form-control">
                                     <option value="zh-CN">中文</option>
-                                    <option value="en-US">English</option>
+                                    <option value="en-US" selected>English</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="autoRefreshInterval">自动刷新间隔(秒)</label>
+                                <label for="autoRefreshInterval">Auto Refresh Interval (seconds)</label>
                                 <input
                                     type="number"
                                     id="autoRefreshInterval"
@@ -770,29 +770,29 @@
                     </div>
 
                     <div class="form-container">
-                        <h4 style="margin-bottom: 20px;">功能开关</h4>
+                        <h4 style="margin-bottom: 20px;">Feature Toggles</h4>
                         <div class="checkbox-group">
                             <input type="checkbox" id="enableAutoRefresh" checked>
-                            <label for="enableAutoRefresh">启用自动刷新任务状态</label>
+                            <label for="enableAutoRefresh">Enable Auto Refresh Task Status</label>
                         </div>
                         <div class="checkbox-group">
                             <input type="checkbox" id="enableNotifications">
-                            <label for="enableNotifications">启用浏览器通知</label>
+                            <label for="enableNotifications">Enable Browser Notifications</label>
                         </div>
                         <div class="checkbox-group">
                             <input type="checkbox" id="enableDebugMode">
-                            <label for="enableDebugMode">启用调试模式</label>
+                            <label for="enableDebugMode">Enable Debug Mode</label>
                         </div>
                         <div class="checkbox-group">
                             <input type="checkbox" id="enableDarkMode">
-                            <label for="enableDarkMode">启用深色模式</label>
+                            <label for="enableDarkMode">Enable Dark Mode</label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary" onclick="saveSettings()">保存设置</button>
-                        <button type="button" class="btn btn-secondary" onclick="resetSettings()">重置设置</button>
-                        <button type="button" class="btn btn-danger" onclick="clearCache()">清除缓存</button>
+                        <button type="button" class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetSettings()">Reset Settings</button>
+                        <button type="button" class="btn btn-danger" onclick="clearCache()">Clear Cache</button>
                     </div>
 
                     <div id="settingsAlert" style="margin-top: 20px;"></div>
@@ -807,7 +807,7 @@
         let settings = {
             apiEndpoint: 'http://0.0.0.0:8193',
             maxConcurrentTasks: 3,
-            defaultLanguage: 'zh-CN',
+            defaultLanguage: 'en-US',
             autoRefreshInterval: 5,
             enableAutoRefresh: true,
             enableNotifications: false,
@@ -834,7 +834,7 @@
             // Send environment variables to backend
             updateEnvironmentVariables();
 
-            showSettingsAlert('设置已保存', 'success');
+            showSettingsAlert('Settings saved', 'success');
 
             if (settings.enableAutoRefresh) {
                 startAutoRefresh();
@@ -872,7 +872,7 @@
                 settings.apiEndpoint = 'http://0.0.0.0:8193';
             }
 
-            // 更新表单字段
+            // Update form fields
             document.getElementById('apiEndpoint').value = settings.apiEndpoint;
             document.getElementById('maxConcurrentTasks').value = settings.maxConcurrentTasks;
             document.getElementById('defaultLanguage').value = settings.defaultLanguage;
@@ -885,13 +885,12 @@
             document.getElementById('serpApiKey').value = settings.serpApiKey || '';
         }
 
-
         function resetSettings() {
-            if (!confirm('确定要重置所有设置吗？')) return;
+            if (!confirm('Are you sure you want to reset all settings?')) return;
 
             document.getElementById('apiEndpoint').value = 'http://0.0.0.0:8193';
             document.getElementById('maxConcurrentTasks').value = 3;
-            document.getElementById('defaultLanguage').value = 'zh-CN';
+            document.getElementById('defaultLanguage').value = 'en-US';
             document.getElementById('autoRefreshInterval').value = 5;
             document.getElementById('enableAutoRefresh').checked = true;
             document.getElementById('enableNotifications').checked = false;
@@ -900,9 +899,8 @@
             document.getElementById('googleSerperKey').value = '';
             document.getElementById('serpApiKey').value = '';
 
-            showSettingsAlert('设置已重置', 'success');
+            showSettingsAlert('Settings reset', 'success');
         }
-
 
         document.addEventListener('DOMContentLoaded', function() {
             loadSettings();
@@ -948,7 +946,7 @@
 
             try {
                 generateBtn.disabled = true;
-                generateBtn.textContent = '提交中...';
+                generateBtn.textContent = 'Submitting...';
 
                 const response = await fetch(`${settings.apiEndpoint}/api/generate_paper`, {
                     method: 'POST',
@@ -962,17 +960,17 @@
 
                 if (response.ok) {
                     currentTaskId = result.task_id;
-                    showAlert('任务已提交，ID: ' + result.task_id, 'success');
+                    showAlert('Task submitted, ID: ' + result.task_id, 'success');
                     showCurrentTask(currentTaskId);
                     startTaskPolling(currentTaskId);
                 } else {
-                    showAlert('提交失败: ' + (result.error || '未知错误'), 'error');
+                    showAlert('Submission failed: ' + (result.error || 'Unknown error'), 'error');
                 }
             } catch (error) {
-                showAlert('网络错误: ' + error.message, 'error');
+                showAlert('Network error: ' + error.message, 'error');
             } finally {
                 generateBtn.disabled = false;
-                generateBtn.textContent = '开始生成论文';
+                generateBtn.textContent = 'Start Generating Paper';
             }
         }
 
@@ -997,7 +995,7 @@
                         }
                     }
                 } catch (error) {
-                    console.error('轮询任务状态失败:', error);
+                    console.error('Failed to poll task status:', error);
                 }
             }, 2000);
         }
@@ -1014,7 +1012,7 @@
 
                 displayTasks(tasks, tasksList);
             } catch (error) {
-                tasksList.innerHTML = `<div class="alert alert-error">加载任务失败: ${error.message}</div>`;
+                tasksList.innerHTML = `<div class="alert alert-error">Failed to load tasks: ${error.message}</div>`;
             } finally {
                 loading.classList.remove('show');
             }
@@ -1025,7 +1023,7 @@
         }
 
         async function cancelTask(taskId) {
-            if (!confirm('确定要取消这个任务吗？')) return;
+            if (!confirm('Are you sure you want to cancel this task?')) return;
 
             try {
                 const response = await fetch(`${settings.apiEndpoint}/api/task/${taskId}/cancel`, {
@@ -1033,13 +1031,13 @@
                 });
 
                 if (response.ok) {
-                    showAlert('任务已取消', 'success');
+                    showAlert('Task cancelled', 'success');
                     refreshTasks();
                 } else {
-                    showAlert('取消任务失败', 'error');
+                    showAlert('Failed to cancel task', 'error');
                 }
             } catch (error) {
-                showAlert('网络错误: ' + error.message, 'error');
+                showAlert('Network error: ' + error.message, 'error');
             }
         }
 
@@ -1050,11 +1048,11 @@
             const currentTaskDiv = document.getElementById('currentTask');
 
             taskInfo.innerHTML = `
-                <div><strong>任务ID:</strong> ${task.task_id}</div>
-                <div><strong>状态:</strong> <span class="task-status status-${task.status}">${getStatusText(task.status)}</span></div>
-                <div><strong>查询:</strong> ${task.user_query || 'N/A'}</div>
-                <div><strong>开始时间:</strong> ${formatDateTime(task.created_at)}</div>
-                ${task.error ? `<div style="color: #dc3545;"><strong>错误:</strong> ${task.error}</div>` : ''}
+                <div><strong>Task ID:</strong> ${task.task_id}</div>
+                <div><strong>Status:</strong> <span class="task-status status-${task.status}">${getStatusText(task.status)}</span></div>
+                <div><strong>Query:</strong> ${task.user_query || 'N/A'}</div>
+                <div><strong>Start Time:</strong> ${formatDateTime(task.created_at)}</div>
+                ${task.error ? `<div style="color: #dc3545;"><strong>Error:</strong> ${task.error}</div>` : ''}
             `;
 
             const progress = getTaskProgress(task);
@@ -1064,8 +1062,6 @@
 
             updateTaskActions(task, taskActions);
         }
-
-
 
         function updateTaskStats(tasks) {
             const total = tasks.length;
@@ -1083,7 +1079,7 @@
             updateTaskStats(tasks);
 
             if (!tasks || tasks.length === 0) {
-                container.innerHTML = '<div class="alert alert-info">暂无任务，点击"生成论文"开始创建第一个任务</div>';
+                container.innerHTML = '<div class="alert alert-info">No tasks yet. Click "Generate Paper" to create your first task</div>';
                 return;
             }
 
@@ -1095,8 +1091,8 @@
                     </div>
                     <div class="task-query">${task.user_query || 'N/A'}</div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin: 10px 0; font-size: 0.9rem; color: #666;">
-                        <span>创建时间: ${formatDateTime(task.created_at)}</span>
-                        ${task.updated_at ? `<span>更新时间: ${formatDateTime(task.updated_at)}</span>` : ''}
+                        <span>Created: ${formatDateTime(task.created_at)}</span>
+                        ${task.updated_at ? `<span>Updated: ${formatDateTime(task.updated_at)}</span>` : ''}
                     </div>
                     ${task.status === 'running' ? `
                         <div class="progress-bar">
@@ -1115,17 +1111,17 @@
             let buttons = [];
 
             if (task.status === 'running') {
-                buttons.push(`<button class="btn btn-danger" onclick="cancelTask('${task.task_id}')">取消</button>`);
+                buttons.push(`<button class="btn btn-danger" onclick="cancelTask('${task.task_id}')">Cancel</button>`);
             }
 
             if (task.status === 'completed') {
-                buttons.push(`<button class="btn btn-success" onclick="downloadResult('${task.task_id}')">下载结果</button>`);
+                buttons.push(`<button class="btn btn-success" onclick="downloadResult('${task.task_id}')">Download Result</button>`);
             }
 
-            buttons.push(`<button class="btn btn-secondary" onclick="viewTaskDetails('${task.task_id}')">查看详情</button>`);
+            buttons.push(`<button class="btn btn-secondary" onclick="viewTaskDetails('${task.task_id}')">View Details</button>`);
 
             if (task.status === 'completed' || task.status === 'error') {
-                buttons.push(`<button class="btn btn-danger" onclick="deleteTask('${task.task_id}')">删除</button>`);
+                buttons.push(`<button class="btn btn-danger" onclick="deleteTask('${task.task_id}')">Delete</button>`);
             }
 
             return buttons.join('');
@@ -1141,13 +1137,13 @@
                 const details = await response.json();
 
                 if (!response.ok) {
-                    showAlert('获取任务详情失败: ' + details.detail, 'error');
+                    showAlert('Failed to get task details: ' + details.detail, 'error');
                     return;
                 }
 
                 showTaskDetailsModal(details);
             } catch (error) {
-                showAlert('网络错误: ' + error.message, 'error');
+                showAlert('Network error: ' + error.message, 'error');
             }
         }
 
@@ -1177,7 +1173,7 @@
                         position: relative;
                     ">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                            <h3 style="color: #2c3e50; margin: 0;">任务详情 - ${details.task_id}</h3>
+                            <h3 style="color: #2c3e50; margin: 0;">Task Details - ${details.task_id}</h3>
                             <button onclick="closeTaskDetailsModal()" style="
                                 background: #dc3545;
                                 color: white;
@@ -1195,9 +1191,9 @@
                         </div>
 
                         <div style="margin-top: 20px; text-align: right;">
-                            <button class="btn btn-secondary" onclick="closeTaskDetailsModal()">关闭</button>
+                            <button class="btn btn-secondary" onclick="closeTaskDetailsModal()">Close</button>
                             ${details.detailed_progress ? `
-                                <button class="btn btn-primary" onclick="downloadDetailsJson('${details.task_id}')">下载详细数据</button>
+                                <button class="btn btn-primary" onclick="downloadDetailsJson('${details.task_id}')">Download Detailed Data</button>
                             ` : ''}
                         </div>
                     </div>
@@ -1215,34 +1211,34 @@
             const basicInfo = details.basic_info;
             content += `
                 <div class="form-container" style="margin-bottom: 20px;">
-                    <h4 style="color: #2c3e50; margin-bottom: 15px;">基本信息</h4>
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">Basic Information</h4>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div><strong>任务ID:</strong> ${details.task_id}</div>
-                        <div><strong>状态:</strong> <span class="task-status status-${basicInfo.status}">${getStatusText(basicInfo.status)}</span></div>
-                        <div><strong>创建时间:</strong> ${formatDateTime(basicInfo.created_at)}</div>
-                        <div><strong>更新时间:</strong> ${formatDateTime(basicInfo.updated_at)}</div>
+                        <div><strong>Task ID:</strong> ${details.task_id}</div>
+                        <div><strong>Status:</strong> <span class="task-status status-${basicInfo.status}">${getStatusText(basicInfo.status)}</span></div>
+                        <div><strong>Created Time:</strong> ${formatDateTime(basicInfo.created_at)}</div>
+                        <div><strong>Updated Time:</strong> ${formatDateTime(basicInfo.updated_at)}</div>
                     </div>
                     ${basicInfo.request ? `
                         <div style="margin-top: 15px;">
-                            <strong>查询内容:</strong>
+                            <strong>Query Content:</strong>
                             <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-top: 5px;">
                                 ${basicInfo.request.user_query || 'N/A'}
                             </div>
                         </div>
                         <div style="margin-top: 15px;">
-                            <strong>配置参数:</strong>
+                            <strong>Configuration Parameters:</strong>
                             <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-top: 5px; font-family: monospace; font-size: 0.9rem;">
-                                模型: ${basicInfo.request.section_writer_model || 'N/A'}<br>
-                                最大章节数: ${basicInfo.request.outline_max_sections || 'N/A'}<br>
-                                章节反思: ${basicInfo.request.do_section_reflection ? '启用' : '禁用'}<br>
-                                全局反思: ${basicInfo.request.do_global_reflection ? '启用' : '禁用'}<br>
-                                仅生成大纲: ${basicInfo.request.only_outline ? '是' : '否'}
+                                Model: ${basicInfo.request.section_writer_model || 'N/A'}<br>
+                                Max Sections: ${basicInfo.request.outline_max_sections || 'N/A'}<br>
+                                Section Reflection: ${basicInfo.request.do_section_reflection ? 'Enabled' : 'Disabled'}<br>
+                                Global Reflection: ${basicInfo.request.do_global_reflection ? 'Enabled' : 'Disabled'}<br>
+                                Outline Only: ${basicInfo.request.only_outline ? 'Yes' : 'No'}
                             </div>
                         </div>
                     ` : ''}
                     ${basicInfo.error ? `
                         <div style="margin-top: 15px;">
-                            <strong style="color: #dc3545;">错误信息:</strong>
+                            <strong style="color: #dc3545;">Error Information:</strong>
                             <div style="background: #f8d7da; padding: 10px; border-radius: 6px; margin-top: 5px; color: #721c24;">
                                 ${basicInfo.error}
                             </div>
@@ -1257,17 +1253,17 @@
 
                 content += `
                     <div class="form-container" style="margin-bottom: 20px;">
-                        <h4 style="color: #2c3e50; margin-bottom: 15px;">详细进度</h4>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Detailed Progress</h4>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div><strong>当前状态:</strong> ${progress.process_state || 'N/A'}</div>
-                            <div><strong>研究领域:</strong> ${progress.research_field || 'N/A'}</div>
-                            <div><strong>查询类型:</strong> ${progress.query_type || 'N/A'}</div>
-                            <div><strong>论文标题:</strong> ${progress.paper_title || 'N/A'}</div>
+                            <div><strong>Current State:</strong> ${progress.process_state || 'N/A'}</div>
+                            <div><strong>Research Field:</strong> ${progress.research_field || 'N/A'}</div>
+                            <div><strong>Query Type:</strong> ${progress.query_type || 'N/A'}</div>
+                            <div><strong>Paper Title:</strong> ${progress.paper_title || 'N/A'}</div>
                         </div>
 
                         ${progress.rewrite_query ? `
                             <div style="margin-top: 15px;">
-                                <strong>重写后的查询:</strong>
+                                <strong>Rewritten Query:</strong>
                                 <div style="background: #e3f2fd; padding: 10px; border-radius: 6px; margin-top: 5px;">
                                     ${progress.rewrite_query}
                                 </div>
@@ -1280,10 +1276,10 @@
                 if (progress.execution_times && Object.keys(progress.execution_times).length > 0) {
                     content += `
                         <div class="form-container" style="margin-bottom: 20px;">
-                            <h4 style="color: #2c3e50; margin-bottom: 15px;">执行时间</h4>
+                            <h4 style="color: #2c3e50; margin-bottom: 15px;">Execution Times</h4>
                             <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
                                 ${Object.entries(progress.execution_times).map(([step, time]) =>
-                                    `<div style="margin-bottom: 5px;"><strong>${step}:</strong> ${(time || 0).toFixed(2)} 秒</div>`
+                                    `<div style="margin-bottom: 5px;"><strong>${step}:</strong> ${(time || 0).toFixed(2)} seconds</div>`
                                 ).join('')}
                             </div>
                         </div>
@@ -1294,15 +1290,15 @@
                 if (progress.sections && Object.keys(progress.sections).length > 0) {
                     content += `
                         <div class="form-container" style="margin-bottom: 20px;">
-                            <h4 style="color: #2c3e50; margin-bottom: 15px;">章节状态 (${Object.keys(progress.sections).length} 个章节)</h4>
+                            <h4 style="color: #2c3e50; margin-bottom: 15px;">Section Status (${Object.keys(progress.sections).length} sections)</h4>
                             <div style="max-height: 300px; overflow-y: auto;">
                                 ${Object.entries(progress.sections).map(([sectionName, sectionData]) => `
                                     <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 10px;">
                                         <div style="font-weight: bold; color: #2c3e50;">${sectionName}</div>
                                         <div style="font-size: 0.9rem; color: #666; margin-top: 5px;">
-                                            关键点数量: ${sectionData.key_points ? sectionData.key_points.length : 0}<br>
-                                            ${sectionData.content ? `内容已生成` : '内容未生成'}<br>
-                                            ${sectionData.reflection_results ? `反思已完成` : '反思未完成'}
+                                            Key Points Count: ${sectionData.key_points ? sectionData.key_points.length : 0}<br>
+                                            ${sectionData.content ? `Content Generated` : 'Content Not Generated'}<br>
+                                            ${sectionData.reflection_results ? `Reflection Completed` : 'Reflection Not Completed'}
                                         </div>
                                     </div>
                                 `).join('')}
@@ -1315,7 +1311,7 @@
                 if (progress.step_errors && Object.keys(progress.step_errors).length > 0) {
                     content += `
                         <div class="form-container" style="margin-bottom: 20px;">
-                            <h4 style="color: #dc3545; margin-bottom: 15px;">步骤错误</h4>
+                            <h4 style="color: #dc3545; margin-bottom: 15px;">Step Errors</h4>
                             <div>
                                 ${Object.entries(progress.step_errors).map(([step, error]) => `
                                     <div style="background: #f8d7da; padding: 10px; border-radius: 6px; margin-bottom: 10px; color: #721c24;">
@@ -1330,7 +1326,7 @@
             } else {
                 content += `
                     <div class="alert alert-warning">
-                        <strong>注意:</strong> ${details.message || '详细进度文件未找到'}
+                        <strong>Note:</strong> ${details.message || 'Detailed progress file not found'}
                     </div>
                 `;
             }
@@ -1363,15 +1359,15 @@
                     document.body.removeChild(link);
                     URL.revokeObjectURL(url);
 
-                    showAlert('详细数据已下载', 'success');
+                    showAlert('Detailed data downloaded', 'success');
                 }
             } catch (error) {
-                showAlert('下载失败: ' + error.message, 'error');
+                showAlert('Download failed: ' + error.message, 'error');
             }
         }
 
         async function deleteTask(taskId) {
-            if (!confirm('确定要删除这个任务吗？此操作不可恢复。')) return;
+            if (!confirm('Are you sure you want to delete this task? This action cannot be undone.')) return;
 
             try {
                 const response = await fetch(`${settings.apiEndpoint}/api/task/${taskId}`, {
@@ -1379,24 +1375,22 @@
                 });
 
                 if (response.ok) {
-                    showAlert('任务已删除', 'success');
+                    showAlert('Task deleted', 'success');
                     refreshTasks();
                 } else {
-                    showAlert('删除任务失败', 'error');
+                    showAlert('Failed to delete task', 'error');
                 }
             } catch (error) {
-                showAlert('网络错误: ' + error.message, 'error');
+                showAlert('Network error: ' + error.message, 'error');
             }
         }
 
-
         function clearCache() {
-            if (!confirm('确定要清除所有缓存数据吗？')) return;
+            if (!confirm('Are you sure you want to clear all cache data?')) return;
 
             localStorage.clear();
-            showSettingsAlert('缓存已清除', 'success');
+            showSettingsAlert('Cache cleared', 'success');
         }
-
 
         function startAutoRefresh() {
             stopAutoRefresh();
@@ -1418,11 +1412,11 @@
 
         function getStatusText(status) {
             const statusMap = {
-                'initializing': '初始化',
-                'running': '运行中',
-                'completed': '已完成',
-                'error': '错误',
-                'cancelled': '已取消'
+                'initializing': 'Initializing',
+                'running': 'Running',
+                'completed': 'Completed',
+                'error': 'Error',
+                'cancelled': 'Cancelled'
             };
             return statusMap[status] || status;
         }
@@ -1437,7 +1431,7 @@
         function formatDateTime(dateStr) {
             if (!dateStr) return 'N/A';
             const date = new Date(dateStr);
-            return date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
+            return date.toLocaleDateString('en-US') + ' ' + date.toLocaleTimeString('en-US');
         }
 
         function showAlert(message, type) {
@@ -1464,8 +1458,8 @@
 
         function showNotification(task) {
             if ('Notification' in window && Notification.permission === 'granted') {
-                new Notification('任务完成', {
-                    body: `任务 ${task.task_id} 已${task.status === 'completed' ? '完成' : '失败'}`,
+                new Notification('Task Completed', {
+                    body: `Task ${task.task_id} has ${task.status === 'completed' ? 'completed' : 'failed'}`,
                     icon: '/favicon.ico'
                 });
             }

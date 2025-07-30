@@ -665,7 +665,7 @@ async def test_async():
 if __name__ == "__main__":
     # pass
     # 测试完整流程
-    test()
+    # test()
 
     # 测试异步版本
     # asyncio.run(test_async())
