@@ -62,7 +62,7 @@ def fetch_pubmed_json(pmid_list):
             id=ids,
             rettype="abstract",
             retmode="xml",
-            httppost={"proxies": proxies},  # 使用局部代理
+            # httppost={"proxies": proxies},  # 使用局部代理
         )
         records = Entrez.read(handle)
         handle.close()
@@ -352,7 +352,7 @@ def search_from_pubmed(query, max_results=10):
         term=query,
         retmax=max_results,
         sort="relevance",
-        httppost={"proxies": proxies},  # 添加代理信息
+        # httppost={"proxies": proxies},  # 添加代理信息
     )
     record = Entrez.read(handle)
     handle.close()
@@ -914,7 +914,8 @@ def google_search_arxiv_id(query, try_num=4, num=10, end_date=""):
     for _ in range(try_num):
         try:
             response = requests.request(
-                "POST", url, headers=headers, data=payload, timeout=10, proxies=proxies
+                "POST", url, headers=headers, data=payload, timeout=10,
+                # proxies=proxies
             )
             if response.status_code == 200:
                 results = json.loads(response.text)
@@ -960,7 +961,9 @@ def get_doc_info_from_semantic_scholar_by_arxivid(
 
     for attempt in range(try_num):
         try:
-            response = requests.get(url, timeout=timeout, proxies=proxies)
+            response = requests.get(url, timeout=timeout,
+                                    # proxies=proxies
+                                    )
             if response.status_code == 200:
                 data = response.json()
                 # 检查返回的 arXiv ID 是否匹配
@@ -1070,7 +1073,9 @@ def get_doc_info_from_semantic_scholar_by_arxivid(
 def get_openalex_info(arxiv_id):
     # 没跑通
     url = f"https://api.openalex.org/works/https://arxiv.org/abs/{arxiv_id}"
-    response = requests.get(url, proxies=proxies)
+    response = requests.get(url,
+                            # proxies=proxies
+                            )
     if response.status_code == 200:
         data = response.json()
         return {
@@ -1200,18 +1205,19 @@ def parallel_search_search_paper_from_arxiv(
 
     # 从本地数据库获取已有数据
     arxiv_id_list_to_process = []
-    with ArxivDatabase(db_path) as db:
-        for _id in arxiv_id_list:
-            try:
-                db_info = db.get(_id)
-                if db_info is None:
+    if os.path.exists(db_path):
+        with ArxivDatabase(db_path) as db:
+            for _id in arxiv_id_list:
+                try:
+                    db_info = db.get(_id)
+                    if db_info is None:
+                        arxiv_id_list_to_process.append(_id)
+                    else:
+                        results[_id] = db_info
+                        results[_id]["source"] = "Search From Local"
+                except Exception as e:
+                    logger.error(f"Database error for {_id}: {e}")
                     arxiv_id_list_to_process.append(_id)
-                else:
-                    results[_id] = db_info
-                    results[_id]["source"] = "Search From Local"
-            except Exception as e:
-                logger.error(f"Database error for {_id}: {e}")
-                arxiv_id_list_to_process.append(_id)
 
     logger.info(f"Local db exist: {len(results)}, Need to fetch: {len(arxiv_id_list_to_process)}")
 
@@ -1231,9 +1237,10 @@ def parallel_search_search_paper_from_arxiv(
                 if batch_results:
                     results.update(batch_results)
                     # 立即保存到数据库
-                    with ArxivDatabase(db_path) as db:
-                        for _id, info in batch_results.items():
-                            db.update_or_insert(_id, info)
+                    if os.path.exists(db_path):
+                        with ArxivDatabase(db_path) as db:
+                            for _id, info in batch_results.items():
+                                db.update_or_insert(_id, info)
                 else:
                     failed_ids.extend(batch_ids)
 
@@ -1267,9 +1274,10 @@ def parallel_search_search_paper_from_arxiv(
                     if batch_results:
                         results.update(batch_results)
                         # 保存到数据库
-                        with ArxivDatabase(db_path) as db:
-                            for _id, info in batch_results.items():
-                                db.update_or_insert(_id, info)
+                        if os.path.exists(db_path):
+                            with ArxivDatabase(db_path) as db:
+                                for _id, info in batch_results.items():
+                                    db.update_or_insert(_id, info)
                     else:
                         failed_ids.extend(batch_ids)
 

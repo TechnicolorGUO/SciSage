@@ -4,7 +4,6 @@
 # [Author]       : shixiaofeng
 # [Descriptions] :
 # ==================================================================
-from graphviz import Digraph
 from typing import List, Dict, Any
 from langgraph.graph import StateGraph, END
 import re
@@ -231,6 +230,7 @@ def format_sections_for_global_reflection(
 
 
 def generate_mind_map_from_outline(processed_data, abstract_conclusion, save_to_file=True, output_dir="./output"):
+    from graphviz import Digraph
     """
     Generate mind map representations (Mermaid and Graphviz) from the processed outline structure.
     Optionally save Graphviz visualization as PNG file.

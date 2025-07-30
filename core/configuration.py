@@ -126,6 +126,8 @@ MODEL_CONFIGS = {
 # ==========================================================================
 # PROCESS CONTROL PARAMETERS
 # ==========================================================================
+
+OUTPUT_LANGUAGE: str = "en"  # Default output language for the generated content
 # -- QUERY INTENT --
 DEFAULT_MODEL_FOR_QUERY_INTENT = (
     "Qwen3-8B"  # Model used for generating search queries from outline content points

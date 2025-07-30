@@ -1,3 +1,5 @@
+LOCAL_LLM_HOST
+
 # SciSage
 
 This is the official repo of Scisage.
@@ -13,20 +15,23 @@ This is the official repo of Scisage.
 - **Structured Content Generation**: Section-wise detailed analysis with proper citations
 - **Multi-model Support**: Compatible with GPT-4, local models, and cloud services
 
+
 ## Quick Start
 
 ### 1. Installation
+
 ```bash
 git clone https://github.com/FlagOpen/SciSage.git
 cd SciSage
 pip install -r requirements.txt
 ```
 
-
 ### 2. Configuration
 
 #### Model Setup
+
 Edit [`core/model_factory.py`](core/model_factory.py):
+
 ```python
 llm_map = {
     "gpt-4": AzureChatOpenAI(...),
@@ -35,19 +40,25 @@ llm_map = {
 ```
 
 #### Pipeline Settings
-Edit [`core/configuration.py`](core/configuration.py):
-```python
-OUTLINE_GENERATION_MODEL = "gpt-4o-mini"
-CONTENT_GENERATION_MODEL = "gpt-4"
-REFLECTION_MODEL = "gpt-4"
-```
 
+Edit [`core/configuration.py`](core/configuration.py)  and set your Default model you want to use.
 
 ### 3. Run pipeline
+
 ```bash
-cd core
-bash run.sh
+1. cd core
+2. SET YOUR SEARCH API KEY, IF YOUR WANT YOUR YOUR LOCAL MODEL, SET THE ENVIRONMENT:
+3. bash run.sh
 ```
+
+### 4. Run local demop
+
+```
+bash run_demo.sh
+```
+
+![image](./figs/1_setting.jpeg)
+![image](./figs/2_write_paper.jpeg)
 
 
 ## Project Structure

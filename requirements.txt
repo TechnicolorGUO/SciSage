@@ -2,7 +2,13 @@
 langchain>=0.1.0
 langchain-openai>=0.1.0
 openai>=1.0.0
-
+langgraph
+func_timeout
+cachetools
+biopython
+gevent
+PyMuPDF
+uvicorn
 # Web crawling and PDF processing
 crawl4ai>=0.2.0
 requests>=2.31.0

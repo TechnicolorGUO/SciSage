@@ -22,7 +22,6 @@ from configuration import (
     OUTLINE_GENERAOR_MODELS,
     DEFAULT_MODEL_FOR_OUTLINE,
     MODEL_GEN_QUERY,
-
 )
 from log import logger
 from model_factory import llm_map
@@ -39,7 +38,7 @@ from prompt_manager import (
     get_outline_improve_prompt,
     get_outline_improve_prompt_v2,
     get_outline_conclusion_judge_prompt,
-    get_seed_outline_template
+    get_seed_outline_template,
 )
 from models import QueryIntent
 
@@ -82,22 +81,25 @@ CONCLUSION_KEYWORDS = frozenset(
 # ======================================
 class OutlineSection(BaseModel):
     """Section structure for the paper outline"""
+
     title: str = Field(description="Section title")
     key_points: List[str] = Field(description="Key points of the section content")
     subsections: Optional[List["OutlineSection"]] = Field(
         default=None, description="Subsections of this section"
     )
 
+
 class PaperOutline(BaseModel):
     """Complete paper outline structure"""
+
     title: str = Field(description="Paper title")
     abstract: str = Field(description="Paper abstract")
     sections: List[OutlineSection] = Field(description="Paper section structure")
 
 
-
 class ReflectionResult(BaseModel):
     """Results of outline reflection"""
+
     meets_requirements: bool = Field(
         description="Whether it meets the paper writing requirements"
     )
@@ -295,7 +297,7 @@ def generate_single_outline(
         parser.get_format_instructions(),
         max_sections=max_sections,
         min_depth=min_depth,
-        seed_outline=seed_outline
+        seed_outline=seed_outline,
     )
 
     model = llm_map.get(model_name, default_llm)
@@ -368,6 +370,7 @@ def _enforce_outline_constraints(
                 model_name, field, user_query, max_sections, min_depth
             )
     return outline
+
 
 def _generate_fallback_outline(
     model_name: str,
@@ -464,7 +467,6 @@ def generate_outlines(state: State) -> State:
     research_field = state.research_field
     models = OUTLINE_GENERAOR_MODELS
     parser = PydanticOutputParser(pydantic_object=PaperOutline)
-
 
     seed_outline = get_seed_outline_template(research_field.paper_type)
 
@@ -1303,7 +1305,6 @@ def generate_paper_outline(
                 max_sections=max_sections,
                 min_depth=min_depth,
             )
-
 
         result = workflow.invoke(initial_state)
 

@@ -1669,6 +1669,8 @@ class OpenScholarAPI:
                         section_name
                     )
                     item["gen_main_figure_judgement_info"] = judge_info
+                    needs_figure = False ## NOTE: CLOSE THE FIGURE INFO
+
                     if needs_figure:
                         logger.info(
                             f"{task_id}: Section judged to need a figure. Attempting extraction from most referenced paper (index {most_common_idx})."

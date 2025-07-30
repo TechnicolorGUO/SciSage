@@ -536,6 +536,7 @@ Provide the analysis strictly following the schema. Return *only* the JSON objec
     )
 
 
+
 def get_query_rewrite_prompt(
     query, research_domain, query_type, format_instructions: str
 ) -> ChatPromptTemplate:
@@ -575,6 +576,60 @@ Research domain: {research_domain}
 Query type: {query_type}
 
 Evaluate and rewrite the query if necessary based on the context provided.
+"""
+            ),
+        ]
+    )
+
+def get_general_query_rewrite_prompt(
+    query: str, format_instructions: str
+) -> ChatPromptTemplate:
+    """
+    Generates a prompt template for evaluating and potentially rewriting a general (non-academic) user query.
+    This function handles general queries that don't require academic research focus.
+
+    Args:
+        query: The user query to evaluate and potentially rewrite.
+        format_instructions: Instructions for the expected output format (e.g., Pydantic schema).
+
+    Returns:
+        A ChatPromptTemplate object configured for general query rewriting.
+    """
+    return ChatPromptTemplate.from_messages(
+        [
+            SystemMessage(
+                content=f"""You are a query optimization expert specializing in improving general information queries.
+Evaluate the provided query and determine if it needs rewriting by checking for:
+1. Clarity and specificity - Is the query clear about what information is being sought?
+2. Language precision - Are the terms used appropriate and specific enough?
+3. Completeness - Does the query contain enough context for effective information retrieval?
+4. Redundancy or verbosity - Can the query be made more concise without losing meaning?
+
+If rewriting is needed, create a version that:
+- Maintains the original intent and language (preserve Chinese if the query is in Chinese)
+- Improves clarity and specificity for better search results
+- Uses appropriate terminology for the topic domain
+- Is concise but comprehensive
+
+Important:
+- Preserve the original language of the query (do NOT translate)
+- Focus on improving searchability and clarity
+- Maintain the general/informational nature of the query
+
+Output Schema Instructions:
+{format_instructions}
+
+Provide the analysis strictly following the schema. Return *only* the JSON object."""
+            ),
+            HumanMessage(
+                content=f"""
+Query to evaluate: {query}
+
+Evaluate and rewrite this general query if necessary. Remember to:
+1. Keep the same language as the original query
+2. Improve clarity and searchability
+3. Maintain the general information focus
+4. Make it more specific and actionable if needed
 """
             ),
         ]
@@ -1454,10 +1509,6 @@ IMPORTANT: Respond with only a valid JSON object that strictly follows the schem
 #             ),
 #         ]
 #     )
-
-
-
-
 
 def get_outline_generation_prompt_v2(
     field: str,

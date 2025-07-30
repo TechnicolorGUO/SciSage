@@ -301,6 +301,61 @@ async def update_environment_variables(env_vars: Dict[str, str]):
             detail=f"Failed to update environment variables: {str(e)}"
         )
 
+@app.get("/api/task-details/{task_id}")
+async def get_task_details(task_id: str):
+    """Get detailed task information from _process.json file"""
+    try:
+        with task_lock:
+            if task_id not in active_tasks:
+                raise HTTPException(
+                    status_code=404,
+                    detail=f"Task {task_id} not found"
+                )
+
+            task_data = active_tasks[task_id]
+            output_dir = task_data.get("request", {}).get("output_dir", "temp")
+
+        # Try to find the _process.json file
+        user_query = task_data.get("request", {}).get("user_query", "")
+        clean_query = user_query.replace(" ", "_")[:50]
+
+        # Look for the process file
+        process_file = None
+        if os.path.exists(output_dir):
+            for filename in os.listdir(output_dir):
+                if filename.endswith("_process.json") and clean_query in filename:
+                    process_file = os.path.join(output_dir, filename)
+                    break
+
+        if not process_file or not os.path.exists(process_file):
+            # Return basic task info if no detailed file found
+            return {
+                "task_id": task_id,
+                "basic_info": task_data,
+                "detailed_progress": None,
+                "message": "Detailed progress file not found"
+            }
+
+        # Read and return the detailed progress
+        with open(process_file, 'r', encoding='utf-8') as f:
+            detailed_progress = json.load(f)
+
+        return {
+            "task_id": task_id,
+            "basic_info": task_data,
+            "detailed_progress": detailed_progress,
+            "process_file_path": process_file
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Failed to get task details: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to get task details: {str(e)}"
+        )
+
 
 @app.get("/api/task-result/{task_id}")
 async def get_task_result(task_id: str):
@@ -543,14 +598,14 @@ if __name__ == "__main__":
     os.makedirs(static_dir, exist_ok=True)  # 确保静态文件目录存在
 
     logger.info("Starting Academic Paper Generation Server...")
-    logger.info(f"Frontend will be available at: http://localhost:8193/")
-    logger.info(f"API documentation at: http://localhost:8193/docs")
+    logger.info(f"Frontend will be available at: http://localhost:8194/")
+    logger.info(f"API documentation at: http://localhost:8194/docs")
 
     # Run the server
     uvicorn.run(
         app,
         host="0.0.0.0",
-        port=8193,
+        port=8194,
         log_level="info",
         reload=False  # Set to True for development
     )
