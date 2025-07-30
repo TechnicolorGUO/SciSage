@@ -1,5 +1,3 @@
-LOCAL_LLM_HOST
-
 # SciSage
 
 This is the official repo of Scisage.
@@ -51,7 +49,7 @@ Edit [`core/configuration.py`](core/configuration.py)  and set your Default mode
 3. bash run.sh
 ```
 
-### 4. Run local demop
+### 4. Run local demo
 
 ```
 bash run_demo.sh
