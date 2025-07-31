@@ -662,7 +662,7 @@ async def test_async():
 
 
 # Example usage
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # pass
     # 测试完整流程
     # test()
