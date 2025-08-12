@@ -105,7 +105,7 @@ def retrival_online(data: Dict[str, Any]) -> Dict[str, Any]:
         if response:
             output = {}
             for _id, paper in response.items():
-                paper["authors"] = ";".join(one["name"] for one in paper["authors"])
+                paper["authors"] = ",".join(one["name"] for one in paper["authors"][:4])
                 paper["url"] = paper["arxivUrl"]
                 paper["text"] = paper["abstract"]
                 paper["year"] = paper.get("publicationYear", "Unknown")
@@ -262,7 +262,7 @@ async def retrival_general_web(data: Dict[str, Any]) -> Dict[str, Any]:
 
 async def run_academic_retrieval(data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    执行学术检索（原有逻辑）
+    执行学术检索
     """
     try:
         t0 = time.time()
@@ -279,7 +279,7 @@ async def run_academic_retrieval(data: Dict[str, Any]) -> Dict[str, Any]:
 
         # 尝试retrival_online，最多5次
         online_success = False
-        for attempt in range(10):
+        for attempt in range(5):
             try:
                 logger.info(f"Attempting retrival_online, attempt {attempt + 1}/10")
                 with ThreadPoolExecutor() as executor:

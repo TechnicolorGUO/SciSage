@@ -21,6 +21,7 @@ from fallback import create_reflection_fallback
 
 from paper_understant_query import process_query_async
 from paper_outline_opt import generate_paper_outline_async
+from paper_translate import translate_markdown_to_chinese, translate_large_markdown_to_chinese
 
 # from section_writer_opt import section_writer_async
 from section_writer_opt_local import section_writer_async
@@ -35,7 +36,7 @@ from configuration import (
     OUTLINE_MAX_SECTIONS,
     OUTLINE_MIN_DEPTH,
     MAX_SECTION_RETRY_NUM,
-    DO_SELECT_REFLECTION,
+    DO_SECTION_REFLECTION,
     SECTION_REFLECTION_MAX_TURNS,
     DEFAULT_MODEL_FOR_SECTION_WRITER,
     DO_GLOBAL_REFLECTION,
@@ -43,6 +44,7 @@ from configuration import (
     GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS,
     DEBUG_KEY_POINTS_LIMIT,
     DEFAULT_RAG_SERVICE_URL,
+    DEFAULT_TRANSLATE_TO_CHINESE,
     DEBUG,
 )
 from utils import format_sections_for_global_reflection
@@ -58,6 +60,7 @@ class ProcessState(Enum):
     GLOBAL_REFLECTION_DONE = auto()
     ABSTRACT_CONCLUSION_GENERATED = auto()
     PAPER_POLISHED = auto()
+    PAPER_TRANSLATED = auto()
     COMPLETED = auto()
     ERROR = auto()
 
@@ -212,6 +215,10 @@ def determine_resume_point(
         logger.info("Found error in polish step, resuming from paper polishing")
         return ProcessState.ABSTRACT_CONCLUSION_GENERATED
 
+    if state.has_step_error("translate"):
+        logger.info("Found error in translate step, resuming from paper translation")
+        return ProcessState.PAPER_POLISHED
+
     # Check process state and data integrity
     if state.process_state == ProcessState.ERROR:
         logger.info("Process state is ERROR, starting from beginning")
@@ -256,6 +263,12 @@ def determine_resume_point(
         if not state.final_paper:
             logger.info("Final paper data incomplete, resuming from paper polishing")
             return ProcessState.ABSTRACT_CONCLUSION_GENERATED
+
+    if state.process_state.value >= ProcessState.PAPER_TRANSLATED.value:  # 新增翻译状态检查
+        # 检查是否需要翻译以及翻译是否完成
+        if not state.final_paper.get("markdown_content_zh"):
+            logger.info("Translation data incomplete, resuming from paper translation")
+            return ProcessState.PAPER_POLISHED
 
     # If everything looks good, continue from current state
     logger.info(f"Resuming from current state: {state.process_state.name}")
@@ -364,7 +377,7 @@ async def process_section(
 
     parent_section = params.get("parent_section", "")
     section_task_id = params.get("section_task_id", "")
-    do_section_reflection = params.get("do_section_reflection", DO_SELECT_REFLECTION)
+    do_section_reflection = params.get("do_section_reflection", DO_SECTION_REFLECTION)
     rag_model = params.get("section_writer_model", DEFAULT_MODEL_FOR_SECTION_WRITER)
     section_reflection_max_turns = params.get(
         "section_reflection_max_turns", SECTION_REFLECTION_MAX_TURNS
@@ -491,6 +504,7 @@ class PaperGenerationPipeline:
         self.output_dir = output_dir
         self.kwargs = kwargs
 
+        print(f"self.kwargs.get: {kwargs}")
         self.do_global_reflection = self.kwargs.get(
             "do_global_reflection", DO_GLOBAL_REFLECTION
         )
@@ -667,7 +681,7 @@ class PaperGenerationPipeline:
                         params = {
                             "parent_section": "",
                             "section_task_id": section_sub_task_id,
-                            "do_section_reflection": DO_SELECT_REFLECTION,
+                            "do_section_reflection": DO_SECTION_REFLECTION,
                             "section_writer_model": self.kwargs.get(
                                 "section_writer_model", DEFAULT_MODEL_FOR_SECTION_WRITER
                             ),
@@ -697,7 +711,7 @@ class PaperGenerationPipeline:
                         params = {
                             "parent_section": "",
                             "section_task_id": section_sub_task_id,
-                            "do_section_reflection": DO_SELECT_REFLECTION,
+                            "do_section_reflection": DO_SECTION_REFLECTION,
                             "section_writer_model": self.kwargs.get(
                                 "section_writer_model", DEFAULT_MODEL_FOR_SECTION_WRITER
                             ),
@@ -879,12 +893,12 @@ class PaperGenerationPipeline:
             )
             logger.debug(f"final_paper: {final_paper}")
 
+            self.state.final_paper = final_paper
+            self.state.process_state = ProcessState.PAPER_POLISHED
+
             self.state.execution_times["paper_polish"] = time.time() - start_time
             final_paper["paper_title"] = self.state.paper_title
 
-            self.state.final_paper = final_paper
-
-            self.state.process_state = ProcessState.PAPER_POLISHED
             return True
 
         except Exception as e:
@@ -894,6 +908,58 @@ class PaperGenerationPipeline:
             self.state.error_message = f"Failed during paper polishing: {str(e)}"
             self.state.process_state = ProcessState.ERROR
             return False
+
+    async def translate_paper(self) -> bool:
+        """Translate the final paper to Chinese"""
+        logger.info("Translating the final paper to Chinese...")
+
+        if self.state.process_state != ProcessState.PAPER_POLISHED:
+            logger.error("Cannot translate paper without polished paper")
+            return False
+
+        # 检查是否需要翻译
+        if not self.kwargs.get("translate_to_chinese", False):
+            logger.info("Translation not requested, skipping translation step")
+            self.state.process_state = ProcessState.PAPER_TRANSLATED
+            return True
+
+        if "markdown_content" not in self.state.final_paper:
+            logger.error("No markdown content found in final paper")
+            self.state.error_message = "No markdown content found in final paper"
+            self.state.process_state = ProcessState.ERROR
+            return False
+
+        try:
+            logger.info("Starting paper translation to Chinese...")
+            translation_start_time = time.time()
+
+            # 使用大文本翻译函数，自动处理分块
+            translated_content = await translate_large_markdown_to_chinese(
+                self.state.final_paper["markdown_content"],
+                model_name=self.kwargs.get("translation_model", "Qwen3-32B")
+            )
+
+            # 保存原始英文版本和中文翻译版本
+            self.state.final_paper["markdown_content_en"] = self.state.final_paper["markdown_content"]
+            self.state.final_paper["markdown_content_zh"] = translated_content
+
+            # 根据配置决定主要显示哪个版本
+            if self.kwargs.get("use_chinese_as_primary", True):
+                self.state.final_paper["markdown_content"] = translated_content
+            # 否则保持英文作为主要版本
+
+            self.state.execution_times["translation"] = time.time() - translation_start_time
+            self.state.process_state = ProcessState.PAPER_TRANSLATED
+
+            logger.info("Paper translation completed successfully")
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed during paper translation: {e}\n{traceback.format_exc()}")
+            self.state.error_message = f"Failed during paper translation: {str(e)}"
+            self.state.process_state = ProcessState.ERROR
+            return False
+
 
     async def generate_paper(
         self,
@@ -1020,6 +1086,20 @@ class PaperGenerationPipeline:
                         self.state.set_step_error("polish", self.state.error_message)
                         return self._create_error_result()
 
+                    self._save_progress()
+
+
+                # Step 6: Translate paper
+                if self.resume_from.value <= ProcessState.PAPER_POLISHED.value and self.kwargs.get("translate_to_chinese", DEFAULT_TRANSLATE_TO_CHINESE):
+                    self.state.clear_step_error("translate")
+                    if not await self.translate_paper():
+                        self.state.set_step_error("translate", self.state.error_message)
+                        return self._create_error_result()
+
+                    # Save progress after translation
+                    self._save_progress()
+
+
                 # Finalize and return results
                 self.state.process_state = ProcessState.COMPLETED
                 self.state.execution_times["total"] = time.time() - start_time
@@ -1093,7 +1173,6 @@ def save_results(results: Dict[str, Any], output_dir: str = "temp") -> str:
     # Generate filename based on metadata
     user_query = results.get("user_query", "query").replace(" ", "_")[:50]
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    # filename_base = f"{output_dir}/{user_query}_{timestamp}"
     filename_base = f"{output_dir}/{user_query}"
 
     # Save full process data
@@ -1107,18 +1186,28 @@ def save_results(results: Dict[str, Any], output_dir: str = "temp") -> str:
         with open(paper_file, "w", encoding="utf-8") as f:
             json.dump(results["final_paper"], f, ensure_ascii=False, indent=2)
 
-    if "markdown_content" in results.get("final_paper", {}):
-        # Save markdown content if available
-        markdown_file = f"{filename_base}_process.md"
+    # Save markdown content if available
+    final_paper = results.get("final_paper", {})
+
+    # 保存主要markdown文件
+    if "markdown_content" in final_paper:
+        markdown_file = f"{filename_base}_paper.md"
         with open(markdown_file, "w", encoding="utf-8") as f:
-            f.write(
-                results.get("final_paper", {}).get(
-                    "markdown_content", "# Error: Markdown content not generated"
-                )
-            )
+            f.write(final_paper.get("markdown_content", "# Error: Markdown content not generated"))
+
+    # 如果有英文版本，单独保存
+    if "markdown_content_en" in final_paper:
+        markdown_en_file = f"{filename_base}_paper_en.md"
+        with open(markdown_en_file, "w", encoding="utf-8") as f:
+            f.write(final_paper.get("markdown_content_en", "# Error: English markdown content not generated"))
+
+    # 如果有中文版本，单独保存
+    if "markdown_content_zh" in final_paper:
+        markdown_zh_file = f"{filename_base}_paper_zh.md"
+        with open(markdown_zh_file, "w", encoding="utf-8") as f:
+            f.write(final_paper.get("markdown_content_zh", "# Error: Chinese markdown content not generated"))
 
     return process_file
-
 
 
 
