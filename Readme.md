@@ -13,7 +13,6 @@ This is the official repo of Scisage.
 - **Structured Content Generation**: Section-wise detailed analysis with proper citations
 - **Multi-model Support**: Compatible with GPT-4, local models, and cloud services
 
-
 ## Quick Start
 
 ### 1. Installation
@@ -58,6 +57,24 @@ bash run_demo.sh
 ![image](./figs/1_setting.jpeg)
 ![image](./figs/2_write_paper.jpeg)
 
+### 5. RUN Local Server
+
+```
+export GOOGLE_SERPER_KEY="xxx"
+## for general search: get from https://serpapi.com/dashboard
+export SERPAPI_API_KEY="xxx"
+
+## for Local LLM inference url, change to your local LLM server address
+export LOCAL_LLM_HOST="xxx"
+
+python3 server.py
+```
+
+Afater setup server, you can test the server
+
+```
+python3 client.py
+```
 
 ## Project Structure
 

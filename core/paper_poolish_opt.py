@@ -476,9 +476,13 @@ def generate_markdown_from_processed(
             if authors:
                 # Handle potential list or string format for authors
                 if isinstance(authors, list):
-                    ref_text += f". {', '.join(authors)}"
+                    authors = authors[:4]
                 else:
-                    ref_text += f". {authors}"
+                    authors_spl = authors.split(";")
+                    authors_spl = [name.strip() for name in authors_spl for name in name.split(",")]
+                    authors_spl = authors_spl[:4]
+
+                ref_text += f". {', '.join(authors_spl)}"
             venue = ref.get("venue")
             if venue:
                 ref_text += f". *{venue}*"

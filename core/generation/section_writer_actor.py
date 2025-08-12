@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # ==================================================================
 # [Author]       : shixiaofeng
-# [Descriptions] : refer from openscholar
+# [Descriptions] : refer from SectionWriter
 # [Dependencies] : spacy, nltk, requests, tqdm, asyncio, numpy
 # ==================================================================
 
@@ -61,25 +61,25 @@ except OSError:
     nlp = None  # Or raise an exception
 
 
-class OpenScholarAPIError(Exception):
-    """Custom exception class for OpenScholarAPI errors."""
+class SectionWriterAPIError(Exception):
+    """Custom exception class for SectionWriterAPI errors."""
 
     pass
 
 
-class LLMCommunicationError(OpenScholarAPIError):
+class LLMCommunicationError(SectionWriterAPIError):
     """Exception raised for errors during communication with the LLM."""
 
     pass
 
 
-class DataProcessingError(OpenScholarAPIError):
+class DataProcessingError(SectionWriterAPIError):
     """Exception raised for errors during data processing."""
 
     pass
 
 
-class OpenScholarAPI:
+class SectionWriterAPI:
     """
     A class to interact with scientific literature APIs for tasks like retrieval,
     ranking, and response generation. Enhanced with improved error handling,
@@ -98,7 +98,7 @@ class OpenScholarAPI:
         online_retriver: bool = True,  # Typo: retriever
     ):
         """
-        Initialize the OpenScholarAPI.
+        Initialize the SectionWriterAPI.
 
         Args:
             client: API client for interacting with language models (optional).
@@ -435,7 +435,7 @@ class OpenScholarAPI:
                 f"Unexpected error during response generation: {e}\n{traceback.format_exc()}"
             )
             # Re-raise or return None depending on desired handling
-            raise OpenScholarAPIError(f"Unexpected generation error: {e}") from e
+            raise SectionWriterAPIError(f"Unexpected generation error: {e}") from e
 
     def process_feedback(self, response: str) -> List[Tuple[str, str]]:
         """Extract feedback and questions from the response using regex.
@@ -1185,7 +1185,7 @@ class OpenScholarAPI:
         item: Dict[str, Any],
         request_id: str,
         task_id: str,
-        model_name: str = "openscholar",  # Use instance default if None
+        model_name: str = "SectionWriter",  # Use instance default if None
         reranker_model_name: str = "Qwen3-8B",  # Use instance default if None
         image_extraction_model: str = "Qwen3-8B",  # Use instance default if None
         ranking_ce: bool = True,  # Default to True?
@@ -1317,7 +1317,7 @@ class OpenScholarAPI:
                         f"{task_id}: Initial generation failed (LLM returned None or error)."
                     )
                     # Decide: Stop pipeline, or try feedback/posthoc on empty string? Stop seems safer.
-                    raise OpenScholarAPIError(
+                    raise SectionWriterAPIError(
                         "Initial generation failed, cannot proceed."
                     )
                 else:
@@ -1337,7 +1337,7 @@ class OpenScholarAPI:
                 LLMCommunicationError,
                 DataProcessingError,
                 ValueError,
-                OpenScholarAPIError,
+                SectionWriterAPIError,
             ) as e:
                 logger.error(
                     f"{task_id}: Initial generation step failed critically: {e}"
@@ -2134,7 +2134,7 @@ async def run_section_writer_actor(query,query_domain, task_id, model_info):
 
 
         # Initialize API (consider adding reranker model path if needed)
-        api = OpenScholarAPI(
+        api = SectionWriterAPI(
             online_retriver=True,
             use_contexts=use_contexts,
             top_n=top_n,
@@ -2203,7 +2203,7 @@ async def run_section_writer_actor(query,query_domain, task_id, model_info):
 # --- Example Usage ---
 async def main_example():
     """Async example usage function."""
-    logger.info("Starting OpenScholarAPI example...")
+    logger.info("Starting SectionWriterAPI example...")
     from retrival import run_requests_parallel
 
     data = {
@@ -2229,7 +2229,7 @@ async def main_example():
         model_name = "Qwen3-8B"
         image_extraction_model = "Qwen3-8B"
         reranker_model_name = "Qwen3-8B"
-        api = OpenScholarAPI(
+        api = SectionWriterAPI(
             online_retriver=True,
             use_contexts=use_contexts,
             top_n=top_n,

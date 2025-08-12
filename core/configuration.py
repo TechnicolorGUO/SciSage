@@ -145,12 +145,12 @@ MODEL_GEN_QUERY: str = "Qwen3-8B"
 
 # Maximum number of outline reflections to perform
 OUTLINE_REFLECTION_MAX_TURNS: int = 2
-OUTLINE_MAX_SECTIONS: int = 4  # Maximum number of sections to generate in the outline
+OUTLINE_MAX_SECTIONS: int = 3  # Maximum number of sections to generate in the outline
 OUTLINE_MIN_DEPTH: int = 1  # Minimum depth of the outline tree structure
 
 # -- SECTION --
 # Enable selective reflection on specific sections
-DO_SELECT_REFLECTION: bool = True
+DO_SECTION_REFLECTION: bool = True
 # Number of concurrent section writer processes
 SECTION_WRITER_CONCURRENCY: int = 2
 # Number of concurrent section reflection processes
@@ -172,7 +172,7 @@ SECTION_REFLECTION_MODEL_LST = ["Qwen3-8B", "llama3-70b"]
 
 
 # ---- GLOBAL REFLECTION ----
-DO_GLOBAL_REFLECTION: bool = True  # Enable global reflection on entire paper
+DO_GLOBAL_REFLECTION: bool = False  # Enable global reflection on entire paper
 GLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns
 DEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = "Qwen3-8B"
 
@@ -183,6 +183,9 @@ MODEL_GEN_ABSTRACT_CONCLUSION: str = "Qwen3-8B"
 # -- POOLISH --
 DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = "Qwen3-8B"
 
+DEFAULT_MODEL_FOR_TRASNLATION: str="Qwen3-8B"
+
+DEFAULT_TRANSLATE_TO_CHINESE=False
 # ==========================================================================
 # SERVICE CONFIGURATION
 # ==========================================================================
