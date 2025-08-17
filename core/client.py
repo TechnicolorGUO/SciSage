@@ -14,7 +14,7 @@ base_url = "http://localhost:8080"
 request_data = {
     "user_name": "researcher",
     "user_query": "The impact of artificial intelligence on modern healthcare",
-    "section_writer_model":"Qwen3-8B",
+    "section_writer_model":"qwen-plus-latest",
     "outline_max_sections": 4,
     "do_query_understand": True,
     "do_section_reflection": True,

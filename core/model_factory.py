@@ -9,21 +9,24 @@ from local_model_langchain import LOCAL_MODELS
 
 # Initialize AI models
 
-
 llm_map = {
-    "gpt-4": AzureChatOpenAI(
-        openai_api_type="azure",
-        openai_api_version="your api version",
-        azure_deployment="gpt-4",
-        azure_endpoint="you endpoint",
-        api_key="your-api-key-here",
+    "qwen-plus-latest": ChatOpenAI(
+        model="qwen-plus-latest",
+        base_url="YOUR_BASE_URL_HERE",  # 替换为你的base URL
+        api_key="YOUR_API_KEY_HERE",    # 替换为你的API key
+        temperature=0.7,
     ),
-    "gpt-4o-mini": AzureChatOpenAI(
-        openai_api_type="azure",
-        openai_api_version="your api version",
-        azure_deployment="gpt-4o-mini",
-        azure_endpoint="you endpoint",
-        api_key="your-api-key-here",
+    "gpt-4": ChatOpenAI(
+        model="gpt-4",
+        base_url="YOUR_BASE_URL_HERE",  # 替换为你的base URL
+        api_key="YOUR_API_KEY_HERE",    # 替换为你的API key
+        temperature=0.7,
+    ),
+    "gpt-4o-mini": ChatOpenAI(
+        model="gpt-4o-mini",
+        base_url="YOUR_BASE_URL_HERE",  # 替换为你的base URL
+        api_key="YOUR_API_KEY_HERE",    # 替换为你的API key
+        temperature=0.7,
     ),
 } | LOCAL_MODELS
 

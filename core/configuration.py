@@ -130,18 +130,18 @@ MODEL_CONFIGS = {
 OUTPUT_LANGUAGE: str = "en"  # Default output language for the generated content
 # -- QUERY INTENT --
 DEFAULT_MODEL_FOR_QUERY_INTENT = (
-    "Qwen3-8B"  # Model used for generating search queries from outline content points
+    "qwen-plus-latest"  # Model used for generating search queries from outline content points
 )
 
 # -- OUTLINE --
-DEFAULT_MODEL_FOR_OUTLINE: str = "Qwen3-8B"  # Changed from gpt-4-32k to Qwen25-72B
-# Currently using only Qwen model for outline generation
+DEFAULT_MODEL_FOR_OUTLINE: str = "qwen-plus-latest"  # Changed from gpt-4-32k to qwen-plus-latest
+# Currently using only qwen-plus-latest model for outline generation
 OUTLINE_GENERAOR_MODELS: List[str] = [
     # "Qwen3-32B",
     # "Qwen3-14B",
-    "Qwen3-8B",
+    "qwen-plus-latest",
 ]
-MODEL_GEN_QUERY: str = "Qwen3-8B"
+MODEL_GEN_QUERY: str = "qwen-plus-latest"
 
 # Maximum number of outline reflections to perform
 OUTLINE_REFLECTION_MAX_TURNS: int = 2
@@ -160,30 +160,30 @@ SECTION_REFLECTION_MAX_TURNS: int = 0
 
 MAX_SECTION_RETRY_NUM: int = 3  # Maximum number of retries for section generation
 
-DEFAULT_MODEL_FOR_SECTION_RETRIVAL: str = "Qwen3-8B"
+DEFAULT_MODEL_FOR_SECTION_RETRIVAL: str = "qwen-plus-latest"
 
 
-DEFAULT_MODEL_FOR_SECTION_WRITER: str = "Qwen3-8B"
-DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = "Qwen3-8B"
-DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = "Qwen3-8B"
+DEFAULT_MODEL_FOR_SECTION_WRITER: str = "qwen-plus-latest"
+DEFAULT_MODEL_FOR_SECTION_WRITER_IMAGE_EXTRACT:str = "qwen-plus-latest"
+DEFAULT_MODEL_FOR_SECTION_WRITER_RERANK:str = "qwen-plus-latest"
 
-SECTION_SUMMARY_MODEL: str = "Qwen3-8B"  # gpt-4-32k
-SECTION_REFLECTION_MODEL_LST = ["Qwen3-8B", "llama3-70b"]
+SECTION_SUMMARY_MODEL: str = "qwen-plus-latest"  # gpt-4-32k
+SECTION_REFLECTION_MODEL_LST = ["qwen-plus-latest", "llama3-70b"]
 
 
 # ---- GLOBAL REFLECTION ----
 DO_GLOBAL_REFLECTION: bool = False  # Enable global reflection on entire paper
 GLOBAL_REFLECTION_MAX_TURNS: int = 1  # Maximum number of global reflection turns
-DEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = "Qwen3-8B"
+DEFAULT_MODEL_FOR_GLOBAL_REFLECTION: str = "qwen-plus-latest"
 
 # --- ABSTRACT & CONCLUSION ---
 GLOBAL_ABSTRACT_CONCLUSION_MAX_TURNS: int = 1
-MODEL_GEN_ABSTRACT_CONCLUSION: str = "Qwen3-8B"
+MODEL_GEN_ABSTRACT_CONCLUSION: str = "qwen-plus-latest"
 
 # -- POOLISH --
-DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = "Qwen3-8B"
+DEFAULT_MODEL_FOR_SECTION_NAME_REFLECTION: str = "qwen-plus-latest"
 
-DEFAULT_MODEL_FOR_TRASNLATION: str="Qwen3-8B"
+DEFAULT_MODEL_FOR_TRASNLATION: str="qwen-plus-latest"
 
 DEFAULT_TRANSLATE_TO_CHINESE=False
 # ==========================================================================
@@ -191,7 +191,7 @@ DEFAULT_TRANSLATE_TO_CHINESE=False
 # ==========================================================================
 
 # Default URL for the RAG (Retrieval Augmented Generation) service
-DEFAULT_RAG_SERVICE_URL: str = "http://xxxx:9528/chat"
+DEFAULT_RAG_SERVICE_URL: str = "YOUR_RAG_SERVICE_URL_HERE"  # 替换为你的RAG服务URL
 
 # Debug mode flag - enables additional logging and debug information when True
 DEBUG: bool = False

@@ -64,7 +64,7 @@ class PaperGenerationRequest(BaseModel):
     outline_max_reflections: int = Field(default=1, description="Max outline reflections")
     outline_max_sections: int = Field(default=5, description="Max sections in outline")
     outline_min_depth: int = Field(default=1, description="Min outline depth")
-    section_writer_model: str = Field(default="Qwen3-8B", description="Model for section writing")
+    section_writer_model: str = Field(default="qwen-plus-latest", description="Model for section writing")
     do_section_reflection: bool = Field(default=True, description="Enable section reflection")
     section_reflection_max_turns: int = Field(default=1, description="Max section reflection turns")
     do_global_reflection: bool = Field(default=True, description="Enable global reflection")
